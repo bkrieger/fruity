@@ -49,12 +49,16 @@ public class SalesPaymentActivity extends Activity {
 		total = 0;
 		onPopup = false;
 	}
-	
+
 	public void onBackPressed() {
-		if(onPopup) {
-			putBackCounts();
+		if (onPopup) {
 			setContentView(R.layout.activity_sales_payment);
+			putBackCounts();
+			onPopup = false;
 		} else {
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Purchase Cancelled", Toast.LENGTH_SHORT);
+			toast.show();
 			super.onBackPressed();
 		}
 	}
@@ -65,7 +69,7 @@ public class SalesPaymentActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_sales_payment, menu);
 		return true;
 	}
-	
+
 	public void onWholeFruitButtonClick(View v) {
 		setContentView(R.layout.sales_whole_fruit_popup);
 		onPopup = true;
@@ -259,7 +263,7 @@ public class SalesPaymentActivity extends Activity {
 		count = (TextView) findViewById(R.id.ASPgranolaCounter);
 		count.setText("" + granola);
 	}
-	
+
 	public void onCashButtonClick(View v) {
 		paymentType = PaymentType.CASH;
 		submit();
@@ -281,11 +285,14 @@ public class SalesPaymentActivity extends Activity {
 		if (total > 0) {
 			Intent i = new Intent();
 			setResult(RESULT_OK, i);
-			toast = Toast.makeText(getApplicationContext(), "Purchase Successful!", Toast.LENGTH_SHORT);
+			toast = Toast.makeText(getApplicationContext(),
+					"Purchase Successful!", Toast.LENGTH_SHORT);
 			toast.show();
 			finish();
 		} else {
-			toast = Toast.makeText(getApplicationContext(), "Purchase must contain at least one item.", Toast.LENGTH_SHORT);
+			toast = Toast.makeText(getApplicationContext(),
+					"Purchase must contain at least one item.",
+					Toast.LENGTH_SHORT);
 			toast.show();
 		}
 
