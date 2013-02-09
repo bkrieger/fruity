@@ -25,11 +25,6 @@
         <activity
             android:name="edu.upenn.cis.fruity.SalesDemographicActivity"
             android:label="@string/title_activity_sales_demographic" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="edu.upenn.cis.fruity.SalesPaymentActivity"

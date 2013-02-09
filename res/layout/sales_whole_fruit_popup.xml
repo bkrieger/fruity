@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Apples" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onApplesMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPAppleCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onApplesPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Oranges" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onOrangesMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPOrangeCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onOrangesPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Bananas" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onBananasMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPBananaCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onBananasPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Kiwis" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onKiwisMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPKiwiCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onKiwisPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Pears" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onPearsMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPPearCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onPearsPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Grapes" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onGrapesMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/SWFPGrapeCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:onClick="onGrapesPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:onClick="onWholeFruitDoneButtonClick"
+            android:text="Done" />
+    </LinearLayout>
+
+</LinearLayout>

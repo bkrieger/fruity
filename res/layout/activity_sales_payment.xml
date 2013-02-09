@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="What does the customer want to buy?" />
+            android:text="What does the customer want to buy?"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <Button
@@ -32,15 +33,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/ASPbtnMixed"
             android:layout_width="150dp"
             android:layout_height="80dp"
+            android:clickable="false"
             android:text="Mixed Bag" />
 
         <Button
@@ -65,15 +67,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/ASPbtnSmoothie"
             android:layout_width="150dp"
             android:layout_height="80dp"
+            android:clickable="false"
             android:text="Smoothie" />
 
         <Button
@@ -98,15 +101,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/ASPbtnGranola"
             android:layout_width="150dp"
             android:layout_height="80dp"
+            android:clickable="false"
             android:text="Granola" />
 
         <Button
@@ -131,41 +135,42 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose a payment type to complete the sale." />
+            android:text="Choose a payment type to complete the sale."
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="center"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/ASPbtnCash"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="80dp"
             android:onClick="onCashButtonClick"
             android:text="Cash" />
 
         <Button
             android:id="@+id/ASPbtnCoupon"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="80dp"
             android:onClick="onCouponButtonClick"
             android:text="Coupon" />
 
         <Button
             android:id="@+id/ASPbtnTradein"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="80dp"
             android:onClick="onTradeinButtonClick"
             android:text="Trade-in" />
