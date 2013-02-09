@@ -4,7 +4,7 @@
     <string name="app_name">Fruity</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_sales_demographic">SalesDemographicActivity</string>
-    <string name="title_activity_sales_payment">SalesPaymentActivity</string>
+    <string name="title_activity_sales_demographic">Customer</string>
+    <string name="title_activity_sales_payment">Sales</string>
 
 </resources>

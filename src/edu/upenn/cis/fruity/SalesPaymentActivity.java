@@ -27,6 +27,7 @@ public class SalesPaymentActivity extends Activity {
 	int bananas;
 	int kiwis;
 	int total;
+	boolean onPopup;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,6 +47,16 @@ public class SalesPaymentActivity extends Activity {
 		bananas = 0;
 		kiwis = 0;
 		total = 0;
+		onPopup = false;
+	}
+	
+	public void onBackPressed() {
+		if(onPopup) {
+			putBackCounts();
+			setContentView(R.layout.activity_sales_payment);
+		} else {
+			super.onBackPressed();
+		}
 	}
 
 	@Override
@@ -54,9 +65,10 @@ public class SalesPaymentActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_sales_payment, menu);
 		return true;
 	}
-
+	
 	public void onWholeFruitButtonClick(View v) {
 		setContentView(R.layout.sales_whole_fruit_popup);
+		onPopup = true;
 		TextView count = (TextView) findViewById(R.id.SWFPAppleCounter);
 		count.setText("" + apples);
 		count = (TextView) findViewById(R.id.SWFPOrangeCounter);
@@ -235,6 +247,11 @@ public class SalesPaymentActivity extends Activity {
 
 	public void onWholeFruitDoneButtonClick(View v) {
 		setContentView(R.layout.activity_sales_payment);
+		putBackCounts();
+		onPopup = false;
+	}
+
+	private void putBackCounts() {
 		TextView count = (TextView) findViewById(R.id.ASPmixedCounter);
 		count.setText("" + mixedBags);
 		count = (TextView) findViewById(R.id.ASPsmoothieCounter);
@@ -242,7 +259,7 @@ public class SalesPaymentActivity extends Activity {
 		count = (TextView) findViewById(R.id.ASPgranolaCounter);
 		count.setText("" + granola);
 	}
-
+	
 	public void onCashButtonClick(View v) {
 		paymentType = PaymentType.CASH;
 		submit();
