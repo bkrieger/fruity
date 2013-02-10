@@ -5,18 +5,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class SetupStandInfoActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		//This is just for testing the SalesDemographicActivity
-		Intent i = new Intent(this,SetupSchoolSelectActivity.class);
-		startActivityForResult(i, 1);
-
+		setContentView(R.layout.activity_setup_stand_info);
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

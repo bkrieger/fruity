@@ -23,6 +23,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.SetupSchoolSelectActivity"
+            android:label="@string/title_activity_setup_select_school" >
+        </activity>
+        <activity
+            android:name="edu.upenn.cis.fruity.SetupStandInfoActivity"
+            android:label="@string/title_activity_setup_stand_info">
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SalesDemographicActivity"
             android:label="@string/title_activity_sales_demographic" >
         </activity>
