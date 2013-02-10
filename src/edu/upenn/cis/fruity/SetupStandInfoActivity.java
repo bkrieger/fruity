@@ -3,6 +3,7 @@ package edu.upenn.cis.fruity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 
 public class SetupStandInfoActivity extends Activity {
@@ -11,6 +12,12 @@ public class SetupStandInfoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_stand_info);
+		Intent intent = getIntent();
+		
+		// Pulls selected school name from parent SetupSchoolSelectActivity
+		String schoolName = (String) intent.getExtras().get("schoolName");
+	
+		Log.v("SetupStandInfo", "Received School Name: " + schoolName);
 	}
 	
 	@Override

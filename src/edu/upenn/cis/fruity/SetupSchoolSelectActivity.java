@@ -33,7 +33,6 @@ public class SetupSchoolSelectActivity extends Activity {
 	    schoolListView.setOnItemClickListener(new OnItemClickListener(){
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id) {
-				Log.v("SchoolSelectActivity_SelectedItemID", "ID: " + id + " Item: " + items[(int) id]);
 				goToNext(items[(int) id]);
 			} 	
 	    });
