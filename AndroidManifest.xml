@@ -31,6 +31,14 @@
             android:label="@string/title_activity_setup_stand_info">
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.InventoryPreprocessActivity"
+            android:label="@string/title_activity_inventory_preprocess" >
+        </activity>
+        <activity
+            android:name="edu.upenn.cis.fruity.InventoryPostprocessActivity"
+            android:label="@string/title_activity_inventory_postprocess" >
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SalesDemographicActivity"
             android:label="@string/title_activity_sales_demographic" >
         </activity>

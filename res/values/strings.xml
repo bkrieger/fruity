@@ -8,5 +8,11 @@
     <string name="title_activity_sales_payment">Sales</string>
     <string name="title_activity_setup_select_school">Select School</string>
     <string name="title_activity_setup_stand_info">Stand Information</string>
+    <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>
+    <drawable name="editViewBox">#FFFF00</drawable>
+    <string name="inventoryPreprocess">Preprocessed Inventory</string>
+    <string name="inventoryPostprocess">Postprocess Inventory</string>
+    <string name="salesDemographics">Customer Information</string>
+    <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
 
 </resources>
