@@ -12,7 +12,7 @@ import android.view.View;
 public class InventoryPreprocessActivity extends Activity {
 	
 	public static final int InventoryPreprocessActivity_ID = 9;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -14,5 +14,16 @@
     <string name="inventoryPostprocess">Postprocess Inventory</string>
     <string name="salesDemographics">Customer Information</string>
     <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
+    <color name="white">#FFFFFF</color>
+    <string name="apple">Apple</string>
+    <string name="banana">Banana</string>
+    <string name="orange">Orange</string>
+    <string name="pear">Pear</string>
+    <string name="grapes">Grapes</string>
+    <string name="kiwi">Kiwi</string>
+    <string name="mixedBag">Mixed Bag</string>
+    <string name="granola">Granola</string>
+    <string name="smoothie">Smoothie</string>
+    <string name="other">Other</string>
 
 </resources>
