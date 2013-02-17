@@ -27,6 +27,10 @@
             android:label="@string/title_activity_setup_select_school" >
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.SetupInputSchoolActivity"
+            android:label="@string/title_activity_sales_payment" >
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SetupStandInfoActivity"
             android:label="@string/title_activity_setup_stand_info">
         </activity>

@@ -3,7 +3,6 @@ package edu.upenn.cis.fruity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +24,7 @@ public class SetupSchoolSelectActivity extends Activity {
 		ListView schoolListView = (ListView) findViewById(R.id.list_view_schools);
 
 		// TODO: Access database store of schools 
-	    final String[] items = new String[] {"S1", "S2", "S3", "S4", "S5",};
+	    final String[] items = new String[] {"S1", "S2", "S3", "S4", "Other",};
 	    ArrayAdapter<String> adapter =
 	      new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
 
@@ -33,7 +32,11 @@ public class SetupSchoolSelectActivity extends Activity {
 	    schoolListView.setOnItemClickListener(new OnItemClickListener(){
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id) {
-				goToNext(items[(int) id]);
+				if ((int) id != items.length - 1) {
+					goToSchoolInfo(items[(int) id]);
+				} else {
+					goToSchoolInput();
+				}
 			} 	
 	    });
 	}
@@ -46,9 +49,15 @@ public class SetupSchoolSelectActivity extends Activity {
 	}
 	
 	// Advances to stand information within SetupStandInfoActivity.
-	private void goToNext(String schoolName) {
+	private void goToSchoolInfo(String schoolName) {
 		Intent i = new Intent(this,SetupStandInfoActivity.class);
 		i.putExtra("schoolName", schoolName);
+		startActivityForResult(i, StandInfoActivity_ID);
+	}
+	
+	// Advances to school input if "Other" is selected
+	private void goToSchoolInput() {
+		Intent i = new Intent(this,SetupInputSchoolActivity.class);
 		startActivityForResult(i, StandInfoActivity_ID);
 	}
 }
