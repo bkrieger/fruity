@@ -25,5 +25,6 @@
     <string name="granola">Granola</string>
     <string name="smoothie">Smoothie</string>
     <string name="other">Other</string>
+    <string name="zero">0</string>
 
 </resources>
