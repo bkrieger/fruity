@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
-
+	//random edit
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
