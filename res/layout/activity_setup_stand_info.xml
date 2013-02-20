@@ -5,16 +5,16 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:orientation="vertical"
         android:padding="10dip" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:orientation="horizontal"
             android:padding="10dip" >
 
@@ -35,7 +35,29 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: "
+                android:textSize="10sp" />
+
+            <EditText
+                android:id="@+id/standInfo_dateInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:singleLine="true"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:orientation="horizontal"
             android:padding="10dip" >
 
@@ -46,18 +68,22 @@
                 android:textSize="10sp" />
 
             <EditText
-                android:id="@+id/standInfo_temperatureInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
                 android:textSize="10sp" />
+
+            <SeekBar
+                android:id="@+id/standInfo_temperatureInput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:orientation="horizontal"
             android:padding="10dip" >
 
@@ -67,18 +93,17 @@
                 android:text="Weather: "
                 android:textSize="10sp" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/standInfo_weatherInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:textSize="10sp" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="left"
             android:orientation="horizontal"
             android:padding="10dip" >
 
@@ -100,7 +125,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:orientation="horizontal"
             android:padding="10dip" >
 
