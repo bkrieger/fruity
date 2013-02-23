@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SetupStandInfoActivity extends Activity {
@@ -23,9 +24,17 @@ public class SetupStandInfoActivity extends Activity {
 		setContentView(R.layout.activity_setup_stand_info);
 		Intent intent = getIntent();
 		
+		// Set school title from prior screen
 		String schoolName = (String) intent.getExtras().get("schoolName");
 		TextView schoolNameView = (TextView) findViewById(R.id.standInfo_schoolName);
 		schoolNameView.setText(schoolName);
+		
+		// Populate weather choice spinner
+		Spinner weatherInput = (Spinner) findViewById(R.id.standInfo_weatherInput);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+		        R.array.weather_options, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		weatherInput.setAdapter(adapter);
 	}
 	
 	@Override
@@ -37,6 +46,7 @@ public class SetupStandInfoActivity extends Activity {
 	
 	// TODO: Take data from input boxes and log.
 	public void onInventoryPreprocessButtonClick(View v){
+		EditText dateIn = (EditText) findViewById(R.id.standInfo_dateInput);
 		EditText tempIn = (EditText) findViewById(R.id.standInfo_temperatureInput);
 		EditText weatherIn = (EditText) findViewById(R.id.standInfo_weatherInput);
 		EditText cashIn = (EditText) findViewById(R.id.standInfo_cashBoxInput);
