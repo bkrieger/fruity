@@ -86,6 +86,18 @@ public class SalesDemographicActivity extends Activity {
 		goToNext();
 	}
 	
+	public void onB6ButtonClick(View view) {
+		age_category = 6;
+		isMale = true;
+		goToNext();
+	}
+	
+	public void onG6ButtonClick(View view) {
+		age_category = 6;
+		isMale = false;
+		goToNext();
+	}
+	
 	private void goToNext() {
 		Intent i = new Intent(this,SalesPaymentActivity.class);
 		i.putExtra("age_category", age_category);
