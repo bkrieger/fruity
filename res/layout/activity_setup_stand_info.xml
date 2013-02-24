@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Cash Box: "
+                android:text="Cash Box: $"
                 android:textSize="15sp" />
 
             <EditText
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Volunteers: "
+                android:text="# of Volunteers: "
                 android:textSize="15sp" />
 
             <EditText

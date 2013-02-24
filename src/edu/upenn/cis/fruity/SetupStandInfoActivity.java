@@ -54,7 +54,7 @@ public class SetupStandInfoActivity extends Activity {
 					public void onProgressChanged(SeekBar sb, int arg1,
 							boolean arg2) {
 						TextView temp = (TextView) findViewById(R.id.standInfo_temperatureText);
-						temp.setText(sb.getProgress() + "¡F");
+						temp.setText(sb.getProgress() + "°F");
 
 					}
 
