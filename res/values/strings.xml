@@ -27,6 +27,7 @@
 
     <color name="white">#FFFFFF</color>
 
+
     <string name="apple">Apple</string>
     <string name="banana">Banana</string>
     <string name="orange">Orange</string>

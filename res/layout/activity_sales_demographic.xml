@@ -26,17 +26,20 @@
 
         <Button
             android:id="@+id/asdbtnb1"
+            style="android:buttonStyle"
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB1ButtonClick"
             android:text="Boy
-Grades K-5" />
+Grades K-5"
+            android:textColor="@color/blue" />
 
         <Button
             android:id="@+id/asdbtng1"
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG1ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Girl
 Grades K-5" />
     </LinearLayout>
@@ -52,6 +55,7 @@ Grades K-5" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB2ButtonClick"
+            android:textColor="@color/blue" 
             android:text="Boy
 Grades 6-8 " />
 
@@ -60,6 +64,7 @@ Grades 6-8 " />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG2ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Girl
 Grades 6-8" />
     </LinearLayout>
@@ -75,6 +80,7 @@ Grades 6-8" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB3ButtonClick"
+            android:textColor="@color/blue" 
             android:text="Boy
 Grades 9-12" />
 
@@ -83,6 +89,7 @@ Grades 9-12" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG3ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Girl
 Grades 9-12" />
     </LinearLayout>
@@ -98,16 +105,18 @@ Grades 9-12" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB4ButtonClick"
+            android:textColor="@color/blue" 
             android:text="Male
-            School Staff" />
+School Staff" />
 
         <Button
             android:id="@+id/asdbtng4"
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG4ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Female
-            School Staff" />
+School Staff" />
     </LinearLayout>
 
     <LinearLayout
@@ -121,6 +130,7 @@ Grades 9-12" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB5ButtonClick"
+            android:textColor="@color/blue" 
             android:text="Male
 Parent" />
 
@@ -129,6 +139,7 @@ Parent" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG5ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Female
 Parent" />
     </LinearLayout>
@@ -144,6 +155,7 @@ Parent" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onB6ButtonClick"
+            android:textColor="@color/blue" 
             android:text="Male
 Adult - Other" />
 
@@ -152,6 +164,7 @@ Adult - Other" />
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:onClick="onG6ButtonClick"
+            android:textColor="@color/pink" 
             android:text="Female
 Adult - Other" />
     </LinearLayout>
