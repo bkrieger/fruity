@@ -27,18 +27,18 @@
         <Button
             android:id="@+id/asdbtnb1"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onB1ButtonClick"
             android:text="Boy
-Below Age 6" />
+Grades K-5" />
 
         <Button
             android:id="@+id/asdbtng1"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onG1ButtonClick"
             android:text="Girl
-Below Age 6" />
+Grades K-5" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,18 +50,18 @@ Below Age 6" />
         <Button
             android:id="@+id/asdbtnb2"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onB2ButtonClick"
             android:text="Boy
-Age 6-10" />
+Grades 6-8 " />
 
         <Button
             android:id="@+id/asdbtng2"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onG2ButtonClick"
             android:text="Girl
-Age 6-10" />
+Grades 6-8" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,18 +73,18 @@ Age 6-10" />
         <Button
             android:id="@+id/asdbtnb3"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onB3ButtonClick"
             android:text="Boy
-Age 11-14" />
+Grades 9-12" />
 
         <Button
             android:id="@+id/asdbtng3"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onG3ButtonClick"
             android:text="Girl
-Age 11-14" />
+Grades 9-12" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,18 +96,18 @@ Age 11-14" />
         <Button
             android:id="@+id/asdbtnb4"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onB4ButtonClick"
-            android:text="Boy
-Age 15-18" />
+            android:text="Male
+            School Staff" />
 
         <Button
             android:id="@+id/asdbtng4"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onG4ButtonClick"
-            android:text="Girl
-Age 15-18" />
+            android:text="Female
+            School Staff" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,18 +119,40 @@ Age 15-18" />
         <Button
             android:id="@+id/asdbtnb5"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onB5ButtonClick"
-            android:text="Boy
-Above Age 18" />
+            android:text="Male
+Parent" />
 
         <Button
             android:id="@+id/asdbtng5"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:onClick="onG5ButtonClick"
-            android:text="Girl
-Above Age 18" />
+            android:text="Female
+Parent" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/asdbtnb6"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:onClick="onB6ButtonClick"
+            android:text="Male
+Adult - Other" />
+
+        <Button
+            android:id="@+id/asdbtng6"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:onClick="onG6ButtonClick"
+            android:text="Female
+Adult - Other" />
+    </LinearLayout>
 </LinearLayout>
