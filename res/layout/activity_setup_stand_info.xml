@@ -7,148 +7,181 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="10dip" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
                 android:text="School Name: "
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/standInfo_schoolName"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
                 android:singleLine="true"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:orientation="horizontal"
-            android:padding="10dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date: "
-                android:textSize="10sp" />
-
-            <EditText
-                android:id="@+id/standInfo_dateInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:singleLine="true"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Temperature: "
-                android:textSize="10sp" />
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:text="Date: "
+                android:textSize="15sp" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/standInfo_dateInput"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:singleLine="true"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Temperature: "
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/standInfo_temperatureText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="0°F"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dip" >
 
             <SeekBar
                 android:id="@+id/standInfo_temperatureInput"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
                 android:text="Weather: "
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
             <Spinner
                 android:id="@+id/standInfo_weatherInput"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
                 android:text="Cash Box: "
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/standInfo_cashBoxInput"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
                 android:text="Volunteers: "
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/standInfo_volunteersInput"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:digits="1234567890"
+                android:gravity="right"
                 android:inputType="number"
                 android:singleLine="true"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/inventoryBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="onInventoryPreprocessButtonClick"
             android:text="@string/inventoryPreprocess" />
     </LinearLayout>
