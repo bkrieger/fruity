@@ -24,11 +24,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Apples" />
+         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+    	    android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/apple_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/apple"
+	            android:contentDescription="@string/apple" />
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/apple"
+	            android:textSize="15sp"
+	            android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -55,11 +72,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Oranges" />
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/orange_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/orange"
+	            android:contentDescription="@string/orange"/>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/orange"
+	            android:textSize="15sp"
+	            android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -86,11 +120,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Bananas" />
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/banana_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/banana"
+	            android:contentDescription="@string/banana"/>
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/banana"
+	            android:textSize="15sp"
+	            android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -117,11 +168,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Kiwis" />
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/kiwi_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/kiwi"
+	            android:contentDescription="@string/kiwi"/>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/kiwi"
+	            android:textSize="15sp"
+	            android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -148,11 +216,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Pears" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/pear_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/pear"
+	            android:contentDescription="@string/pear"/>
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/pear"
+	            android:textSize="15sp"
+	            android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -179,11 +264,28 @@
         android:layout_gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:clickable="false"
-            android:text="Grapes" />
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+	        
+	        <ImageView
+	            android:id="@+id/grapes_img"
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:src="@drawable/grapes"
+	            android:contentDescription="@string/grapes"/>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/grapes"
+	            android:textSize="15sp"
+            	android:textColor="@color/white"/>
+        </RelativeLayout>
 
         <Button
             android:layout_width="wrap_content"
