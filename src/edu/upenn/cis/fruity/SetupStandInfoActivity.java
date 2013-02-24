@@ -47,14 +47,14 @@ public class SetupStandInfoActivity extends Activity {
 	// TODO: Take data from input boxes and log.
 	public void onInventoryPreprocessButtonClick(View v){
 		EditText dateIn = (EditText) findViewById(R.id.standInfo_dateInput);
-		EditText tempIn = (EditText) findViewById(R.id.standInfo_temperatureInput);
-		EditText weatherIn = (EditText) findViewById(R.id.standInfo_weatherInput);
+		//EditText tempIn = (EditText) findViewById(R.id.standInfo_temperatureInput);
+		//EditText weatherIn = (EditText) findViewById(R.id.standInfo_weatherInput);
 		EditText cashIn = (EditText) findViewById(R.id.standInfo_cashBoxInput);
 		EditText volunteerIn = (EditText) findViewById(R.id.standInfo_volunteersInput);
 		
 		// TODO: Figure out how we are going to format, store this info.
-		String temperature = tempIn.getText().toString();
-		String weather = weatherIn.getText().toString();
+		//String temperature = tempIn.getText().toString();
+		//String weather = weatherIn.getText().toString();
 		String cashBoxCount = cashIn.getText().toString();
 		String volunteerCount = volunteerIn.getText().toString();
 		
