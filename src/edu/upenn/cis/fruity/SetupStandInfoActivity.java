@@ -26,14 +26,21 @@ public class SetupStandInfoActivity extends Activity {
 
 	public static final int InventoryPreprocessActivity_ID = 8;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_stand_info);
 		Intent intent = getIntent();
 
+		
 		// Set school title from prior screen
-		String schoolName = (String) intent.getExtras().get("schoolName");
+		String schoolName;
+		if(intent != null && intent.getExtras() != null){
+			schoolName = (String) intent.getExtras().get("schoolName");
+		}
+		else
+			schoolName = "Filler Text";
 		TextView schoolNameView = (TextView) findViewById(R.id.standInfo_schoolName);
 		schoolNameView.setText(schoolName);
 
@@ -81,7 +88,6 @@ public class SetupStandInfoActivity extends Activity {
 
 	// TODO: Take data from input boxes and log.
 	public void onInventoryPreprocessButtonClick(View v) {
-
 		Intent i = new Intent(this, InventoryPreprocessActivity.class);
 		startActivityForResult(i, InventoryPreprocessActivity_ID);
 	}
