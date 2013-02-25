@@ -26,14 +26,12 @@ public class SetupStandInfoActivity extends Activity {
 
 	public static final int InventoryPreprocessActivity_ID = 8;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_stand_info);
 		Intent intent = getIntent();
 
-		
 		// Set school title from prior screen
 		String schoolName;
 		if (intent != null && intent.getExtras() != null) {
@@ -41,17 +39,44 @@ public class SetupStandInfoActivity extends Activity {
 		} else {
 			schoolName = "Filler Text";
 		}
-		
+
 		TextView schoolNameView = (TextView) findViewById(R.id.standInfo_schoolName);
 		schoolNameView.setText(schoolName);
-		
+
 		// Set date
 		TextView dateView = (TextView) findViewById(R.id.standInfo_dateField);
 		Calendar calendar = Calendar.getInstance();
+		String dayOfWeek;
+		switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+		case 1:
+			dayOfWeek = "Sunday";
+			break;
+		case 2:
+			dayOfWeek = "Monday";
+			break;
+		case 3:
+			dayOfWeek = "Tueday";
+			break;
+		case 4:
+			dayOfWeek = "Wednesday";
+			break;
+		case 5:
+			dayOfWeek = "Thursday";
+			break;
+		case 6:
+			dayOfWeek = "Friday";
+			break;
+		case 7:
+			dayOfWeek = "Saturday";
+			break;
+		default:
+			dayOfWeek = "Fruitday";
+			break;
+		}
 		int month = calendar.get(Calendar.MONTH);
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
 		int year = calendar.get(Calendar.YEAR);
-		dateView.setText(month + "/" + day + "/" + year);
+		dateView.setText(dayOfWeek + ", " + month + "/" + day + "/" + year);
 
 		// Populate weather choice spinner
 		Spinner weatherInput = (Spinner) findViewById(R.id.standInfo_weatherInput);
