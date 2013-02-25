@@ -24,7 +24,7 @@
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:text="School Name: "
-                android:textSize="12sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/standInfo_schoolName"
@@ -33,7 +33,7 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:textSize="12sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,75 +44,21 @@
             android:padding="10dip" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_weight="0.36"
-                android:text="Today&apos;s Date: "
+                android:layout_weight="1"
+                android:text="Today's Date: "
                 android:textSize="15sp" />
-        </LinearLayout>
-         
-         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dip" >
-            
+
             <TextView
+                android:id="@+id/standInfo_dateField"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:layout_weight="1"
-                android:text="Month: "
-                android:textSize="10sp" />
-
-            <EditText
-                android:id="@+id/standInfo_monthInput"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:inputType="number"
                 android:singleLine="true"
-                android:textSize="10sp" />
-            
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:text="Day: "
-                android:textSize="10sp" />
-
-            <EditText
-                android:id="@+id/standInfo_dayInput"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:inputType="number"
-                android:singleLine="true"
-                android:textSize="10sp" />
-            
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:text="Year: "
-                android:textSize="10sp" />
-
-            <EditText
-                android:id="@+id/standInfo_yearInput"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:inputType="number"
-                android:singleLine="true"
-                android:textSize="10sp" />
-
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +81,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right"
+                android:gravity="left"
                 android:text="0°F"
                 android:textSize="15sp" />
         </LinearLayout>

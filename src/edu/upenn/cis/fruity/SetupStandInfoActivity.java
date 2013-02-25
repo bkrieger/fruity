@@ -36,13 +36,22 @@ public class SetupStandInfoActivity extends Activity {
 		
 		// Set school title from prior screen
 		String schoolName;
-		if(intent != null && intent.getExtras() != null){
+		if (intent != null && intent.getExtras() != null) {
 			schoolName = (String) intent.getExtras().get("schoolName");
-		}
-		else
+		} else {
 			schoolName = "Filler Text";
+		}
+		
 		TextView schoolNameView = (TextView) findViewById(R.id.standInfo_schoolName);
 		schoolNameView.setText(schoolName);
+		
+		// Set date
+		TextView dateView = (TextView) findViewById(R.id.standInfo_dateField);
+		Calendar calendar = Calendar.getInstance();
+		int month = calendar.get(Calendar.MONTH);
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		int year = calendar.get(Calendar.YEAR);
+		dateView.setText(month + "/" + day + "/" + year);
 
 		// Populate weather choice spinner
 		Spinner weatherInput = (Spinner) findViewById(R.id.standInfo_weatherInput);
@@ -61,7 +70,7 @@ public class SetupStandInfoActivity extends Activity {
 					public void onProgressChanged(SeekBar sb, int arg1,
 							boolean arg2) {
 						TextView temp = (TextView) findViewById(R.id.standInfo_temperatureText);
-						temp.setText(sb.getProgress() + "°F");
+						temp.setText(sb.getProgress() + "¡F");
 
 					}
 
