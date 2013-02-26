@@ -33,7 +33,6 @@ public class SetupStandInfoActivity extends Activity {
 		setContentView(R.layout.activity_setup_stand_info);
 		Intent intent = getIntent();
 
-		
 		// Set school title from prior screen
 		String schoolName;
 		if (intent != null && intent.getExtras() != null) {

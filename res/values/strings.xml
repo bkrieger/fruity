@@ -11,6 +11,7 @@
 
     <string-array name="weather_options">
         <item>Sunny</item>
+        <item>Partly Sunny</item>
         <item>Cloudy</item>
         <item>Rainy</item>
         <item>Snowy</item>

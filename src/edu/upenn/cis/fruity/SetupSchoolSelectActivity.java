@@ -44,7 +44,8 @@ public class SetupSchoolSelectActivity extends Activity {
 	    		"Sayre HS",
 	    		"University City HS",
 	    		"Bartram HS",
-	    		"Robeson HS"};
+	    		"Robeson HS",
+	    		"Other" };
 	    ArrayAdapter<String> adapter =
 	      new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
 
