@@ -55,7 +55,7 @@ public class SetupStandInfoActivity extends Activity {
 			dayOfWeek = "Monday";
 			break;
 		case 3:
-			dayOfWeek = "Tueday";
+			dayOfWeek = "Tuesday";
 			break;
 		case 4:
 			dayOfWeek = "Wednesday";
