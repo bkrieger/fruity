@@ -25,12 +25,13 @@ import android.widget.TextView;
 public class SetupStandInfoActivity extends Activity {
 
 	public static final int InventoryPreprocessActivity_ID = 8;
+	public static Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_stand_info);
-		Intent intent = getIntent();
+		intent = getIntent();
 
 		// Set school title from prior screen
 		String schoolName;
