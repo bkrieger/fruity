@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
+	// Establish an instance of the database
+	static DatabaseHandler dh;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void onStartButtonClick(View v) {
+		dh = DatabaseHandler.getInstance(this);
 		Intent i = new Intent(this, SetupSchoolSelectActivity.class);
 		startActivityForResult(i, 1);
 	}
@@ -45,23 +49,23 @@ public class MainActivity extends Activity {
 		// (I made it a singleton, so we can only ever have one.)
 		//Get it as shown below. The argument is a Context, which is a superclass of Activity,
 		//so just pass in "this"
-		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		DatabaseHandler dht = DatabaseHandler.getInstance(this);
 		
 		//In order to create a FruitStand, use this constructor. It takes the following arguments:
 		//School, Date, Temperature, Weather, Initial Cash, Stand Cost, Smoothie Cost, Additional Cost
 		FruitStand stand = new FruitStand("School Name", "3/2/2013", 75, "Sunny", 125.25, 50.0, 20.0, 0.0);
 		//Then in order to save the fruit stand to the database, use the handler as shown below.
-		dh.putFruitStand(stand);
+		dht.putFruitStand(stand);
 		
 		//Now, if we ever want to do anything with the database (in a different activity, for example)
 		//we need the instance of FruitStand. We can get this from anywhere in the app using the following:
-		FruitStand currentStand = dh.getCurrentFruitStand();
+		FruitStand currentStand = dht.getCurrentFruitStand();
 		
 		//If we ever want to get a fruit stand for a specific id, we can use:
-		FruitStand specificStand = dh.getFruitStand(1);
+		FruitStand specificStand = dht.getFruitStand(1);
 		
 		//If we want an array of all fruit stands, we can use:
-		FruitStand[] allStands = dh.getAllFruitStands();
+		FruitStand[] allStands = dht.getAllFruitStands();
 		
 
 		

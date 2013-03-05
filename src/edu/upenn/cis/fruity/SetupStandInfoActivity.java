@@ -2,6 +2,9 @@ package edu.upenn.cis.fruity;
 
 import java.util.Calendar;
 
+import edu.upenn.cis.fruity.database.DatabaseHandler;
+import edu.upenn.cis.fruity.database.FruitStand;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -12,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,6 +30,10 @@ public class SetupStandInfoActivity extends Activity {
 
 	public static final int InventoryPreprocessActivity_ID = 8;
 	public static Intent intent;
+	private String schoolName;
+	private int month, day, year;
+	private int temperature;
+	private String weather;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,6 @@ public class SetupStandInfoActivity extends Activity {
 		intent = getIntent();
 
 		// Set school title from prior screen
-		String schoolName;
 		if (intent != null && intent.getExtras() != null) {
 			schoolName = (String) intent.getExtras().get("schoolName");
 		} else {
@@ -47,6 +54,7 @@ public class SetupStandInfoActivity extends Activity {
 		// Set date
 		TextView dateView = (TextView) findViewById(R.id.standInfo_dateField);
 		Calendar calendar = Calendar.getInstance();
+		//TODO: day of week not stored in database
 		String dayOfWeek;
 		switch (calendar.get(Calendar.DAY_OF_WEEK)) {
 		case 1:
@@ -74,9 +82,9 @@ public class SetupStandInfoActivity extends Activity {
 			dayOfWeek = "Fruitday";
 			break;
 		}
-		int month = calendar.get(Calendar.MONTH) + 1;
-		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		int year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH) + 1;
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+		year = calendar.get(Calendar.YEAR);
 		dateView.setText(dayOfWeek + ", " + month + "/" + day + "/" + year);
 
 		// Populate weather choice spinner
@@ -86,6 +94,27 @@ public class SetupStandInfoActivity extends Activity {
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		weatherInput.setAdapter(adapter);
+		
+		//get the weather condition input from the spinner
+		weatherInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int pos,
+					long id) {
+				weather = (String)parent.getItemAtPosition(pos);
+				/**
+				TextView weatherView = (TextView) findViewById(R.id.standInfo_weatherText);
+				weatherView.setText(weather);
+				**/
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// if nothing is selected, what should be the default?
+				weather = "Nothing selected.";
+			}
+		});
+		
 
 		// Register listener to update temperature
 		SeekBar temperatureInput = (SeekBar) findViewById(R.id.standInfo_temperatureInput);
@@ -96,7 +125,8 @@ public class SetupStandInfoActivity extends Activity {
 					public void onProgressChanged(SeekBar sb, int arg1,
 							boolean arg2) {
 						TextView temp = (TextView) findViewById(R.id.standInfo_temperatureText);
-						temp.setText(sb.getProgress() + "¡F");
+						temperature = sb.getProgress();
+						temp.setText(temperature + "¡F");
 
 					}
 
@@ -111,7 +141,7 @@ public class SetupStandInfoActivity extends Activity {
 						// Obligatory implementation by class inheritance
 					}
 				});
-
+		
 	}
 
 	@Override
@@ -123,6 +153,17 @@ public class SetupStandInfoActivity extends Activity {
 
 	// TODO: Take data from input boxes and log.
 	public void onInventoryPreprocessButtonClick(View v) {
+		
+		
+		EditText cashBoxInput = (EditText) findViewById(R.id.standInfo_cashBoxInput);
+		int cashBox = Integer.parseInt(cashBoxInput.getText().toString());
+		
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		// Send the Fruit Stand info to the database
+		FruitStand stand = new FruitStand(schoolName, (month + "/" + day + "/" + year), temperature, weather, cashBox, 0.0, 0.0, 0.0);
+		//Then in order to save the fruit stand to the database, use the handler as shown below.
+		dh.putFruitStand(stand);
+		
 		Intent i = new Intent(this, InventoryPreprocessActivity.class);
 		startActivityForResult(i, InventoryPreprocessActivity_ID);
 	}
