@@ -70,7 +70,7 @@
         </RelativeLayout>
         
         <EditText
-            android:id="@+id/num_inv_preprocess_apple"
+            android:id="@+id/num_inv_postprocess_apple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -115,7 +115,7 @@
 	            android:textColor="@color/white"/>
         </RelativeLayout>
         
-        <EditText android:id="@+id/num_inv_preprocess_pear"
+        <EditText android:id="@+id/num_inv_postprocess_pear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -170,7 +170,7 @@
         </RelativeLayout>
      
 		<EditText
-            android:id="@+id/num_inv_preprocess_orange"
+            android:id="@+id/num_inv_postprocess_orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -216,7 +216,7 @@
         </RelativeLayout>
         
          <EditText
-            android:id="@+id/num_inv_preprocess_banana"
+            android:id="@+id/num_inv_postprocess_banana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -271,7 +271,7 @@
         </RelativeLayout>
         
 	    <EditText
-            android:id="@+id/num_inv_preprocess_grapes"
+            android:id="@+id/num_inv_postprocess_grapes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -318,7 +318,7 @@
         </RelativeLayout>
     
      	<EditText
-            android:id="@+id/num_inv_preprocess_kiwi"
+            android:id="@+id/num_inv_postprocess_kiwi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -345,7 +345,7 @@
    	<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="left"
         android:orientation="horizontal">	
         
    	    <TextView
@@ -353,21 +353,14 @@
 	        android:layout_height="wrap_content"
 	        android:text="@string/number"
 	        android:textSize="12sp"
-	        android:layout_marginRight="10dp"/>
-   	            
-        <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/totalCost"
-	        android:textSize="12sp"
-	        android:layout_marginRight="20dp"/>
+	        android:layout_marginLeft="120dp"/>
 	                    
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pricePerUnit"
             android:textSize="12sp"
-            android:layout_marginRight="35dp"/>
+            android:layout_marginLeft="15dp"/>
     </LinearLayout>
     
     <LinearLayout
@@ -382,7 +375,7 @@
             android:layout_height="wrap_content"
             android:text="@string/mixedBag"
             android:textSize="12sp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="20dp"/>
         
         <EditText android:id="@+id/num_inv_postprocess_mixedBag"
             android:cursorVisible="true"
@@ -394,17 +387,6 @@
             android:width="55dp"
             android:textSize="15sp"
             android:layout_marginLeft="40dp"/>
-        
-        <EditText android:id="@+id/tot_cost_mixedBag"
-            android:cursorVisible="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:width="70dp"
-            android:textSize="15sp"/>
                 
         <EditText android:id="@+id/price_mixedBag"
             android:cursorVisible="true"
@@ -430,7 +412,7 @@
             android:layout_height="wrap_content"
             android:text="@string/frozenFruitBag"
             android:textSize="12sp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="20dp"/>
         
         <EditText android:id="@+id/num_inv_postprocess_frozenFruitBag"
             android:cursorVisible="true"
@@ -442,19 +424,8 @@
             android:width="55dp"
             android:textSize="15sp"
             android:layout_marginLeft="10dp"/>
-        
-        <EditText android:id="@+id/tot_cost_frozenFruitBag"
-            android:cursorVisible="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:width="70dp"
-            android:textSize="15sp"/>
                 
-        <EditText android:id="@+id/price_postprocess_frozenFruitBag"
+        <EditText android:id="@+id/price_frozenFruitBag"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -478,7 +449,7 @@
             android:layout_height="wrap_content"
             android:text="@string/granola"
             android:textSize="12sp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="20dp"/>
         
         <EditText android:id="@+id/num_inv_postprocess_granola"
             android:cursorVisible="true"
@@ -490,17 +461,6 @@
             android:width="55dp"
             android:textSize="15sp"
             android:layout_marginLeft="55dp"/>
-        
-        <EditText android:id="@+id/tot_cost_granola"
-            android:cursorVisible="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:width="70dp"
-            android:textSize="15sp"/>
                 
         <EditText android:id="@+id/price_granola"
             android:cursorVisible="true"
@@ -527,7 +487,7 @@
             android:layout_height="wrap_content"
             android:text="@string/other"
             android:textSize="12sp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
     
 	<LinearLayout
@@ -555,18 +515,7 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="15sp"
-            android:layout_marginLeft="5dp"/>
-        
-        <EditText android:id="@+id/tot_cost_other1"
-            android:cursorVisible="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:width="70dp"
-            android:textSize="15sp"/>
+            android:layout_marginLeft="20dp"/>
                 
         <EditText android:id="@+id/price_other1"
             android:cursorVisible="true"
@@ -605,18 +554,7 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="15sp"
-            android:layout_marginLeft="5dp"/>
-        
-        <EditText android:id="@+id/tot_cost_other2"
-            android:cursorVisible="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:width="70dp"
-            android:textSize="15sp"/>
+            android:layout_marginLeft="20dp"/>
                 
         <EditText android:id="@+id/price_other2"
             android:cursorVisible="true"
