@@ -173,7 +173,8 @@
                 android:gravity="right"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:text="@string/zero"/>
         </LinearLayout>
 
         <LinearLayout
@@ -201,7 +202,8 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:singleLine="true"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:text="@string/zero"/>
         </LinearLayout>
 
         <Button

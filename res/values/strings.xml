@@ -40,5 +40,10 @@
     <string name="smoothie">Smoothie</string>
     <string name="other">Other</string>
     <string name="zero">0</string>
-
+    <string name="zeroDollars">$0</string>
+    <string name="number">Number</string>
+    <string name="pricePerUnit">Price/unit</string>
+    <string name ="totalCost">Total Cost</string>
+	<string name ="totalFruitCost">Total Fruit Cost: $</string>
+	<string name ="frozenFruitBag">Frozen Fruit Bag</string>
 </resources>
