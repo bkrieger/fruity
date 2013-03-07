@@ -7,20 +7,12 @@ import edu.upenn.cis.fruity.database.FruitStand;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
@@ -58,25 +50,25 @@ public class SetupStandInfoActivity extends Activity {
 		String dayOfWeek;
 		switch (calendar.get(Calendar.DAY_OF_WEEK)) {
 		case 1:
-			dayOfWeek = "Sunday";
+			dayOfWeek = "Sun";
 			break;
 		case 2:
-			dayOfWeek = "Monday";
+			dayOfWeek = "Mon";
 			break;
 		case 3:
-			dayOfWeek = "Tuesday";
+			dayOfWeek = "Tues";
 			break;
 		case 4:
-			dayOfWeek = "Wednesday";
+			dayOfWeek = "Wed";
 			break;
 		case 5:
-			dayOfWeek = "Thursday";
+			dayOfWeek = "Thurs";
 			break;
 		case 6:
-			dayOfWeek = "Friday";
+			dayOfWeek = "Fri";
 			break;
 		case 7:
-			dayOfWeek = "Saturday";
+			dayOfWeek = "Sat";
 			break;
 		default:
 			dayOfWeek = "Fruitday";
