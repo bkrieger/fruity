@@ -36,6 +36,11 @@ public class InventoryPostprocessActivity extends Activity {
 		return true;
 	} 
 	
+	// TODO: implement
+	public void onFruitPricesButtonClick(View view){
+
+	}
+	
 	/**
 	 * When click on button, parse input and save to database
 	 * @param view
