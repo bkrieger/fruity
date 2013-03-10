@@ -9,7 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SalesPaymentActivity extends Activity {
-
+	public static final int SalesPaymentActivity_ID = 12;
+	
 	public enum PaymentType {
 		CASH, COUPON, TRADEIN
 	};
@@ -285,6 +286,7 @@ public class SalesPaymentActivity extends Activity {
 		if (total > 0) {
 			Intent i = new Intent();
 			setResult(RESULT_OK, i);
+			
 			toast = Toast.makeText(getApplicationContext(),
 					"Purchase Successful!", Toast.LENGTH_SHORT);
 			toast.show();
@@ -298,4 +300,8 @@ public class SalesPaymentActivity extends Activity {
 
 	}
 
+	public void onEndTrackingButtonClick(View view){
+		Intent i = new Intent(this, RevenueCalculationsActivity.class);
+		startActivityForResult(i, SalesPaymentActivity_ID);
+	}
 }
