@@ -28,7 +28,6 @@
 
     <color name="white">#FFFFFF</color>
 
-
     <string name="apple">Apple</string>
     <string name="banana">Banana</string>
     <string name="orange">Orange</string>
@@ -46,4 +45,12 @@
     <string name ="totalCost">Total Cost</string>
 	<string name ="totalFruitCost">Total Fruit Cost: $</string>
 	<string name ="frozenFruitBag">Frozen Fruit Bag</string>
+	<string name="title_activity_calculations">Calculations</string>
+	<string name="multiply">x   </string>
+	<string name="equals">   =   </string>
+	<string name="numCorrect">Number Correct: </string>
+	<string name="revenueEquation">Price per item x Quantity = Item Revenue</string>
+	<string name="checkRevenueCalc">Check Revenue Calculations</string>
+	<string name="goToProfitCalc">Go to Profit Calculations</string>
+	<string name="totalRevenue">Total Revenue = </string>
 </resources>
