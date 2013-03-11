@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onStandInfoButtonPress"
-            android:text="Stand Information" />
+            android:text="Staff Information" />
     </LinearLayout>
 
 </LinearLayout>

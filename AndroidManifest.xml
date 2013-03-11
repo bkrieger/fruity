@@ -36,6 +36,10 @@
             android:label="@string/title_activity_sales_payment" >
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.EnterStaffActivity"
+            android:label="@string/title_activity_enter_staff" >
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SetupStandInfoActivity"
             android:label="@string/title_activity_setup_stand_info">
         </activity>

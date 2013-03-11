@@ -1,6 +1,7 @@
 package edu.upenn.cis.fruity;
 
 import android.os.Bundle;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -12,7 +13,7 @@ import android.widget.EditText;
  */
 public class SetupInputSchoolActivity extends Activity {
 	
-	public static final int SetupStandInfoActivity_ID = 777;
+	public static final int EnterStaffActivity_ID = 19;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +28,15 @@ public class SetupInputSchoolActivity extends Activity {
 		return true;
 	} 
 	
-	// TODO: Add logging of new schools inputted, to be displayed on
+	// TODO: Add logging of new schools inputed, to be displayed on
 	// prior screen at later uses of app?
 	public void onStandInfoButtonPress(View v) {
-		Intent i = new Intent(this,SetupStandInfoActivity.class);
+		Intent i = new Intent(this,EnterStaffActivity.class);
 		
 		EditText schoolName = (EditText) findViewById(R.id.schoolInput_schoolName);
 		i.putExtra("schoolName", schoolName.getText().toString());
 		
-		startActivityForResult(i, SetupStandInfoActivity_ID);
+		startActivityForResult(i, EnterStaffActivity_ID);
 	}
 	
 }
