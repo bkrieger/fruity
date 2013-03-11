@@ -15,6 +15,7 @@ import android.widget.ListView;
 public class SetupSchoolSelectActivity extends Activity {
 
 	public static final int EnterStaffActivity_ID = 19;
+	public static final int SchoolInputActivity_ID = 15;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class SetupSchoolSelectActivity extends Activity {
 	
 	// Advances to school input if "Other" is selected
 	private void goToSchoolInput() {
-		Intent i = new Intent(this,EnterStaffActivity.class);
-		startActivityForResult(i, EnterStaffActivity_ID);
+		Intent i = new Intent(this,SetupInputSchoolActivity.class);
+		startActivityForResult(i, SchoolInputActivity_ID);
 	}
 }
