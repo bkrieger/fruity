@@ -29,7 +29,7 @@ public class EnterStaffActivity extends Activity{
 		
 	}
 	
-	private void onStandInfoButtonClick(View v) {	
+	public void onStandInfoButtonClick(View v) {	
 		Intent i = new Intent(this,SetupStandInfoActivity.class);
 		i.putExtra("schoolName", schoolName);
 		startActivityForResult(i, StandInfoActivity_ID);
