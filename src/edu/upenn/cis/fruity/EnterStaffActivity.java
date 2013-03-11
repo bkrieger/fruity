@@ -37,7 +37,7 @@ public class EnterStaffActivity extends Activity{
 	}
 	
 	public void onExtraStaffButtonClick(View v){
-		Intent i = new Intent(this,SetupStandInfoActivity.class);
+		Intent i = new Intent(this,EnterExtraStaffActivity.class);
 		i.putExtra("schoolName", schoolName);
 		startActivityForResult(i, ExtraStaffActivity_ID);
 	}
