@@ -20,7 +20,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_volunteer1"
+                android:id="@+id/enterExtraStaff_volunteer1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -46,7 +46,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_volunteer2"
+                android:id="@+id/enterExtraStaff_volunteer2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -72,7 +72,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_volunteer3"
+                android:id="@+id/enterExtraStaff_volunteer3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,11 +94,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Volunteer #4: "
+                android:text="Staff #1: "
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_volunteer4"
+                android:id="@+id/enterExtraStaff_staff1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -120,11 +120,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Staff #1: "
+                android:text="Staff #2: "
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_staff1"
+                android:id="@+id/enterExtraStaff_staff2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -147,11 +147,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Staff #2: "
+                android:text="Staff #3: "
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/enterStaff_staff2"
+                android:id="@+id/enterExtraStaff_staff3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -169,19 +169,12 @@
             android:padding="10dip" >
             
 		<Button
-            android:id="@+id/enterStaffButton"
+            android:id="@+id/enterExtraStaffButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:onClick="onStandInfoButtonClick"
             android:text="Stand Information" />
-		<Button
-            android:id="@+id/enterStaffButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:onClick="onExtraStaffButtonClick"
-            android:text="Add More" />
-		
+
 	</LinearLayout>
 </LinearLayout>
