@@ -54,8 +54,10 @@
 	<string name ="frozenFruitBag">Frozen Fruit Bag</string>
 	<string name="title_activity_calculations">Calculations</string>
 	<string name="multiply">x   </string>
+	<string name="add">   +   </string>
+	<string name="minus">   -   </string>
 	<string name="equals">   =   </string>
-	<string name="numCorrect">Number Correct: </string>
+	<string name="numCorrect">Number of Correct Inputs: </string>
 	<string name="revenueEquation">Price per item x Quantity = Item Revenue</string>
 	<string name="checkRevenueCalc">Check Revenue Calculations</string>
 	<string name="goToProfitCalc">Go to Profit Calculations</string>
