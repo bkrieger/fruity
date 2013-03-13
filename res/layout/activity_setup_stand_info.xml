@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:text="School Name: "
+                android:text="@string/schoolName"
                 android:textSize="15sp" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:text="Today's Date: "
+                android:text="@string/todaysDate"
                 android:textSize="15sp" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Temperature: "
+                android:text="@string/temperature"
                 android:textSize="15sp" />
 
             <TextView
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
-                android:text="Weather: "
+                android:text="@string/weather"
                 android:textSize="15sp" />
 
             <Spinner
@@ -123,46 +123,19 @@
                 android:layout_weight="1"
                 android:gravity="right" />
         </LinearLayout>
-<!--  Use this to prove that the proper spinner data is being saved.
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dip" >
-            
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Weather: "
-                android:textSize="15sp" />
-            
-            <TextView
-                android:id="@+id/standInfo_weatherText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Fruity"
-                android:textSize="15sp" />
-            
-        </LinearLayout>
-        -->
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dip" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Cash Box: $"
+                android:text="@string/cashBox"
                 android:textSize="15sp" />
 
             <EditText
@@ -181,31 +154,80 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dip" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="# of Volunteers: "
+                android:text="@string/fruitStandCost"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/standInfo_volunteersInput"
+                android:id="@+id/standInfo_fruitStandCostInput"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:digits="1234567890"
                 android:gravity="right"
-                android:inputType="number"
-                android:maxLength="3"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:text="@string/zero"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="@string/smoothieCost"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/standInfo_smoothieCostInput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:inputType="numberDecimal"
                 android:singleLine="true"
                 android:textSize="15sp"
                 android:text="@string/zero"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="@string/additionalCosts"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/standInfo_additionalCostsInput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:text="@string/zero"/>
+        </LinearLayout>
+        
         <Button
             android:id="@+id/inventoryBtn"
             android:layout_width="fill_parent"
