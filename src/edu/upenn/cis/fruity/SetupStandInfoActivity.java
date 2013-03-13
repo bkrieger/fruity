@@ -143,16 +143,23 @@ public class SetupStandInfoActivity extends Activity {
 		return true;
 	}
 
-	// TODO: Take data from input boxes and log.
 	public void onInventoryPreprocessButtonClick(View v) {
-		
-		
 		EditText cashBoxInput = (EditText) findViewById(R.id.standInfo_cashBoxInput);
 		int cashBox = Integer.parseInt(cashBoxInput.getText().toString());
 		
+		EditText fruitStandCostInput = (EditText) findViewById(R.id.standInfo_fruitStandCostInput);
+		double fruitStandCost = Integer.parseInt(fruitStandCostInput.getText().toString());
+		
+		EditText smoothieCostInput = (EditText) findViewById(R.id.standInfo_smoothieCostInput);
+		double smoothieCost = Integer.parseInt(smoothieCostInput.getText().toString());
+		
+		EditText additionalCostsInput = (EditText) findViewById(R.id.standInfo_additionalCostsInput);
+		double additionalCosts= Integer.parseInt(additionalCostsInput.getText().toString());
+		
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		// Send the Fruit Stand info to the database
-		FruitStand stand = new FruitStand(schoolName, (month + "/" + day + "/" + year), temperature, weather, cashBox, 0.0, 0.0, 0.0);
+		FruitStand stand = new FruitStand(schoolName, (month + "/" + day + "/" + year), temperature, 
+				weather, cashBox, fruitStandCost, smoothieCost, additionalCosts);
 		//Then in order to save the fruit stand to the database, use the handler as shown below.
 		dh.putFruitStand(stand);
 		
