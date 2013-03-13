@@ -9,7 +9,14 @@
     <string name="title_activity_enter_staff">Select Staff</string>
     <string name="title_activity_setup_select_school">Select School</string>
     <string name="title_activity_setup_stand_info">Stand Information</string>
-
+    <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>
+    <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
+        
+    <string name="schoolName">School Name: </string>
+	<string name="todaysDate">Today\'s Date:  </string>
+    <string name="temperature">Temperature: </string>
+    
+    <string name ="weather">Weather: </string>
     <string-array name="weather_options">
         <item>Sunny</item>
         <item>Partly Sunny</item>
@@ -17,17 +24,18 @@
         <item>Rainy</item>
         <item>Snowy</item>
     </string-array>
-
-    <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>
-
+    
+    <string name="cashBox">Cash Box: $ </string>
+ 	<string name ="fruitStandCost">Fruit Stand Cost: $ </string>
+	<string name ="smoothieCost">Smoothie Cost: $ </string>
+	<string name ="additionalCosts">Additional Costs: $ </string>
+	
+    <color name="white">#FFFFFF</color>
     <drawable name="editViewBox">#FFFF00</drawable>
 
     <string name="inventoryPreprocess">Preprocessed Inventory</string>
     <string name="inventoryPostprocess">Postprocess Inventory</string>
     <string name="salesDemographics">Customer Information</string>
-    <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
-
-    <color name="white">#FFFFFF</color>
 
     <string name="apple">Apple</string>
     <string name="banana">Banana</string>
@@ -43,8 +51,6 @@
     <string name="zeroDollars">$0</string>
     <string name="number">Number</string>
     <string name="pricePerUnit">Price/unit</string>
-    <string name ="totalCost">Total Cost</string>
-	<string name ="totalFruitCost">Total Fruit Cost: $</string>
 	<string name ="frozenFruitBag">Frozen Fruit Bag</string>
 	<string name="title_activity_calculations">Calculations</string>
 	<string name="multiply">x   </string>
