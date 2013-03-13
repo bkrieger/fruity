@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import edu.upenn.cis.fruity.InventoryPreprocessActivity;
 import edu.upenn.cis.fruity.R;
 import edu.upenn.cis.fruity.SetupStandInfoActivity;
 
@@ -43,7 +42,6 @@ public class StandInfoTester extends
 		spinner = (Spinner)activity.findViewById(R.id.standInfo_weatherInput);
 		seekbar = (SeekBar)activity.findViewById(R.id.standInfo_temperatureInput);
 		cashBoxText = (EditText)activity.findViewById(R.id.standInfo_cashBoxInput);
-		volunteerText = (EditText)activity.findViewById(R.id.standInfo_volunteersInput);
 	}
 
 	protected void tearDown() throws Exception{
