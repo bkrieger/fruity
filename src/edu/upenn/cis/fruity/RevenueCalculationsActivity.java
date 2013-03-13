@@ -3,6 +3,7 @@ package edu.upenn.cis.fruity;
 import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.widget.TextView;
  * Allows the user to provide input for calculated revenue per item and total revenue
  */
 public class RevenueCalculationsActivity extends Activity {
-	public static final int CalculationsActivity_ID = 13;
+	public static final int RevenueCalculationsActivity_ID = 13;
 	
 	//TODO: include other
 	private int numApples, numPears, numOranges, numBananas, numGrapes, numKiwis = 0;
@@ -23,17 +24,20 @@ public class RevenueCalculationsActivity extends Activity {
 	private double mixedBagPrice, smoothiePrice, granolaPrice;
 	
 	int numItems = 9;
+	int numInputItems = numItems + 1; // 1 more for total revenue
+	
 	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8
 	private double revenueInput [] = new double [numItems];
-	private double actualRevenue [] = new double [numItems];
+	private double expectedRevenue [] = new double [numItems];
 	private boolean [] correct = new boolean [numItems];
+	private double totalExpectedRevenue = 0.0;
 	
 	private ParseInputData parser = new ParseInputData();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculations);
+		setContentView(R.layout.activity_calculations_revenue);
 		
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		FruitStand currentStand = dh.getCurrentFruitStand();
@@ -54,6 +58,11 @@ public class RevenueCalculationsActivity extends Activity {
 		 once transaction data s saved
 		*/
 		setItemPrices();
+		
+		calculateExpectedRevenue();
+		
+		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
+		numCorrectDisplay.setText("0/"+numInputItems);
 	}
 	
 	public void getNumItemsSold(Cursor c){		
@@ -186,7 +195,22 @@ public class RevenueCalculationsActivity extends Activity {
 		granolaPriceText.setText("$" + granolaPrice);
 	}
 	
-	// TODO: add check for total revenue
+	public void calculateExpectedRevenue(){
+		expectedRevenue[0] = numApples*applePrice;
+		expectedRevenue[1] = numPears*pearPrice;
+		expectedRevenue[2] = numOranges*orangePrice;
+		expectedRevenue[3] = numBananas*bananaPrice;
+		expectedRevenue[4] = numGrapes*grapesPrice;
+		expectedRevenue[5] = numKiwis*kiwiPrice;
+		expectedRevenue[6] = numMixedBags*mixedBagPrice;
+		expectedRevenue[7] = numSmoothies*smoothiePrice;
+		expectedRevenue[8] = numGranola*granolaPrice;
+		
+		for(int i = 0; i < numItems; i++){
+			totalExpectedRevenue +=expectedRevenue[i]; 
+		}
+	}
+	
 	public void onCheckRevenueCalculationsButtonClick(View v){
 		// actual revenue input
 		revenueInput[0] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_apple));
@@ -199,21 +223,10 @@ public class RevenueCalculationsActivity extends Activity {
 		revenueInput[7] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_smoothie));
 		revenueInput[8] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_granola));
 		
-		// expected revenue input
-		actualRevenue[0] = numApples*applePrice;
-		actualRevenue[1] = numPears*pearPrice;
-		actualRevenue[2] = numOranges*orangePrice;
-		actualRevenue[3] = numBananas*bananaPrice;
-		actualRevenue[4] = numGrapes*grapesPrice;
-		actualRevenue[5] = numKiwis*kiwiPrice;
-		actualRevenue[6] = numMixedBags*mixedBagPrice;
-		actualRevenue[7] = numSmoothies*smoothiePrice;
-		actualRevenue[8] = numGranola*granolaPrice;
-		
 		int numCorrect = 0;
 		// compare actual to expected revenue input
 		for(int i = 0; i < numItems; i++){
-			if(revenueInput[i] == actualRevenue[i]){
+			if(revenueInput[i] == expectedRevenue[i]){
 				correct[i] = true;
 				numCorrect++;
 			}
@@ -221,13 +234,18 @@ public class RevenueCalculationsActivity extends Activity {
 				correct[i] = false;
 			}
 		}
+		// compare actual to expected total revenue
+		double totalRevenueInput = parser.parseItemPrice((EditText)findViewById(R.id.totalRevenue));
+		if(totalRevenueInput == totalExpectedRevenue){
+			numCorrect++;
+		}
 
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
-		numCorrectDisplay.setText("" + numCorrect +"/"+numItems);
+		numCorrectDisplay.setText("" + numCorrect +"/"+numInputItems);
 	}
-	
-	// TODO
+
 	public void onGoToProfitCalculationsButtonClick(View v){
-		
+		Intent i = new Intent(this, ProfitCalculationsActivity.class);
+		startActivityForResult(i, RevenueCalculationsActivity_ID);
 	}
 }
