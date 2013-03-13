@@ -227,34 +227,6 @@
     </LinearLayout>
     
     <LinearLayout
-  			android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="@string/totalFruitCost"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"/>
-        
-        <EditText android:id="@+id/cost_inv_total_fruit"
-            android:cursorVisible="true"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:inputType="numberDecimal"
-            android:singleLine="true"
-            android:maxLength="7"
-            android:text="@string/zero"
-            android:layout_marginRight="10dp"/>
-    </LinearLayout>
-    
-    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
