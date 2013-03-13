@@ -1,5 +1,7 @@
 package edu.upenn.cis.fruity;
 
+import java.text.DecimalFormat;
+
 import android.widget.EditText;
 
 /**
@@ -39,5 +41,15 @@ public class ParseInputData {
 		}		
 		
 		return price;
+	}
+	
+	/**
+	 * Convert a double value into currency format
+	 * @param value: input currency as a double
+	 * @return value as a formated currency string
+	 */
+	public String convertToCurrency(double value){
+		DecimalFormat df = new DecimalFormat("$0.00");
+		return df.format(value);
 	}
 }
