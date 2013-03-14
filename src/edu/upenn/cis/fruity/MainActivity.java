@@ -1,5 +1,8 @@
 package edu.upenn.cis.fruity;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.PushService;
 import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.EndInventoryItem;
 import edu.upenn.cis.fruity.database.FruitStand;
@@ -22,6 +25,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Parse.initialize(this, "1Pytm1PUnjYg3fiiuFsnwXjVIYK4gXEYcSuK4WA3", "4UMJgePt8yhCABvpI0Lnve57CqAXUldBJ3u45VZv");
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
 	}
 
 	@Override

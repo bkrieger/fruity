@@ -30,15 +30,20 @@ public class EnterStaffActivity extends Activity{
 		
 	}
 	
-	public void onStandInfoButtonClick(View v) {	
-		Intent i = new Intent(this,SetupStandInfoActivity.class);
-		i.putExtra("schoolName", schoolName);
-		startActivityForResult(i, StandInfoActivity_ID);
+	public void onStandInfoButtonClick(View v) {
+		enterToDatabase();
+		Intent i1 = new Intent(this,SetupStandInfoActivity.class);
+		i1.putExtra("schoolName", schoolName);
+		startActivityForResult(i1, StandInfoActivity_ID);
 	}
 	
 	public void onExtraStaffButtonClick(View v){
-		Intent i = new Intent(this,EnterExtraStaffActivity.class);
-		i.putExtra("schoolName", schoolName);
-		startActivityForResult(i, ExtraStaffActivity_ID);
+		enterToDatabase();
+		Intent i2 = new Intent(this,EnterExtraStaffActivity.class);
+		i2.putExtra("schoolName", schoolName);
+		startActivityForResult(i2, ExtraStaffActivity_ID);
+	}
+	
+	private void enterToDatabase(){
 	}
 }
