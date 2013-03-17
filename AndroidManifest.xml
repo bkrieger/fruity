@@ -59,8 +59,16 @@
             android:label="@string/title_activity_inventory_postprocess" >
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.SalesSummaryActivity"
+            android:label="@string/title_activity_sales_summary" >
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SalesDemographicActivity"
             android:label="@string/title_activity_sales_demographic" >
+        </activity>
+        <activity
+            android:name="edu.upenn.cis.fruity.SalesSelectionActivity"
+            android:label="@string/title_activity_sales_item_selection" >
         </activity>
         <activity
             android:name="edu.upenn.cis.fruity.SalesPaymentActivity"

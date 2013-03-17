@@ -99,7 +99,7 @@ public class SalesDemographicActivity extends Activity {
 	}
 	
 	private void goToNext() {
-		Intent i = new Intent(this,SalesPaymentActivity.class);
+		Intent i = new Intent(this,SalesSelectionActivity.class);
 		i.putExtra("age_category", age_category);
 		i.putExtra("isMale", isMale);
 		startActivityForResult(i, SalesPaymentActivity_ID);

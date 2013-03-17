@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What does the customer want to buy?"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnWholeFruit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="onWholeFruitButtonClick"
+            android:text="Whole Fruit" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnMixed"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:clickable="false"
+            android:text="Mixed Bag" />
+
+        <Button
+            android:id="@+id/ASPbtnMixedMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onMixedMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ASPmixedCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/ASPbtnMixedPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onMixedPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnSmoothie"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:clickable="false"
+            android:text="Smoothie" />
+
+        <Button
+            android:id="@+id/ASPbtnSmoothieMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onSmoothieMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ASPsmoothieCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/ASPbtnSmoothiePlus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onSmoothiePlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnGranola"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:clickable="false"
+            android:text="Granola" />
+
+        <Button
+            android:id="@+id/ASPbtnGranolaMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onGranolaMinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ASPgranolaCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/ASPbtnGranolaPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onGranolaPlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a payment type to complete the sale."
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/paymentButton"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:onClick="onPaymentClick"
+            android:text="Proceed to Payment!" />
+    </LinearLayout>
+</LinearLayout>

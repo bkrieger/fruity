@@ -125,7 +125,6 @@ public class SetupStandInfoActivity extends Activity {
 					@Override
 					public void onStartTrackingTouch(SeekBar arg0) {
 						// Obligatory implementation by class inheritance
-
 					}
 
 					@Override

@@ -50,7 +50,7 @@ public class InventoryPostprocessActivity extends Activity {
 		parsePricePerProcessedInventoryItemInput();
 		saveProcessedInventoryData();
 		
-		Intent i = new Intent(this,SalesDemographicActivity.class);
+		Intent i = new Intent(this,SalesSummaryActivity.class);
 		startActivityForResult(i, InventoryPostprocessActivity_ID);
 	}
 	
