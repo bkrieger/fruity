@@ -23,8 +23,8 @@ public class RevenueCalculationsActivity extends Activity {
 	private double applePrice, pearPrice, orangePrice, bananaPrice, grapesPrice, kiwiPrice;
 	private double mixedBagPrice, smoothiePrice, granolaPrice;
 	
-	int numItems = 9;
-	int numInputItems = numItems + 1; // 1 more for total revenue
+	private int numItems = 9;
+	private int numInputItems = numItems + 1; // 1 more for total revenue
 	
 	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8
 	private double revenueInput [] = new double [numItems];
@@ -246,6 +246,7 @@ public class RevenueCalculationsActivity extends Activity {
 
 	public void onGoToProfitCalculationsButtonClick(View v){
 		Intent i = new Intent(this, ProfitCalculationsActivity.class);
+		i.putExtra("totalRevenue", ((Double)totalExpectedRevenue).toString());
 		startActivityForResult(i, RevenueCalculationsActivity_ID);
 	}
 }
