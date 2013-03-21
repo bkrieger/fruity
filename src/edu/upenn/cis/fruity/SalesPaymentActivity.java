@@ -131,7 +131,13 @@ public class SalesPaymentActivity extends Activity {
 	}
 	
 	public void onFinishTransactionButtonClick(View view){
-
+		Toast toast = Toast.makeText(getApplicationContext(),
+				"Purchase Successful!", Toast.LENGTH_SHORT);
+		toast.show();
+	
+		Intent i = new Intent(this, SalesSummaryActivity.class);
+		startActivityForResult(i, SalesPaymentActivity_ID);
+		
 	}
 	
 	private class FruitTuple {

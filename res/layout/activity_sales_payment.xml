@@ -9,11 +9,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="CASH" />
+        android:text="Cash: $0.00" />
+    
+    <Button
+        android:id="@+id/endTransactionButton"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:onClick="onFinishTransactionButtonClick"
+        android:text="Finish Transaction!" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_weight="1"
         android:gravity="bottom"
         android:orientation="horizontal" >
 
@@ -33,7 +43,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <Button
@@ -72,7 +82,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <Button
@@ -95,5 +105,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
