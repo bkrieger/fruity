@@ -10,14 +10,11 @@ import android.widget.Toast;
 
 public class SalesSelectionActivity extends Activity {
 	public static final int SalesSelectionActivity_ID = 12;
-	
-	public enum PaymentType {
-		CASH, COUPON, TRADEIN
-	};
 
+	// TODO: Make it so we can pull the "other" entered at beginning
+	// from fruitstand instance and put here.
 	int age_category;
 	boolean isMale;
-	PaymentType paymentType;
 	int mixedBags;
 	int smoothies;
 	int granola;
@@ -264,19 +261,23 @@ public class SalesSelectionActivity extends Activity {
 		count = (TextView) findViewById(R.id.ASPgranolaCounter);
 		count.setText("" + granola);
 	}
-
+	
+	// TODO: Transfer information about "other" categories for stand
 	public void onPaymentClick(View view){
 		Intent i = new Intent(this, SalesPaymentActivity.class);
 		
-		// Database doesn't store intermediary value of transaction
 		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		i.putExtra("ageCategory", age_category);
-		
+		i.putExtra("isMale", isMale);
+		i.putExtra("mixedBag", mixedBags);
+		i.putExtra("frozenFruitBag", smoothies);
+		i.putExtra("granola", granola);
+		i.putExtra("apple", apples);
+		i.putExtra("orange", oranges);
+		i.putExtra("grapes", grapes);
+		i.putExtra("pear", pears);
+		i.putExtra("banana", bananas);
+		i.putExtra("kiwi", kiwis);
+		i.putExtra("total", total);
 		
 		startActivityForResult(i, SalesSelectionActivity_ID);
 	}

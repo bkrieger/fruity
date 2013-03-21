@@ -65,4 +65,20 @@
 	<string name="title_activity_sales_item_selection">Select Items</string>
 	<string name="title_activity_sales_summary">Summary of Sales</string>
 	<string name="salesBegin">Begin Sales</string>
+	<string name="finishTransaction">Finish Transaction!</string>
+	<string name="plusCoupon">+ Coupon</string>
+	<string name="minusCoupon">- Coupon</string>
+	<string name="plusJunkFood">+ Trade-In</string>
+	<string name="minusJunkFood">- Trade-In</string>
+	<string-array name="fruit_options">
+	    <item>apple</item>
+        <item>banana</item>
+        <item>orange</item>
+        <item>pear</item>
+        <item>grapes</item>
+        <item>kiwi</item>
+        <item>mixedBag</item>
+        <item>granola</item>
+        <item>smoothie</item>
+	</string-array>
 </resources>
