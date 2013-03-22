@@ -32,8 +32,9 @@ public class InventoryPreprocessActivity extends Activity {
 	} 
 	
 	public void onInventoryPostprocessButtonClick(View view){
-	
-		
+		parseNumberStartInventoryInput();
+		saveStartInventoryData();
+
 		Intent i = new Intent(this,InventoryPostprocessActivity.class);
 		startActivityForResult(i, InventoryPreprocessActivity_ID);
 	}
