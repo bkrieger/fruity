@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.Instrumentation.ActivityMonitor;
 import android.content.Context;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
@@ -12,13 +13,13 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import edu.upenn.cis.fruity.InventoryPreprocessActivity;
 import edu.upenn.cis.fruity.R;
 import edu.upenn.cis.fruity.SetupStandInfoActivity;
 import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
 
-public class StandInfoTester extends
-		ActivityInstrumentationTestCase2<SetupStandInfoActivity> {
+public class StandInfoTester extends ActivityInstrumentationTestCase2<SetupStandInfoActivity> {
 
 	protected Activity activity;
 	private Button button;
@@ -32,13 +33,11 @@ public class StandInfoTester extends
 	private FruitStand currentStand;
 	
 	public static final int InventoryPreprocessActivity_ID = 8;
-	
-	// no argument constructor
+
 	public StandInfoTester(){
 		super("edu.upenn.cis.fruity", SetupStandInfoActivity.class);
 	}
-	
-	//@Before
+
 	protected void setUp() throws Exception {
 		super.setUp();
 		setActivityInitialTouchMode(false);
@@ -188,7 +187,9 @@ public class StandInfoTester extends
 	}
 
 	public void testZPreprocessButtonClickAndSaving() {	
-		
+		ActivityMonitor activityMonitor = 
+				getInstrumentation().addMonitor(InventoryPreprocessActivity.class.getName(), null, false);
+
 		try{
 			activity.runOnUiThread(new Runnable(){
 				public void run(){
@@ -219,9 +220,14 @@ public class StandInfoTester extends
 			assertEquals(currentStand.stand_cost, 10.0);
 			assertEquals(currentStand.smoothie_cost, 20.0);
 			assertEquals(currentStand.additional_cost, 30.0);
+			
+			 // next activity is opened and captured.
+			InventoryPreprocessActivity nextActivity = 
+					(InventoryPreprocessActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+			assertNotNull(nextActivity);
 		}
 		catch (NullPointerException e){
-			System.out.println("NullPointerException caught in StandInfoTestertestPreprocessButtonClick().");
+			System.out.println("NullPointerException caught in StandInfoTester testPreprocessButtonClick().");
 		}
 	}
 }
