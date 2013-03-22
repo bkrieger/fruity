@@ -121,13 +121,13 @@ public class SalesPaymentActivity extends Activity {
 		
 		switch (age) {
 		case 1:
-			customer = customer + "K-5";
+			customer = customer + "K - 5";
 			break;
 		case 2:
-			customer = customer + "6-8";
+			customer = customer + "6 - 8";
 			break;
 		case 3: 
-			customer = customer + "9-12";
+			customer = customer + "9 - 12";
 			break;
 		case 4: 
 			customer = customer + "Staff";
@@ -168,10 +168,10 @@ public class SalesPaymentActivity extends Activity {
 			if (i + 1 == purchasedItems.length || !purchasedItems[i + 1].name.equals(purchasedItems[i].name)) {
 				int num = purchasedItems[i].amount;
 				currStand.addPurchase(this, currItem, num, incrCoupons, incrTradeIns, incrCash, customer);
-				if (i + 1 != purchasedItems.length) currItem = purchasedItems[i+1].name;
 				incrCoupons = 0;
 				incrTradeIns = 0;
 				incrCash = 0.0;
+				if (i + 1 != purchasedItems.length) currItem = purchasedItems[i+1].name;
 			}
 				
 		}

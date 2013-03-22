@@ -1,5 +1,7 @@
 package edu.upenn.cis.fruity;
 
+import edu.upenn.cis.fruity.database.DatabaseHandler;
+import edu.upenn.cis.fruity.database.FruitStand;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 
 public class SalesSummaryActivity extends Activity {
-
-// Jarett wanted something similar to the other group's screen that would give
-// general stats for the day between transactions. This will be that, in some future
-// life. 
 	
 public static final int SalesSummaryActivity_ID = 14;
 	
@@ -19,6 +17,10 @@ public static final int SalesSummaryActivity_ID = 14;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_summary);
+		
+		// TODO: Use today's data to generate summary of recent transactions
+		DatabaseHandler dht = DatabaseHandler.getInstance(this);
+		FruitStand currStand = dht.getCurrentFruitStand();
 	}
 
 	@Override
