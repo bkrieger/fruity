@@ -23,11 +23,12 @@ import android.widget.Toast;
 public class SalesPaymentActivity extends Activity {
 
 	public static final int SalesPaymentActivity_ID = 13;
-	private double total;
+	private Double total = 0.0;
 	private FruitTuple[] purchasedItems;
-	private int numCoupons;
-	private int numTradeIns;
+	private Integer numCoupons = 0;
+	private Integer numTradeIns = 0;
 	private Intent intent;
+	private FruitStand currStand;
 	
 	public enum PaymentType {
 		CASH, COUPON, TRADEIN
@@ -38,20 +39,20 @@ public class SalesPaymentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		intent = getIntent();
 		DatabaseHandler dht = DatabaseHandler.getInstance(this);
-		FruitStand currStand = dht.getCurrentFruitStand();
+		currStand = dht.getCurrentFruitStand();
 		
 		ArrayList<FruitTuple> itemBuffer = new ArrayList<FruitTuple>();
 		ProcessedInventoryItem[] possItems = currStand.getProcessedInventoryItems(this);
 		
 		for (ProcessedInventoryItem item : possItems) {
-			Log.v("derp", "We have as a possibility: " + item.item_name);
 			for (int i = 0; i < intent.getIntExtra(item.item_name, 0); i++) {
-				Log.v("derp", "adding: " + item.item_name);
-				itemBuffer.add(new FruitTuple(item.item_name, item.price));
+				itemBuffer.add(new FruitTuple(item.item_name, item.price, intent.getIntExtra(item.item_name, 0)));
 				total += item.price;
 			}
 		}
 		
+		// Sort list in ascending order by price; comparator enforces this for custom
+		// FruitTuple type
 		Collections.sort(itemBuffer, new Comparator<FruitTuple>() {
 			public int compare(FruitTuple a, FruitTuple b) {
 				return (a.price > b.price ?  1  : 
@@ -108,29 +109,76 @@ public class SalesPaymentActivity extends Activity {
 		TextView couponCounter = (TextView) findViewById(R.id.ASPcouponCounter);
 		couponCounter.setText("Coupons: " + numCoupons);
 		TextView cashCounter = (TextView) findViewById(R.id.ASPcashCounter);
-		cashCounter.setText("Payment: " + total);
-	}
-
-	private void submit() {
-		// TODO: store all data in SQL
-		Toast toast;
-		if (total > 0) {
-			Intent i = new Intent();
-			setResult(RESULT_OK, i);
-			
-			toast = Toast.makeText(getApplicationContext(),
-					"Purchase Successful!", Toast.LENGTH_SHORT);
-			toast.show();
-			finish();
-		} else {
-			toast = Toast.makeText(getApplicationContext(),
-					"Purchase must contain at least one item.",
-					Toast.LENGTH_SHORT);
-			toast.show();
-		}
+		cashCounter.setText("Payment: " + java.text.NumberFormat.getCurrencyInstance().format(total));
 	}
 	
+	private String parseCustomer() {
+		String customer;
+		boolean isMale = intent.getBooleanExtra("isMale", false);
+		int age = intent.getIntExtra("ageCategory", 0);
+		
+		customer = isMale ? "Male " : "Female ";
+		
+		switch (age) {
+		case 1:
+			customer = customer + "K-5";
+			break;
+		case 2:
+			customer = customer + "6-8";
+			break;
+		case 3: 
+			customer = customer + "9-12";
+			break;
+		case 4: 
+			customer = customer + "Staff";
+			break;
+		case 5:
+			customer = customer + "Parent";
+			break;
+		case 6:
+			customer = customer + "Other";
+			break;
+		}
+		
+		return customer;
+	}
+	
+	// The *best* way of dividing up the purchase into its various fruit-level components.
+	// Existing numCoupons and numTradeIns used as decrementing counters for total still available
+	// to apply to purchase.
+	private void submit() {
+		String currItem = purchasedItems[0].name;
+		String customer = parseCustomer();
+		int incrCoupons = 0;
+ 		int incrTradeIns = 0;
+ 		double incrCash = 0.0;
+ 		
+		for (int i = 0; i < purchasedItems.length; i++) {
+			
+			if (numCoupons > 0) {
+				incrCoupons++;
+				numCoupons--;
+			} else if (numTradeIns > 0) {
+				incrTradeIns++;
+				numTradeIns--;
+			} else {
+				incrCash += purchasedItems[i].price;
+			}
+			
+			if (i + 1 == purchasedItems.length || !purchasedItems[i + 1].name.equals(purchasedItems[i].name)) {
+				int num = purchasedItems[i].amount;
+				currStand.addPurchase(this, currItem, num, incrCoupons, incrTradeIns, incrCash, customer);
+				if (i + 1 != purchasedItems.length) currItem = purchasedItems[i+1].name;
+				incrCoupons = 0;
+				incrTradeIns = 0;
+				incrCash = 0.0;
+			}
+				
+		}
+	}
+
 	public void onFinishTransactionButtonClick(View view){
+		submit();
 		Toast toast = Toast.makeText(getApplicationContext(),
 				"Purchase Successful!", Toast.LENGTH_SHORT);
 		toast.show();
@@ -141,12 +189,15 @@ public class SalesPaymentActivity extends Activity {
 	}
 	
 	private class FruitTuple {
-		private String fruit;
+		private String name;
+		private int amount;
 		private double price;
 		
-		public FruitTuple(String f, double p) {
-			fruit = f;
+		
+		public FruitTuple(String f, double p, int amt) {
+			name = f;
 			price = p;
+			amount = amt;
 		}
 	}
 
