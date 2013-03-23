@@ -4,12 +4,14 @@ import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Allows the user to provide input for calculated costs, net profit, and final cash box and to
@@ -25,6 +27,10 @@ public class ProfitCalculationsActivity extends Activity{
 	private FruitStand currentStand;
 
 	private int numEquations = 3;
+	private int numCorrect = 0;
+	private double precision = 0.001;
+	private int correctColor = android.R.attr.editTextBackground;
+	private int incorrectColor = Color.YELLOW;
 	
 	ParseInputData parser = new ParseInputData();
 	
@@ -53,23 +59,6 @@ public class ProfitCalculationsActivity extends Activity{
 		
 		TextView additionalCosts = (TextView)findViewById(R.id.calc_additionalCosts);
 		additionalCosts.setText(parser.convertToCurrency(currentStand.additional_cost));
-		
-		final EditText totalCostsInput= (EditText)findViewById(R.id.calc_totalCost);
-		totalCostsInput.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void afterTextChanged(Editable arg0) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,	int after) {				
-			}
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				TextView totalCostsInProfitEq = (TextView)findViewById(R.id.calc_totalCostProfitEq);
-				totalCostsInProfitEq.setText(totalCostsInput.getText().toString());	
-			}
-			});
 
 		TextView totalRevenue = (TextView)findViewById(R.id.calc_totalRevenueProfitEq);
 		totalRevenue.setText(parser.convertToCurrency(totalRev));
@@ -79,9 +68,23 @@ public class ProfitCalculationsActivity extends Activity{
 		
 		// TODO: donations
 		TextView donationsText = (TextView)findViewById(R.id.calc_donations);
-		
-		final EditText netProfitInput= (EditText)findViewById(R.id.calc_profit);
-		netProfitInput.addTextChangedListener(new TextWatcher() {
+
+		updateValuesInEquation(R.id.calc_totalCost, R.id.calc_totalCostProfitEq);
+		updateValuesInEquation(R.id.calc_profit, R.id.calc_profitFromEq);
+
+		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_profit_calculations);
+		numCorrectDisplay.setText("0/"+numEquations);
+	}
+	
+	/**
+	 * Updates a TextView in an equation based on the user's input into an EditText box
+	 * in a previous equation that it depends on
+	 * @param inputId: id associated with the EditText box the user is editing in an equation
+	 * @param updateId: id associated with the TextView that is dependent on the input associated with inputId
+	 */
+	public void updateValuesInEquation(int inputId, final int updateId){
+		final EditText equationInput= (EditText)findViewById(inputId);
+		equationInput.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void afterTextChanged(Editable arg0) {
 			}
@@ -92,13 +95,10 @@ public class ProfitCalculationsActivity extends Activity{
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				TextView netProfit = (TextView)findViewById(R.id.calc_profitFromEq);
-				netProfit.setText(netProfitInput.getText().toString());	
+				TextView updatedText = (TextView)findViewById(updateId);
+				updatedText.setText(parser.convertToCurrency(parser.parseItemPrice(equationInput)));	
 			}
 			});
-		
-		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_profit_calculations);
-		numCorrectDisplay.setText("0/"+numEquations);
 	}
 	
 	public void onCheckProfitCalculationsButtonClick(View v){
@@ -106,26 +106,37 @@ public class ProfitCalculationsActivity extends Activity{
 		expectedNetProfit = totalRev - expectedTotalCosts;
 		expectedFinalCashBox = currentStand.initial_cash + expectedNetProfit + donations;
 		
-		int numCorrect = 0;
-		
-		if(expectedTotalCosts == parser.parseItemPrice((EditText)findViewById(R.id.calc_totalCost))){
-			numCorrect++;
-		}
-		double actualNetProfit = parser.parseItemPrice((EditText)findViewById(R.id.calc_profit));
-		if(expectedNetProfit == actualNetProfit){
-			numCorrect++;
-		}
-		double actualFinalCashBox = parser.parseItemPrice((EditText)findViewById(R.id.calc_finalCashBox));
-		if(expectedFinalCashBox == actualFinalCashBox){
-			numCorrect++;
-		}
-		
-		System.out.println("expected net profit: " + expectedNetProfit);
-		System.out.println("expected FinalCashBox: " + expectedFinalCashBox);
-		System.out.println("actual net profit: " + actualNetProfit);
-		System.out.println("actual final cash box: " + actualFinalCashBox);
-		
+		numCorrect = 0;
+		checkAnswerToEquation(R.id.calc_totalCost, expectedTotalCosts); // total costs equation
+		checkAnswerToEquation(R.id.calc_profit, expectedNetProfit); // net profit equation
+		checkAnswerToEquation(R.id.calc_finalCashBox, expectedFinalCashBox); // cash box equation
+
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_profit_calculations);
 		numCorrectDisplay.setText("" + numCorrect +"/"+numEquations);
+		
+		if(numCorrect < numEquations){
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Incorrect calculations are highlighted in yellow.", Toast.LENGTH_SHORT);
+			toast.show();
+		}
+	}
+	
+	/**
+	 * Check if the answers to the equations input by the user match the expected results
+	 * @param inputId: id associated with EditText input for equation
+	 * @param expectedValue: expected answer to equation
+	 * @return: number of correct answers to equations
+	 */
+	public void checkAnswerToEquation(int inputId, double expectedValue){
+		EditText inputText = (EditText)findViewById(inputId);
+		double inputValue = parser.parseItemPrice(inputText);
+		
+		if(Math.abs(expectedValue - inputValue) < precision){
+			numCorrect++;
+			inputText.setBackgroundColor(correctColor);
+		}
+		else{
+			inputText.setBackgroundColor(incorrectColor);
+		}
 	}
 }

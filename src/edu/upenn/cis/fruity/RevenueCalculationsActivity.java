@@ -6,10 +6,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Allows the user to provide input for calculated revenue per item and total revenue
@@ -17,20 +19,25 @@ import android.widget.TextView;
 public class RevenueCalculationsActivity extends Activity {
 	public static final int RevenueCalculationsActivity_ID = 13;
 	
-	//TODO: include other
-	private int numApples, numPears, numOranges, numBananas, numGrapes, numKiwis = 0;
-	private int numMixedBags, numSmoothies, numGranola = 0;
-	private double applePrice, pearPrice, orangePrice, bananaPrice, grapesPrice, kiwiPrice;
-	private double mixedBagPrice, smoothiePrice, granolaPrice;
-	
+	//TODO: include other	
 	private int numItems = 9;
 	private int numInputItems = numItems + 1; // 1 more for total revenue
 	
 	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8
-	private double revenueInput [] = new double [numItems];
-	private double expectedRevenue [] = new double [numItems];
-	private boolean [] correct = new boolean [numItems];
+	private double revenueInput[] = new double[numItems];
+	private double expectedRevenue[] = new double[numItems];
+	private boolean[] correct = new boolean[numItems];
 	private double totalExpectedRevenue = 0.0;
+	private double precision = 0.001;
+	
+	private int[] itemIds = {R.id.revenue_apple, R.id.revenue_pear, R.id.revenue_orange,
+			R.id.revenue_banana, R.id.revenue_grapes, R.id.revenue_kiwi, R.id.revenue_mixedBag,
+			R.id.revenue_smoothie, R.id.revenue_granola};
+	private int[] numItemsPurchased = new int[numItems];
+	private double[] itemPrices = new double[numItems];
+	
+	private int correctColor = android.R.attr.editTextBackground;
+	private int incorrectColor = Color.YELLOW;
 	
 	private ParseInputData parser = new ParseInputData();
 	
@@ -46,17 +53,12 @@ public class RevenueCalculationsActivity extends Activity {
 		SQLiteDatabase db = dh.getReadableDatabase();
 		Cursor c = db.rawQuery("SELECT item_name, sum(count) FROM Purchase " +
 				"WHERE fruit_stand_id ="+id + " GROUP BY item_name", null);
-		
 		getNumItemsSold(c);
 		setNumItemsSold();
-		
+
 		Cursor c2 = db.rawQuery("SELECT item_name, price FROM ProcessedInventoryItem " +
 				"WHERE fruit_stand_id ="+id + " GROUP BY item_name", null);
 		getItemPrices(c2);
-		/* TODO: maybe can make a join between Purchase and ProcessedInventoryItem database
-		 to get prices and the number and parse at same time - need to make sure the fruit_stand-id is the same
-		 once transaction data s saved
-		*/
 		setItemPrices();
 		
 		calculateExpectedRevenue();
@@ -64,7 +66,7 @@ public class RevenueCalculationsActivity extends Activity {
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
 		numCorrectDisplay.setText("0/"+numInputItems);
 	}
-	
+
 	public void getNumItemsSold(Cursor c){		
 		if(c.moveToFirst()){
 			for (int i = 0; i < c.getCount(); i++) {			  
@@ -72,31 +74,31 @@ public class RevenueCalculationsActivity extends Activity {
 	 			int num = Integer.parseInt(c.getString(1));
 
 	 			if(itemName.equals("apple")){
-	 				numApples = num;
+	 				numItemsPurchased[0] = num;
 	 			}
 	 			else if(itemName.equals("pear")){
-	 				numPears = num;
+	 				numItemsPurchased[1] = num;
 	 			}
 	 			else if(itemName.equals("orange")){
-	 				numOranges = num; 
+	 				numItemsPurchased[2] = num;
 	 			}
 	 			else if(itemName.equals("banana")){
-	 				numBananas = num;
+	 				numItemsPurchased[3] = num;
 	 			}
 	 			else if(itemName.equals("grapes")){
-	 				numGrapes = num;
+	 				numItemsPurchased[4] = num;
 	 			}
 	 			else if(itemName.equals("kiwi")){
-	 				numKiwis = num;
+	 				numItemsPurchased[5] = num;
 	 			}
 	 			else if(itemName.equals("mixedBag")){
-	 				numMixedBags = num;
+	 				numItemsPurchased[6] = num;
 	 			}
-	 			else if(itemName.equals("smoothie")){
-	 				numSmoothies = num;
+	 			else if(itemName.equals("frozenFruitBag")){
+	 				numItemsPurchased[7] = num;
 	 			}
 	 			else if(itemName.equals("granola")){
-	 				numGranola = num;
+	 				numItemsPurchased[8] = num;
 	 			}
 	 			else{ //TODO: other
 	 				
@@ -109,28 +111,17 @@ public class RevenueCalculationsActivity extends Activity {
 	}
 	
 	public void setNumItemsSold(){
-		TextView numApplesText = (TextView)findViewById(R.id.num_bought_apple);
-		TextView numPearsText = (TextView)findViewById(R.id.num_bought_pear);
-		TextView numOrangesText = (TextView)findViewById(R.id.num_bought_orange);
-		TextView numBananasText = (TextView)findViewById(R.id.num_bought_banana);
-		TextView numGrapesText = (TextView)findViewById(R.id.num_bought_grapes);
-		TextView numKiwisText = (TextView)findViewById(R.id.num_bought_kiwi);
-		TextView numMixedBagsText = (TextView)findViewById(R.id.num_bought_mixedBag);
-		TextView numSmoothiesText = (TextView)findViewById(R.id.num_bought_smoothie);
-		TextView numGranolaText = (TextView)findViewById(R.id.num_bought_granola);
+		int[] numItemIds = {R.id.num_bought_apple, R.id.num_bought_pear, R.id.num_bought_orange,
+				R.id.num_bought_banana, R.id.num_bought_grapes, R.id.num_bought_kiwi, R.id.num_bought_mixedBag,
+				R.id.num_bought_smoothie, R.id.num_bought_granola};
 		
-		numApplesText.setText("" + numApples);
-		numPearsText.setText("" + numPears);
-		numOrangesText.setText("" + numOranges);
-		numBananasText.setText("" + numBananas);
-		numGrapesText.setText("" + numGrapes);
-		numKiwisText.setText("" + numKiwis);
-		numMixedBagsText.setText("" + numMixedBags);
-		numSmoothiesText.setText("" + numSmoothies);
-		numGranolaText.setText("" + numGranola);
+		TextView numItemsText;
+		for(int i = 0; i < numItems; i++){
+			numItemsText = (TextView)findViewById(numItemIds[i]);
+			numItemsText.setText("" + numItemsPurchased[i]);
+		}
 	}
-	
-	// TODO: later can combine this method with getNumberItemsSold method once transaction data is saved
+
 	public void getItemPrices(Cursor c){
 		if(c.moveToFirst()){
 			for (int i = 0; i < c.getCount(); i++) {			  
@@ -138,31 +129,31 @@ public class RevenueCalculationsActivity extends Activity {
 	 			double price = Double.parseDouble(c.getString(1));
 
 	 			if(itemName.equals("apple")){
-	 				applePrice = price;
+	 				itemPrices[0] = price;
 	 			}
 	 			else if(itemName.equals("pear")){
-	 				pearPrice = price;
+	 				itemPrices[1] = price;
 	 			}
 	 			else if(itemName.equals("orange")){
-	 				orangePrice = price; 
+	 				itemPrices[2] = price;
 	 			}
 	 			else if(itemName.equals("banana")){
-	 				bananaPrice = price;
+	 				itemPrices[3] = price;
 	 			}
 	 			else if(itemName.equals("grapes")){
-	 				grapesPrice = price;
+	 				itemPrices[4] = price;
 	 			}
 	 			else if(itemName.equals("kiwi")){
-	 				kiwiPrice = price;
+	 				itemPrices[5] = price;
 	 			}
 	 			else if(itemName.equals("mixedBag")){
-	 				mixedBagPrice = price;
+	 				itemPrices[6] = price;
 	 			}
-	 			else if(itemName.equals("smoothie")){
-	 				smoothiePrice = price;
+	 			else if(itemName.equals("frozenFruitBag")){
+	 				itemPrices[7] = price;
 	 			}
 	 			else if(itemName.equals("granola")){
-	 				granolaPrice = price;
+	 				itemPrices[8] = price;
 	 			}
 	 			else{ //TODO: other
 	 				
@@ -174,74 +165,61 @@ public class RevenueCalculationsActivity extends Activity {
 	}
 	
 	public void setItemPrices(){
-		TextView applePriceText = (TextView)findViewById(R.id.price_calc_apple);
-		TextView pearPriceText = (TextView)findViewById(R.id.price_calc_pear);
-		TextView orangePriceText = (TextView)findViewById(R.id.price_calc_orange);
-		TextView bananaPriceText = (TextView)findViewById(R.id.price_calc_banana);
-		TextView grapesPriceText = (TextView)findViewById(R.id.price_calc_grapes);
-		TextView kiwiPriceText = (TextView)findViewById(R.id.price_calc_kiwi);
-		TextView mixedBagPriceText = (TextView)findViewById(R.id.price_calc_mixedBag);
-		TextView smoothiePriceText = (TextView)findViewById(R.id.price_calc_smoothie);
-		TextView granolaPriceText = (TextView)findViewById(R.id.price_calc_granola);
+		int[] priceIds = {R.id.price_calc_apple, R.id.price_calc_pear, R.id.price_calc_orange,
+				R.id.price_calc_banana, R.id.price_calc_grapes, R.id.price_calc_kiwi, R.id.price_calc_mixedBag,
+				R.id.price_calc_smoothie, R.id.price_calc_granola};
 		
-		applePriceText.setText("$" + applePrice);
-		pearPriceText.setText("$" + pearPrice);
-		orangePriceText.setText("$" + orangePrice);
-		bananaPriceText.setText("$" + bananaPrice);
-		grapesPriceText.setText("$" + grapesPrice);
-		kiwiPriceText.setText("$" + kiwiPrice);
-		mixedBagPriceText.setText("$" + mixedBagPrice);
-		smoothiePriceText.setText("$" + smoothiePrice);
-		granolaPriceText.setText("$" + granolaPrice);
+		TextView priceText;
+		for(int i = 0; i < numItems; i++){
+			priceText = (TextView)findViewById(priceIds[i]);
+			priceText.setText(parser.convertToCurrency(itemPrices[i]));
+		}
 	}
 	
 	public void calculateExpectedRevenue(){
-		expectedRevenue[0] = numApples*applePrice;
-		expectedRevenue[1] = numPears*pearPrice;
-		expectedRevenue[2] = numOranges*orangePrice;
-		expectedRevenue[3] = numBananas*bananaPrice;
-		expectedRevenue[4] = numGrapes*grapesPrice;
-		expectedRevenue[5] = numKiwis*kiwiPrice;
-		expectedRevenue[6] = numMixedBags*mixedBagPrice;
-		expectedRevenue[7] = numSmoothies*smoothiePrice;
-		expectedRevenue[8] = numGranola*granolaPrice;
-		
 		for(int i = 0; i < numItems; i++){
+			expectedRevenue[i] = numItemsPurchased[i] * itemPrices[i];
 			totalExpectedRevenue +=expectedRevenue[i]; 
 		}
 	}
 	
 	public void onCheckRevenueCalculationsButtonClick(View v){
-		// actual revenue input
-		revenueInput[0] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_apple));
-		revenueInput[1] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_pear));
-		revenueInput[2] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_orange));
-		revenueInput[3] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_banana));
-		revenueInput[4] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_grapes));
-		revenueInput[5] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_kiwi));
-		revenueInput[6] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_mixedBag));
-		revenueInput[7] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_smoothie));
-		revenueInput[8] = parser.parseItemPrice((EditText)findViewById(R.id.revenue_granola));
-		
 		int numCorrect = 0;
+		EditText itemRevenueText;
 		// compare actual to expected revenue input
 		for(int i = 0; i < numItems; i++){
-			if(revenueInput[i] == expectedRevenue[i]){
+			itemRevenueText = (EditText)findViewById(itemIds[i]);
+			revenueInput[i] = parser.parseItemPrice(itemRevenueText); // actual revenue input
+
+			if(Math.abs(revenueInput[i] - expectedRevenue[i]) < precision){
 				correct[i] = true;
 				numCorrect++;
+				itemRevenueText.setBackgroundColor(correctColor);
 			}
 			else{
-				correct[i] = false;
+				correct[i] = false;		
+				itemRevenueText.setBackgroundColor(incorrectColor);
 			}
 		}
 		// compare actual to expected total revenue
-		double totalRevenueInput = parser.parseItemPrice((EditText)findViewById(R.id.totalRevenue));
-		if(totalRevenueInput == totalExpectedRevenue){
+		EditText totalRevenueText = (EditText)findViewById(R.id.totalRevenue);
+		double totalRevenueInput = parser.parseItemPrice(totalRevenueText);
+		if(Math.abs(totalRevenueInput - totalExpectedRevenue) < precision){
 			numCorrect++;
+			totalRevenueText.setBackgroundColor(correctColor);
 		}
-
+		else{
+			totalRevenueText.setBackgroundColor(incorrectColor);
+		}
+		
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
 		numCorrectDisplay.setText("" + numCorrect +"/"+numInputItems);
+		
+		if(numCorrect < numInputItems){
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Incorrect revenue calculations are highlighted in yellow.", Toast.LENGTH_SHORT);
+			toast.show();
+		}
 	}
 
 	public void onGoToProfitCalculationsButtonClick(View v){
