@@ -685,7 +685,8 @@
 	    <TextView
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
-		    android:text="@string/totalRevenue"/>
+		    android:text="@string/totalRevenue"
+		    android:textSize="12sp"/>
 	    
 	  	<EditText android:id="@+id/totalRevenue"
             android:cursorVisible="true"
@@ -699,7 +700,7 @@
             android:textSize="15sp"
             android:layout_marginRight="20dp"/>
 	</LinearLayout>
-	
+		    
 	<LinearLayout
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -709,7 +710,7 @@
 	    <Button
 	         android:id="@+id/checkRevenueCalculationsBtn"
 	         android:layout_width="150dp"
-	         android:layout_height="50dp"
+	         android:layout_height="45dp"
 	         android:textSize="12sp"
 	         android:onClick="onCheckRevenueCalculationsButtonClick"
 	         android:text="@string/checkRevenueCalc" />
@@ -717,7 +718,7 @@
 	    <Button
 	         android:id="@+id/gotoProfitCalculationsBtn"
 	         android:layout_width="150dp"
-	         android:layout_height="50dp"
+	         android:layout_height="45dp"
 	         android:textSize="12sp"
 	         android:onClick="onGoToProfitCalculationsButtonClick"
 	         android:text="@string/goToProfitCalc"/>
@@ -732,11 +733,13 @@
 	    <TextView
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
-		    android:text="@string/numCorrect"/> 
+		    android:text="@string/numCorrect"
+		    android:textSize="12sp"/> 
 	    
 	    <TextView 
 		    android:id="@+id/num_correct_revenue_calculations" 
 		    android:layout_width="wrap_content" 
-		    android:layout_height="wrap_content"/>
+		    android:layout_height="wrap_content"
+		    android:textSize="12sp"/>
 	</LinearLayout>
 </LinearLayout>
