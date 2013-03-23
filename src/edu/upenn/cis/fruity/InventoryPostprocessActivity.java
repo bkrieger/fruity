@@ -5,9 +5,14 @@ import edu.upenn.cis.fruity.database.FruitStand;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * User can input quantities for whole fruit, mixed bags, and other food inventory
@@ -19,6 +24,10 @@ public class InventoryPostprocessActivity extends Activity {
 	private int numMixedBags, numFrozenFruitBags, numGranola;
 	private double applePrice, pearPrice, orangePrice, bananaPrice, grapesPrice, kiwiPrice;
 	private double mixedBagPrice, frozenFruitBagPrice, granolaPrice;	
+	
+	private RadioGroup radioFruitPriceGroup;
+	EditText applePriceText;
+	
 	public static final int InventoryPostprocessActivity_ID = 10;
 	
 	private ParseInputData parser = new ParseInputData();
@@ -27,6 +36,9 @@ public class InventoryPostprocessActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory_postprocess);
+		
+		applePriceText = (EditText)findViewById(R.id.price_apple);
+		addListenerOnRadioButton();
 	}
 
 	@Override
@@ -34,11 +46,57 @@ public class InventoryPostprocessActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
-	} 
+	}
 	
-	// TODO: implement
-	public void onFruitPricesButtonClick(View view){
+	public void addListenerOnRadioButton(){ 
+		radioFruitPriceGroup = (RadioGroup)findViewById(R.id.radioFruitPrices);
+		radioFruitPriceGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				int selectedId = radioFruitPriceGroup.getCheckedRadioButtonId();
+			    if(selectedId == R.id.radioSetDefaultFruitPrice){
+			    	Toast toast = Toast.makeText(getApplicationContext(),
+							"All fruit prices will be set to the price entered for apples", Toast.LENGTH_SHORT);
+					toast.show();
+					setDefaultFruitPrices();
+					applePriceText.addTextChangedListener(priceWatcher);
+			    }
+			    else{
+			    	applePriceText.removeTextChangedListener(priceWatcher);
+			    }
+			}
+		});
+	}
+	
+	// Monitor for changes to the apple price entered by the user
+	TextWatcher priceWatcher = new TextWatcher(){
+		@Override
+		public void afterTextChanged(Editable arg0) {
+		}
 
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,	int after) {
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			setDefaultFruitPrices();
+		}
+	};
+	
+	// Set all fruit prices to the price entered for apples
+	public void setDefaultFruitPrices(){
+		EditText pearPriceText = (EditText)findViewById(R.id.price_pear);
+		EditText orangePriceText = (EditText)findViewById(R.id.price_orange);
+		EditText bananaPriceText = (EditText)findViewById(R.id.price_banana);
+		EditText grapesPriceText = (EditText)findViewById(R.id.price_grapes);
+		EditText kiwiPriceText = (EditText)findViewById(R.id.price_kiwi);
+		
+		pearPriceText.setText(parser.convertToCurrency(parser.parseItemPrice(applePriceText)));
+		orangePriceText.setText(parser.convertToCurrency(parser.parseItemPrice(applePriceText)));
+		bananaPriceText.setText(parser.convertToCurrency(parser.parseItemPrice(applePriceText)));
+		grapesPriceText.setText(parser.convertToCurrency(parser.parseItemPrice(applePriceText)));
+		kiwiPriceText.setText(parser.convertToCurrency(parser.parseItemPrice(applePriceText)));
 	}
 	
 	/**

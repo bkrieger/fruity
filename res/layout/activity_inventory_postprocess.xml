@@ -342,34 +342,55 @@
             android:width="55dp"
             android:textSize="12sp"/>
     </LinearLayout>
-            
+
+    <RadioGroup
+		android:id="@+id/radioFruitPrices"
+   	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruit Prices:"
+            android:textSize="12sp"
+            android:layout_marginLeft="20dp"/>
+         	        
+         <RadioButton
+             android:id="@+id/radioSetIndivdualFruitPrices"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:checked="true"
+             android:text="Set individually"
+             android:textSize="12sp" />
+
+         <RadioButton
+             android:id="@+id/radioSetDefaultFruitPrice"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Set default"
+             android:textSize="12sp" />
+     </RadioGroup>
+	
    	<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:orientation="horizontal">	
-        
-   	    <Button android:id="@+id/fruitPriceBtn"
-	        android:text="Enter Fruit Prices"
-	        android:layout_width="wrap_content"
-	        android:layout_height="30dp"
-	        android:textSize="12sp"
-	   		android:layout_marginLeft="10dp"
-	        android:onClick="onFruitPricesButtonClick"/>
-   	            
+        android:layout_gravity="right"
+        android:orientation="horizontal">
    	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/number"
 	        android:textSize="12sp"
-	        android:layout_marginLeft="50dp"/>
+	        android:layout_marginRight="10dp"/>
 	                    
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pricePerUnit"
             android:textSize="12sp"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginRight="30dp"/>
     </LinearLayout>
     
     <LinearLayout
