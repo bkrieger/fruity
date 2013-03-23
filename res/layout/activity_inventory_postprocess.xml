@@ -78,7 +78,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp" />
 
@@ -91,8 +91,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
         	       
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp"/>
         
@@ -136,8 +136,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -178,7 +178,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp" />
 
@@ -191,8 +191,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
        	
 		 <RelativeLayout
             android:layout_width="wrap_content"
@@ -224,7 +224,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp" />
 
@@ -237,8 +237,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
     </LinearLayout>
     
     <LinearLayout
@@ -279,7 +279,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp" />
 
@@ -292,8 +292,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
 
 		<RelativeLayout
             android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
             android:cursorVisible="true"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="@string/zero"
             android:width="40dp" />
 
@@ -339,8 +339,8 @@
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:maxLength="5"
-            android:width="50dp"
-            android:textSize="15sp"/>
+            android:width="55dp"
+            android:textSize="12sp"/>
     </LinearLayout>
             
    	<LinearLayout
