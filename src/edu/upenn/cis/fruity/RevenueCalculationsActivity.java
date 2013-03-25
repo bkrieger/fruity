@@ -52,7 +52,7 @@ public class RevenueCalculationsActivity extends Activity {
 		
 		SQLiteDatabase db = dh.getReadableDatabase();
 		Cursor c = db.rawQuery("SELECT item_name, sum(count) FROM Purchase " +
-				"WHERE fruit_stand_id ="+id + " GROUP BY item_name", null);
+				"WHERE fruit_stand_id ="+id + " AND amount_cash > 0 GROUP BY item_name", null);
 		getNumItemsSold(c);
 		setNumItemsSold();
 
