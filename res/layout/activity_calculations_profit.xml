@@ -22,9 +22,9 @@
             android:text="@string/zeroDollars"
             android:singleLine="true"
             android:maxLength="7"
-            android:width="70dp"
+            android:width="50dp"
             android:textSize="15sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="10dp"/>
         
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +41,8 @@
             android:maxLength="7"
             android:textSize="15sp"
             android:text="@string/zeroDollars"
-            android:width="70dp" />
+            android:width="50dp"
+            android:layout_marginLeft="5dp"/>
         
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
             android:maxLength="7"
             android:textSize="15sp"
             android:text="@string/zeroDollars"
-            android:width="70dp" />
+            android:width="60dp" />
       	
       	<TextView
             android:layout_width="wrap_content"
@@ -159,7 +160,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="center_vertical"
-           android:layout_marginLeft="5dp"
+           android:layout_marginLeft="10dp"
            android:maxLength="7"
            android:singleLine="true"
            android:text="@string/zeroDollars"
@@ -170,7 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/minus"
+            android:text="@string/add"
             android:textSize="12sp"/>
                
        	<TextView android:id="@+id/calc_donations"
@@ -193,7 +194,7 @@
        		        	
 		<TextView
 		    android:id="@+id/calc_profitFromEq"
-		    android:layout_width="43dp"
+		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center_vertical"
 		    android:layout_marginLeft="5dp"
@@ -201,7 +202,7 @@
 		    android:singleLine="true"
 		    android:text="@string/zeroDollars"
 		    android:textSize="15sp"
-		    android:width="70dp" />
+		    android:width="60dp" />
        	
        	<TextView
             android:layout_width="wrap_content"
@@ -227,7 +228,26 @@
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dip">
+       	
+	    <TextView
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/numCorrect"/> 
+	    
+	    <TextView 
+		    android:id="@+id/num_correct_profit_calculations" 
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dip">
 		    
 	    <Button
 	         android:id="@+id/checkProfitCalculationsBtn"
@@ -242,16 +262,16 @@
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
-       	
-	    <TextView
-		    android:layout_width="wrap_content" 
-		    android:layout_height="wrap_content" 
-		    android:text="@string/numCorrect"/> 
+        android:orientation="horizontal"
+        android:padding="10dip">
 	    
-	    <TextView 
-		    android:id="@+id/num_correct_profit_calculations" 
-		    android:layout_width="wrap_content" 
-		    android:layout_height="wrap_content"/>
+	    <Button
+	        android:id="@+id/finishBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="50dp"
+	        android:onClick="onCheckFinishButtonClick"
+	        android:text="Finish and Return to Main Activity"
+	        android:textSize="12sp" />
+
 	</LinearLayout>
 </LinearLayout>

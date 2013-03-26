@@ -50,7 +50,10 @@ public class ProfitCalculationsActivity extends Activity{
 		
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		currentStand = dh.getCurrentFruitStand();
-		
+		expectedTotalCosts = currentStand.stand_cost + currentStand.smoothie_cost + currentStand.additional_cost;
+		expectedNetProfit = totalRev - expectedTotalCosts;
+		expectedFinalCashBox = currentStand.initial_cash + expectedNetProfit + donations;
+
 		TextView fruitStandCost = (TextView)findViewById(R.id.calc_fruitStandCost);
 		fruitStandCost.setText(parser.convertToCurrency(currentStand.stand_cost));
 		
@@ -101,11 +104,7 @@ public class ProfitCalculationsActivity extends Activity{
 			});
 	}
 	
-	public void onCheckProfitCalculationsButtonClick(View v){
-		expectedTotalCosts = currentStand.stand_cost + currentStand.smoothie_cost + currentStand.additional_cost;
-		expectedNetProfit = totalRev - expectedTotalCosts;
-		expectedFinalCashBox = currentStand.initial_cash + expectedNetProfit + donations;
-		
+	public void onCheckProfitCalculationsButtonClick(View v){		
 		numCorrect = 0;
 		checkAnswerToEquation(R.id.calc_totalCost, expectedTotalCosts); // total costs equation
 		checkAnswerToEquation(R.id.calc_profit, expectedNetProfit); // net profit equation
@@ -138,5 +137,15 @@ public class ProfitCalculationsActivity extends Activity{
 		else{
 			inputText.setBackgroundColor(incorrectColor);
 		}
+	}
+	
+	// Save revenue, costs, and profit in database and return to main activity screen
+	public void onCheckFinishButtonClick(View v){
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		FruitStand currentStand = dh.getCurrentFruitStand();
+		currentStand.addTotals(this, expectedTotalCosts, totalRev, expectedFinalCashBox);
+		
+		Intent i = new Intent(this, MainActivity.class);
+		startActivityForResult(i, ProfitCalculationsActivity_ID);
 	}
 }
