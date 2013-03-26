@@ -78,7 +78,7 @@
             android:name="edu.upenn.cis.fruity.RevenueCalculationsActivity"
             android:label="@string/title_activity_calculations" >
         </activity>
-                <activity
+        <activity
             android:name="edu.upenn.cis.fruity.ProfitCalculationsActivity"
             android:label="@string/title_activity_calculations" >
         </activity>
