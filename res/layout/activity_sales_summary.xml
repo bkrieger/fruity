@@ -6,32 +6,42 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
         
-        <LinearLayout
+        <ListView
+            android:id="@+id/list_view_purchases"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_weight="1.0"
+            android:layout_alignParentTop="true"/>
+        
+        <RelativeLayout
+            android:id="@+id/summary_button_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true" >
 
             <Button
                 android:id="@+id/newTransactionButton"
-                android:layout_width="fill_parent"
+                android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_gravity="left"
+                android:layout_alignParentLeft="true"
                 android:onClick="onTransactionButtonClick"
                 android:text="New Sale!" />
 
             <Button
                 android:id="@+id/endTrackingSessionButton"
-                android:layout_width="fill_parent"
+                android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_gravity="right"
+                android:layout_alignParentRight="true"
                 android:onClick="onEndTrackingButtonClick"
                 android:text="Close Stand!" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 

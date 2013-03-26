@@ -118,7 +118,7 @@ public class SetupStandInfoActivity extends Activity {
 							boolean arg2) {
 						TextView temp = (TextView) findViewById(R.id.standInfo_temperatureText);
 						temperature = sb.getProgress();
-						temp.setText(temperature + "°F");
+						temp.setText(temperature + "¡F");
 
 					}
 
