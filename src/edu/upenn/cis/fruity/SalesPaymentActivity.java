@@ -189,7 +189,10 @@ public class SalesPaymentActivity extends Activity {
 		
 		ParseInputData parser = new ParseInputData();
 		double donationAmount = parser.parseItemPrice((EditText)findViewById(R.id.donationInput));
-		currStand.addPurchase(this, "donation", 1, 0, 0, donationAmount, customer);
+		
+		if (Math.abs(donationAmount) > 0.00001) {
+			currStand.addPurchase(this, "donation", 1, 0, 0, donationAmount, customer);
+		}
 	}
 
 	public void onFinishTransactionButtonClick(View view){
