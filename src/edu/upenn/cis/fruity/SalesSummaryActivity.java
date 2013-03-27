@@ -1,5 +1,7 @@
 package edu.upenn.cis.fruity;
 
+import java.text.DecimalFormat;
+
 import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
 import edu.upenn.cis.fruity.database.Purchase;
@@ -42,12 +44,25 @@ public static final int SalesSummaryActivity_ID = 14;
 		
 		for (int i = 0; i < purchases.length; i++) {
 			Purchase purchase = purchases[purchases.length - i - 1];
+			String purchaseString = "";
 			
 			// Convert Database key to pretty-printed version
 			String preName = purchase.item_name;
 			String postName = preName.replaceAll("([a-z])([A-Z])", "$1 $2");
 			postName = Character.toUpperCase(postName.charAt(0)) + postName.substring(1, postName.length());
-			outArr[i] = postName;
+			
+			// Append extra data about transaction
+			int count = purchase.count;
+			String cash = new DecimalFormat("######0.00").format(purchase.amount_cash);
+			int tnum = purchase.num_tradeins;
+			int cnum = purchase.num_coupons;
+			
+			// Build up the string, only adding needed information
+			purchaseString = postName + ": ";
+			purchaseString = purchaseString + (count > 0 ? count : "") + " for $" + cash;
+			purchaseString = purchaseString + (tnum > 0 ? ", " + tnum + "T" : "");
+			purchaseString = purchaseString + (cnum > 0 ? ", " + cnum + "C" : "");		
+			outArr[i] = purchaseString;
 		}
 		
 		return outArr;

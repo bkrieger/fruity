@@ -173,8 +173,11 @@ public class SalesPaymentActivity extends Activity {
 				incrCash = 0.0;
 				if (i + 1 != purchasedItems.length) currItem = purchasedItems[i+1].name;
 			}
-				
 		}
+		
+		ParseInputData parser = new ParseInputData();
+		double donationAmount = parser.parseItemPrice((EditText)findViewById(R.id.donationInput));
+		currStand.addPurchase(this, "donation", 1, 0, 0, donationAmount, customer);
 	}
 
 	public void onFinishTransactionButtonClick(View view){
