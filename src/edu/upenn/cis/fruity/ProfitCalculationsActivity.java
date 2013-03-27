@@ -4,6 +4,8 @@ import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,7 +24,7 @@ public class ProfitCalculationsActivity extends Activity{
 	public static final int ProfitCalculationsActivity_ID = 14;
 	private static Intent intent;
 	private double totalRev;
-	private double donations = 0.0; //TODO: change this to actual donations amount
+	private double donations = 0.0;
 	private double expectedTotalCosts, expectedNetProfit, expectedFinalCashBox;
 	private FruitStand currentStand;
 
@@ -50,6 +52,17 @@ public class ProfitCalculationsActivity extends Activity{
 		
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		currentStand = dh.getCurrentFruitStand();
+		long id = currentStand.id;
+
+		SQLiteDatabase db = dh.getReadableDatabase();
+		Cursor c = db.rawQuery("SELECT sum(amount_cash) FROM Purchase " +
+				"WHERE fruit_stand_id ="+id + " and item_name = 'donation'", null);
+		if(c.moveToFirst()){			  
+ 			donations = Double.parseDouble(c.getString(0));
+		}
+		TextView donationsText = (TextView)findViewById(R.id.calc_donations);
+		donationsText.setText(parser.convertToCurrency(donations));		
+		
 		expectedTotalCosts = currentStand.stand_cost + currentStand.smoothie_cost + currentStand.additional_cost;
 		expectedNetProfit = totalRev - expectedTotalCosts;
 		expectedFinalCashBox = currentStand.initial_cash + expectedNetProfit + donations;
@@ -68,9 +81,6 @@ public class ProfitCalculationsActivity extends Activity{
 		
 		TextView initCashBox = (TextView)findViewById(R.id.calc_initCashBox);
 		initCashBox.setText(parser.convertToCurrency(currentStand.initial_cash));
-		
-		// TODO: donations
-		TextView donationsText = (TextView)findViewById(R.id.calc_donations);
 
 		updateValuesInEquation(R.id.calc_totalCost, R.id.calc_totalCostProfitEq);
 		updateValuesInEquation(R.id.calc_profit, R.id.calc_profitFromEq);
