@@ -3,6 +3,7 @@ package edu.upenn.cis.fruity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.upenn.cis.fruity.database.DatabaseHandler;
@@ -44,23 +45,31 @@ public class SalesPaymentActivity extends Activity {
 		ArrayList<FruitTuple> itemBuffer = new ArrayList<FruitTuple>();
 		ProcessedInventoryItem[] possItems = currStand.getProcessedInventoryItems(this);
 		
-		for (ProcessedInventoryItem item : possItems) {
-			for (int i = 0; i < intent.getIntExtra(item.item_name, 0); i++) {
-				itemBuffer.add(new FruitTuple(item.item_name, item.price, intent.getIntExtra(item.item_name, 0)));
-				total += item.price;
+		// Impossible on an actual application instance, but needed in testing
+		if (possItems != null) {
+		
+			for (ProcessedInventoryItem item : possItems) {
+				for (int i = 0; i < intent.getIntExtra(item.item_name, 0); i++) {
+					itemBuffer.add(new FruitTuple(item.item_name, item.price,
+							intent.getIntExtra(item.item_name, 0)));
+					total += item.price;
+				}
 			}
+
+			// Sort list in ascending order by price; comparator enforces this
+			// for custom
+			// FruitTuple type
+			Collections.sort(itemBuffer, new Comparator<FruitTuple>() {
+				public int compare(FruitTuple a, FruitTuple b) {
+					return (a.price > b.price ? 1 : a.price < b.price ? -1 : 0);
+				}
+			});
+
+			purchasedItems = (FruitTuple[]) itemBuffer
+					.toArray(new FruitTuple[itemBuffer.size()]);
+		
 		}
 		
-		// Sort list in ascending order by price; comparator enforces this for custom
-		// FruitTuple type
-		Collections.sort(itemBuffer, new Comparator<FruitTuple>() {
-			public int compare(FruitTuple a, FruitTuple b) {
-				return (a.price > b.price ?  1  : 
-						a.price < b.price ? -1  : 0);
-			}
-		});
-		
-		purchasedItems = (FruitTuple[]) itemBuffer.toArray(new FruitTuple[itemBuffer.size()]);
 		setContentView(R.layout.activity_sales_payment);
 		updateViews();
 	}
@@ -146,7 +155,9 @@ public class SalesPaymentActivity extends Activity {
 	// The *best* way of dividing up the purchase into its various fruit-level components.
 	// Existing numCoupons and numTradeIns used as decrementing counters for total still available
 	// to apply to purchase.
-	private void submit() {
+	public void submit() {
+		if (purchasedItems == null || purchasedItems.length == 0) return;
+		
 		String currItem = purchasedItems[0].name;
 		String customer = parseCustomer();
 		int incrCoupons = 0;
@@ -168,6 +179,7 @@ public class SalesPaymentActivity extends Activity {
 			if (i + 1 == purchasedItems.length || !purchasedItems[i + 1].name.equals(purchasedItems[i].name)) {
 				int num = purchasedItems[i].amount;
 				currStand.addPurchase(this, currItem, num, incrCoupons, incrTradeIns, incrCash, customer);
+				
 				incrCoupons = 0;
 				incrTradeIns = 0;
 				incrCash = 0.0;
@@ -203,5 +215,4 @@ public class SalesPaymentActivity extends Activity {
 			amount = amt;
 		}
 	}
-
 }

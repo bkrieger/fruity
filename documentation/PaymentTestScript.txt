@@ -1,0 +1,226 @@
+~ SalesPaymentActivity UI Tests ~
+
+We (read: Tiernan) ran into substantial issues implementing automated JUnit
+tests for SalesPaymentActivity in our app. These issues appear to stem from the
+fact that the functionality of this app is dependent not only on information
+presented in the prior screen of the app, but also on database information
+entered during the initial setup process of the app. Attempts to sufficiently
+populate this data to prevent the return of null references in our JUnit tests
+were fruitless, so Tiernan opted to write up a set of human-facing tests to
+cover the testing requirement for Iteration II.
+
+NOTE: All tests described below assume that a price of $1.00 was entered for
+apples at inventory, and a price of $2.00 was entered for orange at inventory.
+All scripts begin at SalesSelectionActivity, the screen prior to
+SalesPaymentActivity. The behavior of SalesSummaryActivity serves as the 
+check that everything wrote to the database correctly, as this data was pulled
+directly from the database at activity creation.
+
+Test Name: NoPaymentNoPurchase
+Input Case: No items were purchased from the SalesSelectActivity
+Script: 
+        Select "Proceed To Payment!" 
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $0.00
+         SalesPaymentActivity.Coupons: 0
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: nothing
+
+Test Name: OneItemAllCash
+Input Case: One buys a singular class of item, pays with all cash
+Script: 
+        Select "Whole Fruit"
+        Add 3 Apples
+        Return
+        Select "Proceed To Payment!" 
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $3.00
+         SalesPaymentActivity.Coupons: 0 
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 3 for $3.00"
+
+Test Name: OneItemAllRedeemed
+Input Case: One buys a singular class of item, pays with solely non-cash methods
+Script: 
+        Select "Whole Fruit"
+        Add 3 Apples
+        Return
+        Select "Proceed To Payment!" 
+        Add 2 Coupons
+        Add 1 Trade-In
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $0.00
+         SalesPaymentActivity.Coupons: 2
+         SalesPaymentActivity.TradeIns: 1
+         SalesSummaryActivity: "Apple: 3 for 2C, 1T"
+
+Test Name: OneItemMultiplePaymentMethods
+Input Case: One buys a singular class of item, pays with multiple types of payment
+Script: 
+        Select "Whole Fruit"
+        Add 3 Apples
+        Return
+        Select "Proceed To Payment!" 
+        Add 1 Coupon
+        Add 1 Trade-In
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $1.00
+         SalesPaymentActivity.Coupons: 1 
+         SalesPaymentActivity.TradeIns: 1
+         SalesSummaryActivity: "Apple: 3 for $1.00, 1C, 1T"
+
+Test Name: MultiItemAllCash
+Input Case: One buys multiple types of items, pays with all cash
+Script: 
+        Select "Whole Fruit"
+        Add 1 Apple
+        Add 1 Orange
+        Return
+        Select "Proceed To Payment!" 
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $3.00
+         SalesPaymentActivity.Coupons: 0 
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 1 for $1.00", "Orange: 2 for $2.00"
+
+Test Name: MultiItemAllRedeemed
+Input Case: One buys different kinds of items via redeemable methods
+Script: 
+        Select "Whole Fruit"
+        Add 1 Orange
+        Add 1 Apple
+        Return
+        Select "Proceed To Payment!" 
+        Add 2 Coupons
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $2.00
+         SalesPaymentActivity.Coupons: 0 
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 1 for 1C", "Orange: 1 for 1C"
+
+Test Name: MultiItemRedeemGoesToCheaper
+Input Case: One buys different kinds of items, the cheapest are redeemed first
+Script: 
+        Select "Whole Fruit"
+        Add 1 Orange
+        Add 1 Apple
+        Return
+        Select "Proceed To Payment!" 
+        Add 1 Coupon
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $2.00
+         SalesPaymentActivity.Coupons: 1
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 1 for 1C", "Orange: 1 for $2.00"
+
+Test Name: MultiItemMixed
+Input Case: One buys different kinds of items, they get paid for in many ways
+Script: 
+        Select "Whole Fruit"
+        Add 1 Orange
+        Add 2 Apple
+        Return
+        Select "Proceed To Payment!" 
+        Add 1 Coupons
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $3.00
+         SalesPaymentActivity.Coupons: 1 
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 2 for $1.00, 1C", "Orange: 1 for $2.00"
+
+Test Name: CouponsStayInBounds
+Input Case: Hitting the +- buttons more tha needed doesn't cause counters to
+break bounds.
+Script: 
+        Select "Whole Fruit"
+        Add 1 Orange
+        Add 1 Apple
+        Return
+        Select "Proceed To Payment!" 
+        Add 3 Coupons
+        (* Check if Coupons == 2 *)
+        Subtract 4 Coupons
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $3.00
+         SalesPaymentActivity.Coupons: 2 at check, 0 at end
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 1 for $1.00", "Orange: 1 for $2.00"
+
+Test Name: RedeemablesMixedStayInBounds
+Input Case: Check that redeemables share common upper and lower bounds via
+their sums
+Script: 
+        Select "Whole Fruit"
+        Add 2 Orange
+        Add 2 Apple
+        Return
+        Select "Proceed To Payment!" 
+        Add 3 Coupons
+        Add 2 Trade-Ins
+        (* Check if Coupons == 3, Trade-Ins = 1 *)
+        Add 4 Coupons
+        Subtract 1 Trade-In
+        (* Check if Coupons == 3, Trade-Ins = 0 *)
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $2.00
+         SalesPaymentActivity.Coupons: 3
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 2 for 2T", "Orange: 1 for $2.00, 1T"
+
+Test Name: DonationsSolely
+Input Case: Check that solitary donations function properly
+Script: 
+        Select "Proceed To Payment!" 
+        Enter $2.00 for Donation
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $0.00
+         SalesPaymentActivity.Coupons: 0
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Donation: 1 for $2.00"
+
+Test Name: DonationsCollective
+Input Case: Check that donations work alongside other payment options
+Script: 
+        Add 1 Apple
+        Add 1 Orange
+        Select "Proceed To Payment!" 
+        Add 1 Coupon
+        Enter $2.00 for Donation
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $2.00
+         SalesPaymentActivity.Coupons: 1
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Donation: 1 for $2.00", "Apple: 1 for 1C",
+         "Orange: 1 for $2.00"
+
+Test Name: PlusMinusFunctionProperly
+Input Case: Check that input methods work
+Script: 
+        Add 3 Apple
+        Add 3 Orange
+        Select "Proceed To Payment!" 
+        Add 1 Coupon
+        Add 1 Trade-In
+        (* Check if both coupons and trade-ins 1 *)
+        Remove 1 Coupon
+        Remove 1 Trade-In
+        (* Check if both coupons and trade-ins 0 *)
+        Select "End Transaction!"
+Expected Output:
+         SalesPaymentActivity.Cash: $9.00
+         SalesPaymentActivity.Coupons: 0
+         SalesPaymentActivity.TradeIns: 0
+         SalesSummaryActivity: "Apple: 3 for $3.00", "Orange: 6 for $6.00"
+
