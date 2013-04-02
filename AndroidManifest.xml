@@ -59,6 +59,10 @@
             android:label="@string/title_activity_inventory_postprocess" >
         </activity>
         <activity
+            android:name="edu.upenn.cis.fruity.SalesReadyForSalesActivity"
+            android:label="@string/title_activity_ready_to_sell" >
+        </activity>
+        <activity
             android:name="edu.upenn.cis.fruity.SalesSummaryActivity"
             android:label="@string/title_activity_sales_summary" >
         </activity>
