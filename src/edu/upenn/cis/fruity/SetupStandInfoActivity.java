@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -141,6 +142,11 @@ public class SetupStandInfoActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
 
 	public void onInventoryPreprocessButtonClick(View v) {
 		EditText cashBoxInput = (EditText) findViewById(R.id.standInfo_cashBoxInput);

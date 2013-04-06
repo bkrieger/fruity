@@ -16,6 +16,11 @@ public class FinalSalesSummaryActivity extends Activity {
 		readyText.setText("Sales and stuff!");
 	}
 	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
+	
 	public void onFinishedButtonClick(View view) {
 		Intent i = new Intent(this, MainActivity.class);
 		startActivityForResult(i, FinalSalesSummary_ID);

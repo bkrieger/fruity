@@ -32,6 +32,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(ProcessedInventoryItem.CREATE_TABLE);
 		db.execSQL(EndInventoryItem.CREATE_TABLE);
 		db.execSQL(Purchase.CREATE_TABLE);
+		db.execSQL(School.CREATE_TABLE);
+
+		prepopulateDatabase(db);
+	}
+
+	private void prepopulateDatabase(SQLiteDatabase db) {
+
+		// prepopulate schools
+		String[] schools = new String[] { "Gideon Elementary",
+				"Locke Elementary", "Bryant Elementary", "Lea Elementary",
+				"Alexander Wilson Elementary", "Huey Elementary",
+				"Comegys Elementary", "Shaw Middle School",
+				"Hardy Williams Middle School", "Pepper Middle School",
+				"Freire Charter School", "Comm Tech HS",
+				"High School of the Future", "Auden Reid HS",
+				"Strawberry Mansion HS", "West Philadelphia HS", "Sayre HS",
+				"University City HS", "Bartram HS", "Robeson HS" };
+
+		for (String schoolName : schools) {
+			School school = new School(schoolName);
+			db.insert(School.TABLE_NAME, null, school.getContent());
+		}
 	}
 
 	// does nothing for now
@@ -148,6 +170,66 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ " IS ?", new String[] { Long.toString(fruitStand.id) });
 
 		return result;
+	}
+
+	/*
+	 * Methods for School
+	 */
+
+	// returns an array of all the School names (with "Other" at the end)
+	public synchronized String[] getSchoolsWithOther() {
+		final SQLiteDatabase db = this.getReadableDatabase();
+		final Cursor cursor = db.query(School.TABLE_NAME, School.FIELDS, null,
+				null, null, null, null, null);
+		if (cursor == null || cursor.isAfterLast()) {
+			return null;
+		}
+
+		String[] items;
+		if (cursor.moveToFirst()) {
+			items = new String[cursor.getCount() + 1];
+			for (int i = 0; i < cursor.getCount(); i++) {
+				School item = new School(cursor);
+				items[i] = item.name;
+				cursor.moveToNext();
+			}
+			items[cursor.getCount()] = "Other";
+		} else {
+			items = new String[0];
+		}
+		cursor.close();
+
+		return items;
+	}
+
+	// Inserts or updates a School in the database
+	public synchronized boolean putSchool(final School school) {
+		boolean success = false;
+		int result = 0;
+		final SQLiteDatabase db = this.getWritableDatabase();
+		// Update a School
+		if (school.id > -1) {
+			result = db.update(School.TABLE_NAME, school.getContent(),
+					School.COL_ID + " IS ?",
+					new String[] { String.valueOf(school.id) });
+		}
+
+		// If we were able to update
+		if (result > 0) {
+			success = true;
+		} else {
+			// Unable to update, insert instead
+			final long id = db.insert(School.TABLE_NAME, null,
+					school.getContent());
+
+			if (id > -1) {
+				// update the School object with its now valid ID
+				school.id = id;
+				success = true;
+			}
+		}
+
+		return success;
 	}
 
 	/*
@@ -498,8 +580,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	protected synchronized Purchase[] getPurchasesByFruitStand(
 			final long fruit_stand_id) {
 		final SQLiteDatabase db = this.getReadableDatabase();
-		final Cursor cursor = db.query(Purchase.TABLE_NAME,
-				Purchase.FIELDS, Purchase.COL_FRUIT_STAND_ID + " IS ?",
+		final Cursor cursor = db.query(Purchase.TABLE_NAME, Purchase.FIELDS,
+				Purchase.COL_FRUIT_STAND_ID + " IS ?",
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
@@ -530,8 +612,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		final SQLiteDatabase db = this.getWritableDatabase();
 		// Update a Purchase
 		if (purchase.id > -1) {
-			result = db.update(Purchase.TABLE_NAME,
-					purchase.getContent(), Purchase.COL_ID + " IS ?",
+			result = db.update(Purchase.TABLE_NAME, purchase.getContent(),
+					Purchase.COL_ID + " IS ?",
 					new String[] { String.valueOf(purchase.id) });
 		}
 

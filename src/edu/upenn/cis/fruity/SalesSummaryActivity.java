@@ -38,6 +38,11 @@ public static final int SalesSummaryActivity_ID = 14;
 			purchaseListView.setAdapter(adapter);
 		}
 	}
+	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
 
 	private String[] generatePurchaseStrings(Purchase[] purchases) {
 		String[] outArr = new String[purchases.length];

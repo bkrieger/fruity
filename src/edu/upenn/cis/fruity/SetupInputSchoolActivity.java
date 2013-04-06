@@ -1,5 +1,7 @@
 package edu.upenn.cis.fruity;
 
+import edu.upenn.cis.fruity.database.DatabaseHandler;
+import edu.upenn.cis.fruity.database.School;
 import android.os.Bundle;
 
 import android.app.Activity;
@@ -28,13 +30,16 @@ public class SetupInputSchoolActivity extends Activity {
 		return true;
 	} 
 	
-	// TODO: Add logging of new schools inputed, to be displayed on
-	// prior screen at later uses of app?
 	public void onStandInfoButtonPress(View v) {
 		Intent i = new Intent(this,EnterStaffActivity.class);
 		
 		EditText schoolName = (EditText) findViewById(R.id.schoolInput_schoolName);
-		i.putExtra("schoolName", schoolName.getText().toString());
+		
+		String newSchoolName = schoolName.getText().toString();
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		dh.putSchool(new School(newSchoolName));
+		
+		i.putExtra("schoolName", newSchoolName);
 		
 		startActivityForResult(i, EnterStaffActivity_ID);
 	}

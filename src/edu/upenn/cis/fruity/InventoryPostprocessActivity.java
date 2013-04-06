@@ -48,6 +48,11 @@ public class InventoryPostprocessActivity extends Activity {
 		return true;
 	}
 	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
+	
 	public void addListenerOnRadioButton(){ 
 		radioFruitPriceGroup = (RadioGroup)findViewById(R.id.radioFruitPrices);
 		radioFruitPriceGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {

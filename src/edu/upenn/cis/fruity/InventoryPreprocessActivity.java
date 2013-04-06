@@ -31,6 +31,11 @@ public class InventoryPreprocessActivity extends Activity {
 		return true;
 	} 
 	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
+	
 	public void onInventoryPostprocessButtonClick(View view){
 		parseNumberStartInventoryInput();
 		saveStartInventoryData();

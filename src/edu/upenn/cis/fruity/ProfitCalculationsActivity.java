@@ -89,6 +89,11 @@ public class ProfitCalculationsActivity extends Activity{
 		numCorrectDisplay.setText("0/"+numEquations);
 	}
 	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
+	
 	/**
 	 * Updates a TextView in an equation based on the user's input into an EditText box
 	 * in a previous equation that it depends on

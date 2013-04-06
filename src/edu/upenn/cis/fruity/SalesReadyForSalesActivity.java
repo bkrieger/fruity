@@ -19,6 +19,11 @@ public class SalesReadyForSalesActivity extends Activity {
 		readyText.setText("Insert commandment to radiate optimism here");
 	}
 	
+	public void onBackPressed() {
+		//back not allowed
+	}
+
+	
 	public void onReadyButtonClick(View view) {
 		Intent i = new Intent(this, SalesSummaryActivity.class);
 		startActivityForResult(i, SalesReadyForSalesActivity_ID);

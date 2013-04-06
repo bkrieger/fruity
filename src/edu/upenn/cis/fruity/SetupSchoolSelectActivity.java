@@ -1,5 +1,6 @@
 package edu.upenn.cis.fruity;
 
+import edu.upenn.cis.fruity.database.DatabaseHandler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -24,29 +25,9 @@ public class SetupSchoolSelectActivity extends Activity {
 		
 		ListView schoolListView = (ListView) findViewById(R.id.list_view_schools);
 
-		// TODO: Access database store of schools 
-	    final String[] items = new String[] {
-	    		"Gideon Elementary",
-	    		"Locke Elementary",
-	    		"Bryant Elementary",
-	    		"Lea Elementary",
-	    		"Wilson Elementary",
-	    		"Huey Elementary",
-	    		"Comegys Elementary",
-	    		"Shaw Middle School",
-	    		"Hardy Williams Middle School",
-	    		"Pepper Middle School",
-	    		"Freire Charter School",
-	    		"Comm Tech HS",
-	    		"High School of the Future",
-	    		"Auden Reid HS",
-	    		"Strawberry Mansion HS",
-	    		"West Philadelphia HS",
-	    		"Sayre HS",
-	    		"University City HS",
-	    		"Bartram HS",
-	    		"Robeson HS",
-	    		"Other" };
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		final String[] items = dh.getSchoolsWithOther();
+		
 	    ArrayAdapter<String> adapter =
 	      new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
 
