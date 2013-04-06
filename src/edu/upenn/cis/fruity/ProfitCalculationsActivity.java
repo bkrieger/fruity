@@ -155,7 +155,7 @@ public class ProfitCalculationsActivity extends Activity{
 		FruitStand currentStand = dh.getCurrentFruitStand();
 		currentStand.addTotals(this, expectedTotalCosts, totalRev, expectedFinalCashBox);
 		
-		Intent i = new Intent(this, MainActivity.class);
+		Intent i = new Intent(this, FinalSalesSummaryActivity.class);
 		startActivityForResult(i, ProfitCalculationsActivity_ID);
 	}
 }

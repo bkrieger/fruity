@@ -90,6 +90,10 @@
             android:name="edu.upenn.cis.fruity.ProfitCalculationsActivity"
             android:label="@string/title_activity_calculations" >
         </activity>
+        <activity
+            android:name="edu.upenn.cis.fruity.FinalSalesSummaryActivity"
+            android:label="@string/title_activity_final_summary" >
+        </activity>
     </application>
 
 </manifest>
