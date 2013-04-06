@@ -12,6 +12,7 @@
     <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>
     <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
     <string name="title_activity_ready_to_sell">Ready To Sell?</string>
+    <string name="title_activity_ready_to_calculate">Ready To Calculate?</string>
         
     <string name="schoolName">School Name: </string>
 	<string name="todaysDate">Today\'s Date:  </string>

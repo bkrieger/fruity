@@ -78,6 +78,10 @@
             android:name="edu.upenn.cis.fruity.SalesPaymentActivity"
             android:label="@string/title_activity_sales_payment" >
         </activity>
+         <activity
+            android:name="edu.upenn.cis.fruity.SalesReadyForCalculationsActivity"
+            android:label="@string/title_activity_ready_to_calculate" >
+        </activity>
         <activity
             android:name="edu.upenn.cis.fruity.RevenueCalculationsActivity"
             android:label="@string/title_activity_calculations" >

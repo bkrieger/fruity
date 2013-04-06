@@ -82,7 +82,7 @@ public static final int SalesSummaryActivity_ID = 14;
 	
 	// TODO: Probably want to have some sort of confirmation here
 	public void onEndTrackingButtonClick(View view){
-		Intent i = new Intent(this, RevenueCalculationsActivity.class);
+		Intent i = new Intent(this, SalesReadyForCalculationsActivity.class);
 		startActivityForResult(i, SalesSummaryActivity_ID);
 	}
 }
