@@ -88,7 +88,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		final Cursor cursor = db.query(FruitStand.TABLE_NAME,
 				FruitStand.FIELDS, null, null, null, null, null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			FruitStand[] temp = new FruitStand[0];
+			return temp;
 		}
 
 		FruitStand[] items;
@@ -182,7 +183,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		final Cursor cursor = db.query(School.TABLE_NAME, School.FIELDS, null,
 				null, null, null, null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			String[] temp = new String[1];
+			temp[0] = "Other";
+			return temp;
 		}
 
 		String[] items;
@@ -307,7 +310,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			StaffMember[] temp = new StaffMember[0];
+			return temp;
 		}
 
 		StaffMember[] items;
@@ -375,7 +379,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			StartInventoryItem[] temp = new StartInventoryItem[0];
+			return temp;
 		}
 
 		StartInventoryItem[] items;
@@ -445,7 +450,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			ProcessedInventoryItem[] temp = new ProcessedInventoryItem[0];
+			return temp;
 		}
 
 		ProcessedInventoryItem[] items;
@@ -516,7 +522,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			EndInventoryItem[] temp = new EndInventoryItem[0];
+			return temp;
 		}
 
 		EndInventoryItem[] items;
@@ -585,7 +592,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(fruit_stand_id) }, null, null,
 				null, null);
 		if (cursor == null || cursor.isAfterLast()) {
-			return null;
+			Purchase[] temp = new Purchase[0];
+			return temp;
 		}
 
 		Purchase[] items;
