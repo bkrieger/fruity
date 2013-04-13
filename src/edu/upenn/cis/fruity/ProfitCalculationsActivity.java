@@ -57,12 +57,15 @@ public class ProfitCalculationsActivity extends Activity{
 		SQLiteDatabase db = dh.getReadableDatabase();
 		Cursor c = db.rawQuery("SELECT sum(amount_cash) FROM Purchase " +
 				"WHERE fruit_stand_id ="+id + " and item_name = 'donation'", null);
-		if(c.moveToFirst()){			  
- 			donations = Double.parseDouble(c.getString(0));
+
+		if(c!=null && c.moveToFirst()){
+			donations = c.getDouble(0);
 		}
+		c.close();
+
 		TextView donationsText = (TextView)findViewById(R.id.calc_donations);
 		donationsText.setText(parser.convertToCurrency(donations));		
-		
+
 		expectedTotalCosts = currentStand.stand_cost + currentStand.smoothie_cost + currentStand.additional_cost;
 		expectedNetProfit = totalRev - expectedTotalCosts;
 		expectedFinalCashBox = currentStand.initial_cash + expectedNetProfit + donations;
