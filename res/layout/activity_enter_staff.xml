@@ -162,26 +162,28 @@
     	</LinearLayout>
     
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dip" >
-            
-		<Button
-            android:id="@+id/enterStaffButton"
-            android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dip" >
+
+        <Button
+            android:id="@+id/inventoryPreprocessButton"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:onClick="onStandInfoButtonClick"
-            android:text="Stand Information" />
-		<Button
-            android:id="@+id/enterStaffButton"
+            android:layout_weight="0.45"
+            android:onClick="onInventoryPreprocessButtonClick"
+            android:text="@string/inventoryPreprocess" />
+
+        <Button
+            android:id="@+id/enterExtraStaffButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="right"
             android:onClick="onExtraStaffButtonClick"
-            android:text="Add More" />
-		
-	</LinearLayout>
+            android:text="Add More Staff" />
+    </LinearLayout>
+
 </LinearLayout>

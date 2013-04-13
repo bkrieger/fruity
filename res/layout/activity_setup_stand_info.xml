@@ -229,12 +229,12 @@
         </LinearLayout>
         
         <Button
-            android:id="@+id/inventoryBtn"
+            android:id="@+id/enterStaffBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="onInventoryPreprocessButtonClick"
-            android:text="@string/inventoryPreprocess" />
+            android:onClick="onEnterStaffButtonClick"
+            android:text="@string/title_activity_enter_staff" />
     </LinearLayout>
 
 </LinearLayout>
