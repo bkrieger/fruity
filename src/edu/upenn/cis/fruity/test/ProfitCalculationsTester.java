@@ -7,7 +7,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import edu.upenn.cis.fruity.MainActivity;
+import edu.upenn.cis.fruity.FinalSalesSummaryActivity;
 import edu.upenn.cis.fruity.ProfitCalculationsActivity;
 import edu.upenn.cis.fruity.R;
 import edu.upenn.cis.fruity.database.DatabaseHandler;
@@ -103,7 +103,7 @@ public class ProfitCalculationsTester extends ActivityInstrumentationTestCase2<P
 	
 	public void testProfitCalculationsButtonClick() {
 		ActivityMonitor activityMonitor = 
-				getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
+				getInstrumentation().addMonitor(FinalSalesSummaryActivity.class.getName(), null, false);
 		
 		try{
 			activity.runOnUiThread(new Runnable(){
@@ -126,8 +126,8 @@ public class ProfitCalculationsTester extends ActivityInstrumentationTestCase2<P
 			assertEquals(-10.0, totals.final_cash);
 			
 			// next activity is opened and captured.
-			MainActivity nextActivity = 
-					(MainActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+			FinalSalesSummaryActivity nextActivity = 
+					(FinalSalesSummaryActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
 			assertNotNull(nextActivity);
 			nextActivity.finish();
 		}
