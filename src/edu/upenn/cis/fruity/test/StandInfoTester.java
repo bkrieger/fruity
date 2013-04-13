@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import edu.upenn.cis.fruity.InventoryPreprocessActivity;
+import edu.upenn.cis.fruity.EnterStaffActivity;
 import edu.upenn.cis.fruity.R;
 import edu.upenn.cis.fruity.SetupStandInfoActivity;
 import edu.upenn.cis.fruity.database.DatabaseHandler;
@@ -43,7 +43,7 @@ public class StandInfoTester extends ActivityInstrumentationTestCase2<SetupStand
 		setActivityInitialTouchMode(false);
 		
 		activity = getActivity();
-		button = (Button)activity.findViewById(R.id.inventoryBtn);
+		button = (Button)activity.findViewById(R.id.enterStaffBtn);
 		spinner = (Spinner)activity.findViewById(R.id.standInfo_weatherInput);
 		seekbar = (SeekBar)activity.findViewById(R.id.standInfo_temperatureInput);
 		cashBoxText = (EditText)activity.findViewById(R.id.standInfo_cashBoxInput);
@@ -186,9 +186,9 @@ public class StandInfoTester extends ActivityInstrumentationTestCase2<SetupStand
 		assertEquals("30", additionalCostText.getText().toString());
 	}
 
-	public void testZPreprocessButtonClickAndSaving() {	
+	public void testZEnterStaffButtonClickAndSave() {	
 		ActivityMonitor activityMonitor = 
-				getInstrumentation().addMonitor(InventoryPreprocessActivity.class.getName(), null, false);
+				getInstrumentation().addMonitor(EnterStaffActivity.class.getName(), null, false);
 
 		try{
 			activity.runOnUiThread(new Runnable(){
@@ -222,12 +222,12 @@ public class StandInfoTester extends ActivityInstrumentationTestCase2<SetupStand
 			assertEquals(currentStand.additional_cost, 30.0);
 			
 			 // next activity is opened and captured.
-			InventoryPreprocessActivity nextActivity = 
-					(InventoryPreprocessActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+			EnterStaffActivity nextActivity = 
+					(EnterStaffActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
 			assertNotNull(nextActivity);
 		}
 		catch (NullPointerException e){
-			System.out.println("NullPointerException caught in StandInfoTester testPreprocessButtonClick().");
+			System.out.println("NullPointerException caught in StandInfoTester testEnterStaffButtonClickAndSave().");
 		}
 	}
 }

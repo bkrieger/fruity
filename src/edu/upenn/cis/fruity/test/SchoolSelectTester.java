@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ListView;
-import edu.upenn.cis.fruity.EnterStaffActivity;
 import edu.upenn.cis.fruity.R;
 import edu.upenn.cis.fruity.SetupInputSchoolActivity;
 import edu.upenn.cis.fruity.SetupSchoolSelectActivity;
+import edu.upenn.cis.fruity.SetupStandInfoActivity;
 
 public class SchoolSelectTester extends ActivityInstrumentationTestCase2<SetupSchoolSelectActivity> {
 
@@ -31,7 +31,7 @@ public class SchoolSelectTester extends ActivityInstrumentationTestCase2<SetupSc
 	public void testSchoolNameSelectClick() {
 		final String schoolName = "Locke Elementary";
 		final int pos = 1;
-		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(EnterStaffActivity.class.getName(), null, false);
+		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(SetupStandInfoActivity.class.getName(), null, false);
 
 		activity.runOnUiThread(new Runnable(){
 			public void run(){
@@ -43,7 +43,7 @@ public class SchoolSelectTester extends ActivityInstrumentationTestCase2<SetupSc
 		});
 		getInstrumentation().waitForIdleSync();
 
-		EnterStaffActivity nextActivity = (EnterStaffActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+		SetupStandInfoActivity nextActivity = (SetupStandInfoActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
 		assertNotNull(nextActivity);
 		nextActivity.finish();
 	}
