@@ -6,7 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_sales_demographic">Customer</string>
     <string name="title_activity_sales_payment">Payment</string>
-    <string name="title_activity_enter_staff">Select Staff</string>
+    <string name="title_activity_enter_staff">Enter Staff</string>
     <string name="title_activity_setup_select_school">Select School</string>
     <string name="title_activity_setup_stand_info">Stand Information</string>
     <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>

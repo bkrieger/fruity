@@ -14,14 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SetupStandInfoActivity extends Activity {
 
-	public static final int InventoryPreprocessActivity_ID = 8;
+	//public static final int InventoryPreprocessActivity_ID = 8;
+	public static final int EnterStaffActivity_ID = 8;
 	public static Intent intent;
 	private String schoolName;
 	private int month, day, year;
@@ -148,7 +148,7 @@ public class SetupStandInfoActivity extends Activity {
 	}
 
 
-	public void onInventoryPreprocessButtonClick(View v) {
+	public void onEnterStaffButtonClick(View v) {
 		EditText cashBoxInput = (EditText) findViewById(R.id.standInfo_cashBoxInput);
 		int cashBox = Integer.parseInt(cashBoxInput.getText().toString());
 		
@@ -167,8 +167,8 @@ public class SetupStandInfoActivity extends Activity {
 				weather, cashBox, fruitStandCost, smoothieCost, additionalCosts);
 		//Then in order to save the fruit stand to the database, use the handler as shown below.
 		dh.putFruitStand(stand);
-		
-		Intent i = new Intent(this, InventoryPreprocessActivity.class);
-		startActivityForResult(i, InventoryPreprocessActivity_ID);
+
+		Intent i = new Intent(this, EnterStaffActivity.class);
+		startActivityForResult(i, EnterStaffActivity_ID);
 	}
 }
