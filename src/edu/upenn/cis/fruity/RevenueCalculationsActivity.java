@@ -55,11 +55,13 @@ public class RevenueCalculationsActivity extends Activity {
 				"as numBoughtWithCash FROM Purchase WHERE fruit_stand_id ="+id + " GROUP BY item_name", null);
 		getNumItemsSold(c);
 		setNumItemsSold();
-
+		c.close();
+		
 		Cursor c2 = db.rawQuery("SELECT item_name, price FROM ProcessedInventoryItem " +
 				"WHERE fruit_stand_id ="+id + " GROUP BY item_name", null);
 		getItemPrices(c2);
 		setItemPrices();
+		c2.close();
 		
 		calculateExpectedRevenue();
 		
