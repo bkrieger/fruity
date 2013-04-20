@@ -22,6 +22,7 @@ public class SetupStandInfoActivity extends Activity {
 
 	//public static final int InventoryPreprocessActivity_ID = 8;
 	public static final int EnterStaffActivity_ID = 8;
+	public static final int EnterDateActivity_ID = 20;
 	public static Intent intent;
 	private String schoolName;
 	private int month, day, year;
@@ -45,7 +46,7 @@ public class SetupStandInfoActivity extends Activity {
 		schoolNameView.setText(schoolName);
 
 		// Set date
-		TextView dateView = (TextView) findViewById(R.id.standInfo_dateField);
+		EditText dateView = (EditText) findViewById(R.id.standInfo_dateField);
 		Calendar calendar = Calendar.getInstance();
 		//TODO: day of week not stored in database
 		String dayOfWeek;
@@ -146,8 +147,7 @@ public class SetupStandInfoActivity extends Activity {
 	public void onBackPressed() {
 		//back not allowed
 	}
-
-
+	
 	public void onEnterStaffButtonClick(View v) {
 		EditText cashBoxInput = (EditText) findViewById(R.id.standInfo_cashBoxInput);
 		int cashBox = Integer.parseInt(cashBoxInput.getText().toString());
