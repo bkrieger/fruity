@@ -24,8 +24,21 @@ public class FinalSalesSummaryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculations_final_summary);
+		
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		Totals t = dh.getCurrentFruitStand().getTotals(this);
+		double cost = t.cost;
+		double revenue = t.revenue;
+		double profit = revenue-cost;
+		
 		TextView readyText = (TextView) findViewById(R.id.readyText);
-		readyText.setText("Sales and stuff!");
+		if(profit >0) {
+			readyText.setText("You made money! Awesome!");
+		} else if(profit == 0) {
+			readyText.setText("You broke even this time! Pretty good!");
+		} else {
+			readyText.setText("Well, you can't make money every time. Better luck next time!");
+		}
 
 		Parse.initialize(this, "1Pytm1PUnjYg3fiiuFsnwXjVIYK4gXEYcSuK4WA3",
 				"4UMJgePt8yhCABvpI0Lnve57CqAXUldBJ3u45VZv");
