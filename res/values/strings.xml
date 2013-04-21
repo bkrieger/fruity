@@ -9,7 +9,7 @@
     <string name="title_activity_enter_staff">Enter Staff</string>
     <string name="title_activity_setup_select_school">Select School</string>
     <string name="title_activity_setup_stand_info">Stand Information</string>
-    <string name="title_activity_inventory_preprocess">Whole Fruit Starting Inventory</string>
+    <string name="title_activity_inventory_preprocess">Starting Inventory</string>
     <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>
     <string name="title_activity_ready_to_sell">Ready To Sell?</string>
     <string name="title_activity_ready_to_calculate">Ready To Calculate?</string>
@@ -54,7 +54,7 @@
     <string name="zeroDollars">$0.00</string>
     <string name="number">Number</string>
     <string name="pricePerUnit">Price/unit</string>
-	<string name ="frozenFruitBag">Frozen Fruit Bag</string>
+	<string name ="frozenFruitBag">  Frozen\nFruit Bag</string>
 	<string name="title_activity_calculations">Calculations</string>
 	<string name="multiply">x   </string>
 	<string name="add">   +   </string>
@@ -84,4 +84,13 @@
         <item>granola</item>
         <item>smoothie</item>
 	</string-array>
+	<string name="costEquation">Fruit Stand &#160; &#160;Smoothie&#160;&#160;Additional
+	    &#160;&#160;&#160;&#160;&#160;Total\n&#160;&#160;Cost&#160;&#160;&#160;&#160;&#160;&#160;
+	    &#160;&#160;+&#160;&#160;&#160;&#160;&#160;&#160;&#160;Cost&#160;&#160;&#160;&#160;&#160;+
+	    &#160;&#160;Costs&#160;&#160;&#160;&#160;&#160;=&#160;&#160;&#160;&#160;Costs</string>
+	<string name="netProfitEquation">Total Revenue - Total Costs = Net Profit</string>
+	<string name="cashBoxEquation">Initial&#160;&#160;&#160;&#160;+&#160;&#160;Donations + Net Profit = Cash Box\nCash Box
+	    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+	    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+	    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Total</string>
 </resources>
