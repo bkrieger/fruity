@@ -4,18 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/readyText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:gravity="center"/>
-
     <Button
         android:id="@+id/finishedButton"
         android:layout_width="fill_parent"
         android:layout_height="80dp"
-        android:onClick="onFinishedButtonClick"
-        android:text="Finished!" 
+        android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:layout_alignParentBottom="true"/>
+        android:onClick="onFinishedButtonClick"
+        android:text="Finished!" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/readyText"
+        android:gravity="center"
+        android:text="You&apos;re done! It&apos;s so much fun to sell fruit!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/readyText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="146dp"
+        android:gravity="center"
+        android:text="Medium Text" />
+
 </RelativeLayout>

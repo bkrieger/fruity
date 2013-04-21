@@ -15,8 +15,6 @@ public class SalesReadyForCalculationsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_ready_to_calculate);
-		TextView readyText = (TextView)findViewById(R.id.readyText);
-		readyText.setText("Insert commandment to learn mathematics here!");
 	}
 	
 	public void onReadyButtonClick(View view) {

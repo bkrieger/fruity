@@ -15,8 +15,6 @@ public class SalesReadyForSalesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_ready_to_sell);
-		TextView readyText = (TextView)findViewById(R.id.readyText);
-		readyText.setText("Insert commandment to radiate optimism here");
 	}
 	
 	public void onBackPressed() {
