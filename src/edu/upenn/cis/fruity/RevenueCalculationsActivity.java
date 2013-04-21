@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,6 @@ public class RevenueCalculationsActivity extends Activity {
 	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8
 	private double revenueInput[] = new double[numItems];
 	private double expectedRevenue[] = new double[numItems];
-	private boolean[] correct = new boolean[numItems];
 	private double totalExpectedRevenue = 0.0;
 	private double precision = 0.001;
 	
@@ -38,6 +38,10 @@ public class RevenueCalculationsActivity extends Activity {
 	
 	private int correctColor = android.R.attr.editTextBackground;
 	private int incorrectColor = Color.YELLOW;
+	private int numAttempts = 0;
+	private int attemptLimit = 3;
+	
+	private Button profitCalcButton;
 	
 	private ParseInputData parser = new ParseInputData();
 	
@@ -67,6 +71,9 @@ public class RevenueCalculationsActivity extends Activity {
 		
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
 		numCorrectDisplay.setText("0/"+numInputItems);
+		
+		profitCalcButton = (Button)findViewById(R.id.gotoProfitCalculationsBtn);
+		profitCalcButton.setEnabled(false);	
 	}
 
 	public void getNumItemsSold(Cursor c){		
@@ -96,7 +103,7 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("mixedBag")){
 	 				numItemsPurchased[6] = num;
 	 			}
-	 			else if(itemName.equals("frozenFruitBag")){
+	 			else if(itemName.equals("smoothie")){
 	 				numItemsPurchased[7] = num;
 	 			}
 	 			else if(itemName.equals("granola")){
@@ -151,7 +158,7 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("mixedBag")){
 	 				itemPrices[6] = price;
 	 			}
-	 			else if(itemName.equals("frozenFruitBag")){
+	 			else if(itemName.equals("smoothie")){
 	 				itemPrices[7] = price;
 	 			}
 	 			else if(itemName.equals("granola")){
@@ -194,12 +201,10 @@ public class RevenueCalculationsActivity extends Activity {
 			revenueInput[i] = parser.parseItemPrice(itemRevenueText); // actual revenue input
 
 			if(Math.abs(revenueInput[i] - expectedRevenue[i]) < precision){
-				correct[i] = true;
 				numCorrect++;
 				itemRevenueText.setBackgroundColor(correctColor);
 			}
-			else{
-				correct[i] = false;		
+			else{		
 				itemRevenueText.setBackgroundColor(incorrectColor);
 			}
 		}
@@ -217,10 +222,25 @@ public class RevenueCalculationsActivity extends Activity {
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
 		numCorrectDisplay.setText("" + numCorrect +"/"+numInputItems);
 		
+		numAttempts++;
+		
 		if(numCorrect < numInputItems){
 			Toast toast = Toast.makeText(getApplicationContext(),
 					"Incorrect revenue calculations are highlighted in yellow.", Toast.LENGTH_SHORT);
 			toast.show();
+			
+			if(numAttempts >= attemptLimit){
+				toast = Toast.makeText(getApplicationContext(),
+						"Please seek assistance to obtain the correct revenue calculations.", Toast.LENGTH_SHORT);
+				toast.show();
+				profitCalcButton.setEnabled(true);	
+			}
+		}
+		else{
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Congratulations! You may now move on to the profit calculations activity.", Toast.LENGTH_SHORT);
+			toast.show();
+			profitCalcButton.setEnabled(true);
 		}
 	}
 

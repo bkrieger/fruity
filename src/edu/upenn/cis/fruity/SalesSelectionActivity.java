@@ -269,7 +269,7 @@ public class SalesSelectionActivity extends Activity {
 		i.putExtra("ageCategory", age_category);
 		i.putExtra("isMale", isMale);
 		i.putExtra("mixedBag", mixedBags);
-		i.putExtra("frozenFruitBag", smoothies);
+		i.putExtra("smoothie", smoothies);
 		i.putExtra("granola", granola);
 		i.putExtra("apple", apples);
 		i.putExtra("orange", oranges);

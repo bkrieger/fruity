@@ -3,18 +3,13 @@ package edu.upenn.cis.fruity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 
 import edu.upenn.cis.fruity.database.DatabaseHandler;
-import edu.upenn.cis.fruity.database.EndInventoryItem;
 import edu.upenn.cis.fruity.database.FruitStand;
 import edu.upenn.cis.fruity.database.ProcessedInventoryItem;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;

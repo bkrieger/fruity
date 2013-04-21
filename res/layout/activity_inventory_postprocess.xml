@@ -400,12 +400,27 @@
         android:layout_marginLeft="10dp"
         android:orientation="horizontal" >
 
-        <TextView
+		<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mixedBag"
-            android:textSize="10sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+	        
+	        <ImageView
+	            android:id="@+id/mixedBag_img"
+	            android:layout_width="30dp"
+	            android:layout_height="28dp"
+	            android:src="@drawable/mixedbag"
+	            android:contentDescription="@string/mixedBag"/>
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/mixedBag"
+	            android:textSize="12sp"
+	            android:layout_marginLeft="60dp"/>
+        </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_postprocess_mixedBag"
             android:cursorVisible="true"
@@ -416,7 +431,7 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="50dp"/>
                 
         <EditText android:id="@+id/price_mixedBag"
             android:cursorVisible="true"
@@ -437,14 +452,29 @@
         android:layout_marginLeft="10dp"
         android:orientation="horizontal">
 
-        <TextView
+		<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/frozenFruitBag"
-            android:textSize="10sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+	        
+	        <ImageView
+	            android:id="@+id/smoothie_img"
+	            android:layout_width="30dp"
+	            android:layout_height="28dp"
+	            android:src="@drawable/smoothie"
+	            android:contentDescription="@string/smoothie"/>
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/smoothie"
+	            android:textSize="12sp"
+	            android:layout_marginLeft="60dp"/>
+        </RelativeLayout>
         
-        <EditText android:id="@+id/num_inv_postprocess_frozenFruitBag"
+        <EditText android:id="@+id/num_inv_postprocess_smoothie"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -453,9 +483,9 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="55dp"/>
                 
-        <EditText android:id="@+id/price_frozenFruitBag"
+        <EditText android:id="@+id/price_smoothie"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -474,34 +504,50 @@
         android:layout_marginLeft="10dp"
         android:orientation="horizontal">
            
-       	<TextView
+		<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/granola"
-            android:textSize="10sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+	        
+	        <ImageView
+	            android:id="@+id/granola_img"
+	            android:layout_width="30dp"
+	            android:layout_height="28dp"
+	            android:src="@drawable/granola"
+	            android:contentDescription="@string/granola"/>
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/granola"
+	            android:textSize="12sp"
+	            android:layout_marginLeft="60dp"/>
+        </RelativeLayout>
         
-        <EditText android:id="@+id/num_inv_postprocess_granola"
-            android:cursorVisible="true"
+        <TextView android:id="@+id/num_inv_postprocess_granola"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zero"
-            android:inputType="number"
             android:maxLength="3"
-            android:width="55dp"
+            android:width="45dp"
             android:textSize="12sp"
-            android:layout_marginLeft="115dp"/>
-                
-        <EditText android:id="@+id/price_granola"
-            android:cursorVisible="true"
+            android:layout_marginLeft="75dp"/>
+
+        <EditText
+            android:id="@+id/price_granola"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/zeroDollars"
+            android:layout_marginRight="10dp"
+            android:cursorVisible="true"
             android:inputType="numberDecimal"
-            android:singleLine="true"
             android:maxLength="7"
-            android:width="70dp"
-            android:textSize="12sp"/>
+            android:singleLine="true"
+            android:text="@string/zeroDollars"
+            android:textSize="12sp"
+            android:width="70dp"/>
+
 	</LinearLayout>
     
 	<LinearLayout
@@ -545,7 +591,7 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="50dp"/>
                 
         <EditText android:id="@+id/price_other1"
             android:cursorVisible="true"
@@ -584,7 +630,7 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="50dp"/>
                 
         <EditText android:id="@+id/price_other2"
             android:cursorVisible="true"

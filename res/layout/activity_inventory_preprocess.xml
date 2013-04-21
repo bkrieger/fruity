@@ -19,8 +19,8 @@
 	        
 	        <ImageView
 	            android:id="@+id/apple_img"
-	            android:layout_width="90dp"
-	            android:layout_height="88dp"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
 	            android:layout_marginLeft="5dp"
 	            android:src="@drawable/apple"
 	            android:contentDescription="@string/apple" />
@@ -31,7 +31,7 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/apple"
 	            android:textSize="20sp"
-	            android:textColor="@color/white"/>
+	            android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText
@@ -54,7 +54,7 @@
 	        <ImageView
 	            android:id="@+id/pear_img"
 	            android:layout_width="100dp"
-	            android:layout_height="88dp"
+	            android:layout_height="78dp"
 	            android:src="@drawable/pear"
 	            android:contentDescription="@string/pear"/>
 	        
@@ -64,7 +64,7 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/pear"
 	            android:textSize="20sp"
-	            android:textColor="@color/white"/>
+	            android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_pear"
@@ -93,8 +93,8 @@
 	        
 	        <ImageView
 	            android:id="@+id/orange_img"
-	            android:layout_width="90dp"
-	            android:layout_height="88dp"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
 	            android:layout_marginLeft="5dp"
 	            android:src="@drawable/orange"
 	            android:contentDescription="@string/orange"/>
@@ -105,7 +105,7 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/orange"
 	            android:textSize="20sp"
-	            android:textColor="@color/white"/>
+	            android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_orange"
@@ -127,7 +127,7 @@
 	        <ImageView
 	            android:id="@+id/banana_img"
 	            android:layout_width="100dp"
-	            android:layout_height="88dp"
+	            android:layout_height="78dp"
 	            android:src="@drawable/banana"
 	            android:contentDescription="@string/banana"/>
 	        
@@ -137,7 +137,7 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/banana"
 	            android:textSize="20sp"
-	            android:textColor="@color/white"/>
+	            android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_banana"
@@ -166,8 +166,8 @@
 	        
 	        <ImageView
 	            android:id="@+id/grapes_img"
-	            android:layout_width="90dp"
-	            android:layout_height="88dp"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
 	            android:layout_marginLeft="5dp"
 	            android:src="@drawable/grapes"
 	            android:contentDescription="@string/grapes"/>
@@ -178,7 +178,7 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/grapes"
 	            android:textSize="20sp"
-            	android:textColor="@color/white"/>
+            	android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_grapes"
@@ -200,8 +200,8 @@
 	        
 	        <ImageView
 	            android:id="@+id/kiwi_img"
-	            android:layout_width="90dp"
-	            android:layout_height="88dp"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
 	            android:layout_marginLeft="5dp"
 	            android:src="@drawable/kiwi"
 	            android:contentDescription="@string/kiwi"/>
@@ -212,10 +212,85 @@
 	            android:layout_centerInParent="true"
 	            android:text="@string/kiwi"
 	            android:textSize="20sp"
-	            android:textColor="@color/white"/>
+	            android:textColor="@color/blue"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_kiwi"
+            android:cursorVisible="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zero"
+            android:inputType="number"
+            android:maxLength="3"
+            android:width="55dp"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+	        
+	        <ImageView
+	            android:id="@+id/granola_img"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
+	            android:layout_marginLeft="15dp"
+	            android:src="@drawable/granola"
+	            android:contentDescription="@string/granola"/>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/granola"
+	            android:textSize="20sp"
+            	android:textColor="@color/blue"/>
+        </RelativeLayout>
+        
+        <EditText android:id="@+id/num_inv_preprocess_granola"
+            android:cursorVisible="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zero"
+            android:inputType="number"
+            android:maxLength="3"
+            android:width="55dp"
+            android:layout_marginRight="5dp"/>
+
+		<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+	        
+	        <ImageView
+	            android:id="@+id/frozenFruitBag_img"
+	            android:layout_width="80dp"
+	            android:layout_height="78dp"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/frozenfruitbag"
+	            android:contentDescription="@string/frozenFruitBag"/>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="@string/frozenFruitBag"
+	            android:textSize="20sp"
+	            android:textColor="@color/blue"/>
+        </RelativeLayout>
+        
+        <EditText android:id="@+id/num_inv_preprocess_frozenFruitBag"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
