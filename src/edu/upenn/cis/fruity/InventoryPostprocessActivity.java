@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -21,9 +22,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class InventoryPostprocessActivity extends Activity {
 	
 	private int numApples, numPears, numOranges, numBananas, numGrapes, numKiwis;
-	private int numMixedBags, numFrozenFruitBags, numGranola;
+	private int numGranola, numMixedBags, numSmoothies;
 	private double applePrice, pearPrice, orangePrice, bananaPrice, grapesPrice, kiwiPrice;
-	private double mixedBagPrice, frozenFruitBagPrice, granolaPrice;	
+	private double mixedBagPrice, smoothiePrice, granolaPrice;	
 	
 	private RadioGroup radioFruitPriceGroup;
 	EditText applePriceText;
@@ -31,12 +32,21 @@ public class InventoryPostprocessActivity extends Activity {
 	public static final int InventoryPostprocessActivity_ID = 10;
 	
 	private ParseInputData parser = new ParseInputData();
+	private Intent intent;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory_postprocess);
 		
+		intent = getIntent();
+
+		if (intent != null && intent.getExtras() != null) {
+			numGranola = (Integer) intent.getExtras().get("numGranola");
+		}
+		
+		TextView numGranolaText = (TextView)findViewById(R.id.num_inv_postprocess_granola);
+		numGranolaText.setText(String.valueOf(numGranola));
 		applePriceText = (EditText)findViewById(R.id.price_apple);
 		addListenerOnRadioButton();
 	}
@@ -128,8 +138,7 @@ public class InventoryPostprocessActivity extends Activity {
 		numGrapes = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_grapes));
 		numKiwis = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_kiwi));
 		numMixedBags = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_mixedBag));
-		numFrozenFruitBags = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_frozenFruitBag));
-		numGranola = parser.parseItemNum((EditText) findViewById(R.id.num_inv_postprocess_granola));
+		numSmoothies = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_smoothie));
 	}
 	
 	/**
@@ -143,7 +152,7 @@ public class InventoryPostprocessActivity extends Activity {
 		grapesPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_grapes));
 		kiwiPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_kiwi));
 		mixedBagPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_mixedBag));
-		frozenFruitBagPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_frozenFruitBag));
+		smoothiePrice = parser.parseItemPrice((EditText)findViewById(R.id.price_smoothie));
 		granolaPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_granola));
 	}
 	
@@ -161,7 +170,7 @@ public class InventoryPostprocessActivity extends Activity {
 		currentStand.addProcessedInventoryItem(this, "grapes", numGrapes, grapesPrice);
 		currentStand.addProcessedInventoryItem(this, "kiwi", numKiwis, kiwiPrice);
 		currentStand.addProcessedInventoryItem(this, "mixedBag", numMixedBags, mixedBagPrice);
-		currentStand.addProcessedInventoryItem(this, "frozenFruitBag", numFrozenFruitBags, frozenFruitBagPrice);
+		currentStand.addProcessedInventoryItem(this, "smoothie", numSmoothies, smoothiePrice);
 		currentStand.addProcessedInventoryItem(this, "granola", numGranola, granolaPrice);
 	}
 }

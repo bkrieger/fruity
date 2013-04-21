@@ -103,7 +103,7 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("mixedBag")){
 	 				numItemsPurchased[6] = num;
 	 			}
-	 			else if(itemName.equals("frozenFruitBag")){
+	 			else if(itemName.equals("smoothie")){
 	 				numItemsPurchased[7] = num;
 	 			}
 	 			else if(itemName.equals("granola")){
@@ -158,7 +158,7 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("mixedBag")){
 	 				itemPrices[6] = price;
 	 			}
-	 			else if(itemName.equals("frozenFruitBag")){
+	 			else if(itemName.equals("smoothie")){
 	 				itemPrices[7] = price;
 	 			}
 	 			else if(itemName.equals("granola")){
