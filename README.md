@@ -1,1 +1,1 @@
-This is a fruit stand manager app built by Brandon Krieger, Brynn Claypoole, Elizabeth So, and Tiernan Garsys.
+This is an Android fruit stand manager app built by Brandon Krieger, Brynn Claypoole, Elizabeth So, and Tiernan Garsys.
