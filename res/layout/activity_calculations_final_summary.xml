@@ -32,5 +32,15 @@
         android:layout_marginTop="146dp"
         android:gravity="center"
         android:text="Medium Text" />
+    
+    <TextView
+        android:id="@+id/profitText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

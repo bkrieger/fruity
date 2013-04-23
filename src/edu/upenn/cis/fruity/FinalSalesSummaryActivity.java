@@ -1,5 +1,7 @@
 package edu.upenn.cis.fruity;
 
+import java.text.DecimalFormat;
+
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -30,6 +32,9 @@ public class FinalSalesSummaryActivity extends Activity {
 		double cost = t.cost;
 		double revenue = t.revenue;
 		double profit = revenue-cost;
+		String cash = new DecimalFormat("######0.00").format(profit);
+		TextView profitText = (TextView) findViewById(R.id.profitText);
+		profitText.setText("$" + cash);
 		
 		TextView readyText = (TextView) findViewById(R.id.readyText);
 		if(profit >0) {
