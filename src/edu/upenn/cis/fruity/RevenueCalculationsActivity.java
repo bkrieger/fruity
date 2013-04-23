@@ -97,18 +97,12 @@ public class RevenueCalculationsActivity extends Activity {
 		if (other1name != null && !other1name.equals("")) {
 			TextView textView = (TextView) findViewById(R.id.rev_other1_text);
 			textView.setText(other1name);
-		} else {
-			LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1row);
-			layout.setVisibility(View.GONE);
-		}
+		} 
 		
 		if (other2name != null && !other2name.equals("")) {
 			TextView textView = (TextView) findViewById(R.id.rev_other2_text);
 			textView.setText(other2name);
-		} else {
-			LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other2row);
-			layout.setVisibility(View.GONE);
-		}
+		} 
 	}
 
 	public void getNumItemsSold(Cursor c){		
@@ -120,36 +114,68 @@ public class RevenueCalculationsActivity extends Activity {
 
 	 			if(itemName.equals("apple")){
 	 				numItemsPurchased[0] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_apple_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("pear")){
 	 				numItemsPurchased[1] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_pear_row);
+	 				layout.setVisibility(View.VISIBLE);
 	 			}
 	 			else if(itemName.equals("orange")){
 	 				numItemsPurchased[2] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_orange_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("banana")){
 	 				numItemsPurchased[3] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_banana_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("grapes")){
 	 				numItemsPurchased[4] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_grapes_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("kiwi")){
 	 				numItemsPurchased[5] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_kiwi_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("mixedBag")){
 	 				numItemsPurchased[6] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_mixedBag_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("smoothie")){
 	 				numItemsPurchased[7] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_smoothie_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.equals("granola")){
 	 				numItemsPurchased[8] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_granola_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			else if(itemName.startsWith("other1:")){
 	 				numItemsPurchased[9] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			} 
 	 			else if(itemName.startsWith("other2:")){
 	 				numItemsPurchased[10] = num;
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1_row);
+	 				layout.setVisibility(View.VISIBLE);
+	 				
 	 			}
 	 			
 				c.moveToNext();

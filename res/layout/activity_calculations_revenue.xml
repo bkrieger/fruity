@@ -11,10 +11,12 @@
 	    android:layout_marginLeft = "40dp"/>
          
      <LinearLayout
+        android:id="@+id/rev_apple_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
         
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -88,10 +90,12 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_pear_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -163,10 +167,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/rev_orange_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
 		<RelativeLayout
             android:layout_width="wrap_content"
@@ -240,10 +246,12 @@
     </LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_banana_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
 		 <RelativeLayout
             android:layout_width="wrap_content"
@@ -316,10 +324,12 @@
     </LinearLayout>
     
     <LinearLayout
+        android:id="@+id/rev_grapes_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
 		<RelativeLayout
             android:layout_width="wrap_content"
@@ -393,10 +403,12 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_kiwi_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -470,10 +482,12 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_mixedBag_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -548,10 +562,12 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_smoothie_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -626,10 +642,12 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_granola_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -703,11 +721,12 @@
     </LinearLayout>
     
 	<LinearLayout
-	    android:id="@+id/rev_other1row"
+	    android:id="@+id/rev_other1_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -774,11 +793,12 @@
     </LinearLayout>
     
 	<LinearLayout
-	    android:id="@+id/rev_other2row"
+	    android:id="@+id/rev_other2_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
