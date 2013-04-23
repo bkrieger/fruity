@@ -2,15 +2,18 @@ package edu.upenn.cis.fruity;
 
 import edu.upenn.cis.fruity.database.DatabaseHandler;
 import edu.upenn.cis.fruity.database.FruitStand;
+import edu.upenn.cis.fruity.database.ProcessedInventoryItem;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +24,10 @@ public class RevenueCalculationsActivity extends Activity {
 	public static final int RevenueCalculationsActivity_ID = 13;
 	
 	//TODO: include other	
-	private int numItems = 9;
+	private int numItems = 11;
 	private int numInputItems = numItems + 1; // 1 more for total revenue
 	
-	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8
+	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8, other1 = 9, other2 = 10
 	private double revenueInput[] = new double[numItems];
 	private double expectedRevenue[] = new double[numItems];
 	private double totalExpectedRevenue = 0.0;
@@ -32,7 +35,7 @@ public class RevenueCalculationsActivity extends Activity {
 	
 	private int[] itemIds = {R.id.revenue_apple, R.id.revenue_pear, R.id.revenue_orange,
 			R.id.revenue_banana, R.id.revenue_grapes, R.id.revenue_kiwi, R.id.revenue_mixedBag,
-			R.id.revenue_smoothie, R.id.revenue_granola};
+			R.id.revenue_smoothie, R.id.revenue_granola, R.id.revenue_other1, R.id.revenue_other2};
 	private int[] numItemsPurchased = new int[numItems];
 	private double[] itemPrices = new double[numItems];
 	
@@ -40,6 +43,11 @@ public class RevenueCalculationsActivity extends Activity {
 	private int incorrectColor = Color.YELLOW;
 	private int numAttempts = 0;
 	private int attemptLimit = 3;
+	
+	private String other1name;
+	private String other2name;
+	
+	private FruitStand currentStand;
 	
 	private Button profitCalcButton;
 	
@@ -51,7 +59,7 @@ public class RevenueCalculationsActivity extends Activity {
 		setContentView(R.layout.activity_calculations_revenue);
 		
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
-		FruitStand currentStand = dh.getCurrentFruitStand();
+		currentStand = dh.getCurrentFruitStand();
 		long id = currentStand.id;
 		
 		SQLiteDatabase db = dh.getReadableDatabase();
@@ -67,6 +75,7 @@ public class RevenueCalculationsActivity extends Activity {
 		setItemPrices();
 		c2.close();
 		
+		setOtherNames();
 		calculateExpectedRevenue();
 		
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
@@ -76,10 +85,37 @@ public class RevenueCalculationsActivity extends Activity {
 		profitCalcButton.setEnabled(false);	
 	}
 
+	// Derive the names for the two "other" choices
+	private void setOtherNames() {
+		ProcessedInventoryItem[] availableItems = currentStand.getProcessedInventoryItems(this);
+		
+		for (ProcessedInventoryItem i : availableItems) {
+			if (i.item_name.startsWith("other1:")) other1name = i.item_name.substring(7);
+			if (i.item_name.startsWith("other2:")) other2name = i.item_name.substring(7);
+		}
+		
+		if (other1name != null && !other1name.equals("")) {
+			TextView textView = (TextView) findViewById(R.id.rev_other1_text);
+			textView.setText(other1name);
+		} else {
+			LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1row);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (other2name != null && !other2name.equals("")) {
+			TextView textView = (TextView) findViewById(R.id.rev_other2_text);
+			textView.setText(other2name);
+		} else {
+			LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other2row);
+			layout.setVisibility(View.GONE);
+		}
+	}
+
 	public void getNumItemsSold(Cursor c){		
 		if(c.moveToFirst()){
 			for (int i = 0; i < c.getCount(); i++) {			  
 				String itemName = c.getString(0);
+				Log.v("ITEM NAME: ", itemName);
 	 			int num = Integer.parseInt(c.getString(1));
 
 	 			if(itemName.equals("apple")){
@@ -109,8 +145,11 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("granola")){
 	 				numItemsPurchased[8] = num;
 	 			}
-	 			else{ //TODO: other
-	 				
+	 			else if(itemName.startsWith("other1:")){
+	 				numItemsPurchased[9] = num;
+	 			} 
+	 			else if(itemName.startsWith("other2:")){
+	 				numItemsPurchased[10] = num;
 	 			}
 	 			
 				c.moveToNext();
@@ -122,7 +161,7 @@ public class RevenueCalculationsActivity extends Activity {
 	public void setNumItemsSold(){
 		int[] numItemIds = {R.id.num_bought_apple, R.id.num_bought_pear, R.id.num_bought_orange,
 				R.id.num_bought_banana, R.id.num_bought_grapes, R.id.num_bought_kiwi, R.id.num_bought_mixedBag,
-				R.id.num_bought_smoothie, R.id.num_bought_granola};
+				R.id.num_bought_smoothie, R.id.num_bought_granola, R.id.num_bought_other1, R.id.num_bought_other2};
 		
 		TextView numItemsText;
 		for(int i = 0; i < numItems; i++){
@@ -164,8 +203,11 @@ public class RevenueCalculationsActivity extends Activity {
 	 			else if(itemName.equals("granola")){
 	 				itemPrices[8] = price;
 	 			}
-	 			else{ //TODO: other
-	 				
+	 			else if(itemName.startsWith("other1:")){
+	 				itemPrices[9] = price;
+	 			} 
+	 			else if(itemName.startsWith("other2:")){
+	 				itemPrices[10] = price;
 	 			}
 	 			
 				c.moveToNext();
@@ -176,7 +218,7 @@ public class RevenueCalculationsActivity extends Activity {
 	public void setItemPrices(){
 		int[] priceIds = {R.id.price_calc_apple, R.id.price_calc_pear, R.id.price_calc_orange,
 				R.id.price_calc_banana, R.id.price_calc_grapes, R.id.price_calc_kiwi, R.id.price_calc_mixedBag,
-				R.id.price_calc_smoothie, R.id.price_calc_granola};
+				R.id.price_calc_smoothie, R.id.price_calc_granola, R.id.price_calc_other1, R.id.price_calc_other2};
 		
 		TextView priceText;
 		for(int i = 0; i < numItems; i++){

@@ -22,9 +22,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class InventoryPostprocessActivity extends Activity {
 	
 	private int numApples, numPears, numOranges, numBananas, numGrapes, numKiwis;
-	private int numGranola, numMixedBags, numSmoothies;
+	private int numGranola, numMixedBags, numSmoothies, numOther1, numOther2;
 	private double applePrice, pearPrice, orangePrice, bananaPrice, grapesPrice, kiwiPrice;
-	private double mixedBagPrice, smoothiePrice, granolaPrice;	
+	private double mixedBagPrice, smoothiePrice, granolaPrice, other1Price, other2Price;	
 	
 	private RadioGroup radioFruitPriceGroup;
 	EditText applePriceText;
@@ -139,6 +139,8 @@ public class InventoryPostprocessActivity extends Activity {
 		numKiwis = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_kiwi));
 		numMixedBags = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_mixedBag));
 		numSmoothies = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_smoothie));
+		numOther1 = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_other1));
+		numOther2 = parser.parseItemNum((EditText)findViewById(R.id.num_inv_postprocess_other2));
 	}
 	
 	/**
@@ -154,6 +156,8 @@ public class InventoryPostprocessActivity extends Activity {
 		mixedBagPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_mixedBag));
 		smoothiePrice = parser.parseItemPrice((EditText)findViewById(R.id.price_smoothie));
 		granolaPrice = parser.parseItemPrice((EditText)findViewById(R.id.price_granola));
+		other1Price = parser.parseItemPrice((EditText)findViewById(R.id.price_other1));
+		other2Price = parser.parseItemPrice((EditText)findViewById(R.id.price_other2));
 	}
 	
 	/**
@@ -162,6 +166,12 @@ public class InventoryPostprocessActivity extends Activity {
 	public void saveProcessedInventoryData(){
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		FruitStand currentStand = dh.getCurrentFruitStand();
+		
+		EditText other1input = (EditText) findViewById(R.id.name_inv_postprocess_other1);
+		EditText other2input = (EditText) findViewById(R.id.name_inv_postprocess_other2);
+		
+		String name_other1 = other1input.getText().toString();
+		String name_other2 = other2input.getText().toString();
 		
 		currentStand.addProcessedInventoryItem(this, "apple", numApples, applePrice);
 		currentStand.addProcessedInventoryItem(this, "pear", numPears, pearPrice);
@@ -172,5 +182,7 @@ public class InventoryPostprocessActivity extends Activity {
 		currentStand.addProcessedInventoryItem(this, "mixedBag", numMixedBags, mixedBagPrice);
 		currentStand.addProcessedInventoryItem(this, "smoothie", numSmoothies, smoothiePrice);
 		currentStand.addProcessedInventoryItem(this, "granola", numGranola, granolaPrice);
+		currentStand.addProcessedInventoryItem(this, "other1:" + name_other1, numOther1, other1Price);
+		currentStand.addProcessedInventoryItem(this, "other2:" + name_other2, numOther2, other2Price);
 	}
 }

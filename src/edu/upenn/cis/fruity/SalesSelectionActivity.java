@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,14 +32,19 @@ public class SalesSelectionActivity extends Activity {
 	int pears;
 	int bananas;
 	int kiwis;
+	int other1;
+	int other2;
 	int total;
 	boolean onPopup;
+	
+	String other1name;
+	String other2name;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_item_selection);
 
-		// Preprocess which whole fruits are available. 
+		// Pre-process which whole fruits are available. 
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		FruitStand currentStand = dh.getCurrentFruitStand();
 		ProcessedInventoryItem[] currentItems = currentStand.getProcessedInventoryItems(this);
@@ -46,6 +52,8 @@ public class SalesSelectionActivity extends Activity {
 		for (ProcessedInventoryItem i : currentItems) {
 			if (i.count > 0) { 
 				availableItems.add(i.item_name);
+				if (i.item_name.startsWith("other1:")) other1name = i.item_name.substring(7);
+				if (i.item_name.startsWith("other2:")) other2name = i.item_name.substring(7);
 			}
 		}
 		
@@ -63,10 +71,14 @@ public class SalesSelectionActivity extends Activity {
 		bananas = 0;
 		kiwis = 0;
 		total = 0;
+		other1 = 0;
+		other2 = 0;
 		onPopup = false;
 		
 		putBackCounts();
 	}
+	
+	
 
 	public void onBackPressed() {
 		if (onPopup) {
@@ -287,7 +299,7 @@ public class SalesSelectionActivity extends Activity {
 		TextView count = (TextView) findViewById(R.id.ASPsmoothieCounter);
 		count.setText("" + smoothies);
 	}
-
+	
 	public void onGranolaMinusButtonClick(View v) {
 		if (granola > 0) {
 			granola--;
@@ -305,15 +317,53 @@ public class SalesSelectionActivity extends Activity {
 		TextView count = (TextView) findViewById(R.id.ASPgranolaCounter);
 		count.setText("" + granola);
 	}
+	
+	public void onOther1MinusButtonClick(View v) {
+		if (other1 > 0) {
+			other1--;
+			total--;
+		}
+		TextView count = (TextView) findViewById(R.id.ASPOther1Counter);
+		count.setText("" + other1);
+	}
+
+	public void onOther1PlusButtonClick(View v) {
+		if (other1 < 99) {
+			other1++;
+			total++;
+		}
+		TextView count = (TextView) findViewById(R.id.ASPOther1Counter);
+		count.setText("" + other1);
+	}
+	
+	public void onOther2MinusButtonClick(View v) {
+		if (other2 > 0) {
+			other2--;
+			total--;
+		}
+		TextView count = (TextView) findViewById(R.id.ASPOther2Counter);
+		count.setText("" + other2);
+	}
+
+	public void onOther2PlusButtonClick(View v) {
+		if (other1 < 99) {
+			other2++;
+			total++;
+		}
+		TextView count = (TextView) findViewById(R.id.ASPOther2Counter);
+		count.setText("" + other2);
+	}
 
 	public void onWholeFruitDoneButtonClick(View v) {
 		setContentView(R.layout.activity_sales_item_selection);
 		putBackCounts();
 		onPopup = false;
 	}
+	
 
 	private void putBackCounts() {
 		LinearLayout layout;
+		Button labelButton;
 		TextView count;
 		
 		if (availableItems.contains("mixedBag")) {
@@ -339,6 +389,26 @@ public class SalesSelectionActivity extends Activity {
 			layout = (LinearLayout) findViewById(R.id.ASPGranolaRow);
 			layout.setVisibility(View.GONE);
 		}
+		
+		if (other1name != null && availableItems.contains("other1:" + other1name)) {
+			count = (TextView) findViewById(R.id.ASPOther1Counter);
+			labelButton = (Button) findViewById(R.id.ASPbtnOther1);
+			labelButton.setText(other1name);
+			count.setText("" + other1);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.ASPOther1Row);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (other2name != null && availableItems.contains("other2:" + other2name)) {
+			count = (TextView) findViewById(R.id.ASPOther2Counter);
+			labelButton = (Button) findViewById(R.id.ASPbtnOther2);
+			labelButton.setText(other2name);
+			count.setText("" + other2);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.ASPOther2Row);
+			layout.setVisibility(View.GONE);
+		}
 	}
 	
 	
@@ -357,6 +427,8 @@ public class SalesSelectionActivity extends Activity {
 		i.putExtra("pear", pears);
 		i.putExtra("banana", bananas);
 		i.putExtra("kiwi", kiwis);
+		i.putExtra("other1:" + other1name, other1);
+		i.putExtra("other2:" + other2name, other2);
 		i.putExtra("total", total);
 		
 		startActivityForResult(i, SalesSelectionActivity_ID);

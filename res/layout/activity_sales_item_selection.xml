@@ -138,6 +138,76 @@
     </LinearLayout>
     
     <LinearLayout
+        android:id="@+id/ASPOther1Row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnOther1"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:clickable="false"
+            android:text="OTHER 1" />
+
+        <Button
+            android:id="@+id/ASPbtnOther1Minus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onOther1MinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ASPOther1Counter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/ASPbtnOther1Plus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onOther1PlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ASPOther2Row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ASPbtnOther2"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:clickable="false"
+            android:text="OTHER 2" />
+
+        <Button
+            android:id="@+id/ASPbtnOther2Minus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onOther1MinusButtonClick"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ASPOther2Counter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/ASPbtnOther2Plus"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="onOther2PlusButtonClick"
+            android:text="+" />
+    </LinearLayout>
+    
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
