@@ -1,16 +1,23 @@
 package edu.upenn.cis.fruity;
 
+import java.util.HashSet;
+
+import edu.upenn.cis.fruity.database.DatabaseHandler;
+import edu.upenn.cis.fruity.database.FruitStand;
+import edu.upenn.cis.fruity.database.ProcessedInventoryItem;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SalesSelectionActivity extends Activity {
 	public static final int SalesSelectionActivity_ID = 12;
-
+	private HashSet<String> availableItems;
+	
 	// TODO: Make it so we can pull the "other" entered at beginning
 	// from fruitstand instance and put here.
 	int age_category;
@@ -31,6 +38,17 @@ public class SalesSelectionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sales_item_selection);
 
+		// Preprocess which whole fruits are available. 
+		DatabaseHandler dh = DatabaseHandler.getInstance(this);
+		FruitStand currentStand = dh.getCurrentFruitStand();
+		ProcessedInventoryItem[] currentItems = currentStand.getProcessedInventoryItems(this);
+		availableItems = new HashSet<String>();
+		for (ProcessedInventoryItem i : currentItems) {
+			if (i.count > 0) { 
+				availableItems.add(i.item_name);
+			}
+		}
+		
 		Intent intent = getIntent();
 		age_category = intent.getIntExtra("age_category", -1);
 		isMale = intent.getBooleanExtra("isMale", true);
@@ -46,6 +64,8 @@ public class SalesSelectionActivity extends Activity {
 		kiwis = 0;
 		total = 0;
 		onPopup = false;
+		
+		putBackCounts();
 	}
 
 	public void onBackPressed() {
@@ -71,18 +91,57 @@ public class SalesSelectionActivity extends Activity {
 	public void onWholeFruitButtonClick(View v) {
 		setContentView(R.layout.sales_whole_fruit_popup);
 		onPopup = true;
-		TextView count = (TextView) findViewById(R.id.SWFPAppleCounter);
-		count.setText("" + apples);
-		count = (TextView) findViewById(R.id.SWFPOrangeCounter);
-		count.setText("" + oranges);
-		count = (TextView) findViewById(R.id.SWFPBananaCounter);
-		count.setText("" + bananas);
-		count = (TextView) findViewById(R.id.SWFPKiwiCounter);
-		count.setText("" + kiwis);
-		count = (TextView) findViewById(R.id.SWFPPearCounter);
-		count.setText("" + pears);
-		count = (TextView) findViewById(R.id.SWFPGrapeCounter);
-		count.setText("" + grapes);
+		LinearLayout layout;
+		TextView count;
+		
+		// Initialize Fruit Counters
+		if (availableItems.contains("apple")) {
+			count = (TextView) findViewById(R.id.SWFPAppleCounter);
+			count.setText("" + apples);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.AppleRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("orange")) {
+			count = (TextView) findViewById(R.id.SWFPOrangeCounter);
+			count.setText("" + oranges);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.OrangeRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("banana")) {
+			count = (TextView) findViewById(R.id.SWFPBananaCounter);
+			count.setText("" + bananas);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.BananaRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("kiwi")) {
+			count = (TextView) findViewById(R.id.SWFPKiwiCounter);
+			count.setText("" + kiwis);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.KiwiRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("pear")) {
+			count = (TextView) findViewById(R.id.SWFPPearCounter);
+			count.setText("" + pears);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.PearRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("grapes")) {
+			count = (TextView) findViewById(R.id.SWFPGrapeCounter);
+			count.setText("" + grapes);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.GrapeRow);
+			layout.setVisibility(View.GONE);
+		}
 	}
 
 	public void onApplesMinusButtonClick(View v) {
@@ -254,13 +313,34 @@ public class SalesSelectionActivity extends Activity {
 	}
 
 	private void putBackCounts() {
-		TextView count = (TextView) findViewById(R.id.ASPmixedCounter);
-		count.setText("" + mixedBags);
-		count = (TextView) findViewById(R.id.ASPsmoothieCounter);
-		count.setText("" + smoothies);
-		count = (TextView) findViewById(R.id.ASPgranolaCounter);
-		count.setText("" + granola);
+		LinearLayout layout;
+		TextView count;
+		
+		if (availableItems.contains("mixedBag")) {
+			count = (TextView) findViewById(R.id.ASPmixedCounter);
+			count.setText("" + mixedBags);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.ASPMixedRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("smoothie")) {
+			count = (TextView) findViewById(R.id.ASPsmoothieCounter);
+			count.setText("" + smoothies);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.ASPSmoothieRow);
+			layout.setVisibility(View.GONE);
+		}
+		
+		if (availableItems.contains("granola")) {
+			count = (TextView) findViewById(R.id.ASPgranolaCounter);
+			count.setText("" + smoothies);
+		} else {
+			layout = (LinearLayout) findViewById(R.id.ASPGranolaRow);
+			layout.setVisibility(View.GONE);
+		}
 	}
+	
 	
 	// TODO: Transfer information about "other" categories for stand
 	public void onPaymentClick(View view){
