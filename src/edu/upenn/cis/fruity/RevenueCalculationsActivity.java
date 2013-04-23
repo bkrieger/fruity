@@ -23,9 +23,8 @@ import android.widget.Toast;
 public class RevenueCalculationsActivity extends Activity {
 	public static final int RevenueCalculationsActivity_ID = 13;
 	
-	//TODO: include other	
 	private int numItems = 11;
-	private int numInputItems = numItems + 1; // 1 more for total revenue
+	private int totalInputItems = 0;
 	
 	// apple = 0, pear = 1, orange = 2, banana = 3, grapes = 4, kiwi = 5, mixedBag = 6, smoothie = 7, granola = 8, other1 = 9, other2 = 10
 	private double revenueInput[] = new double[numItems];
@@ -36,6 +35,9 @@ public class RevenueCalculationsActivity extends Activity {
 	private int[] itemIds = {R.id.revenue_apple, R.id.revenue_pear, R.id.revenue_orange,
 			R.id.revenue_banana, R.id.revenue_grapes, R.id.revenue_kiwi, R.id.revenue_mixedBag,
 			R.id.revenue_smoothie, R.id.revenue_granola, R.id.revenue_other1, R.id.revenue_other2};
+	private int[] layoutIds = {R.id.rev_apple_row, R.id.rev_pear_row, R.id.rev_orange_row,
+			R.id.rev_banana_row, R.id.rev_grapes_row, R.id.rev_kiwi_row, R.id.rev_mixedBag_row,
+			R.id.rev_smoothie_row, R.id.rev_granola_row, R.id.rev_other1_row, R.id.rev_other2_row};
 	private int[] numItemsPurchased = new int[numItems];
 	private double[] itemPrices = new double[numItems];
 	
@@ -79,8 +81,8 @@ public class RevenueCalculationsActivity extends Activity {
 		calculateExpectedRevenue();
 		
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
-		numCorrectDisplay.setText("0/"+numInputItems);
-		
+		totalInputItems++; // 1 more for total revenue box
+		numCorrectDisplay.setText("0/"+totalInputItems);
 		profitCalcButton = (Button)findViewById(R.id.gotoProfitCalculationsBtn);
 		profitCalcButton.setEnabled(false);	
 	}
@@ -116,66 +118,67 @@ public class RevenueCalculationsActivity extends Activity {
 	 				numItemsPurchased[0] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_apple_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("pear")){
 	 				numItemsPurchased[1] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_pear_row);
 	 				layout.setVisibility(View.VISIBLE);
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("orange")){
 	 				numItemsPurchased[2] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_orange_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("banana")){
 	 				numItemsPurchased[3] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_banana_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("grapes")){
 	 				numItemsPurchased[4] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_grapes_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("kiwi")){
 	 				numItemsPurchased[5] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_kiwi_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("mixedBag")){
 	 				numItemsPurchased[6] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_mixedBag_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("smoothie")){
 	 				numItemsPurchased[7] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_smoothie_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.equals("granola")){
 	 				numItemsPurchased[8] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_granola_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			else if(itemName.startsWith("other1:")){
 	 				numItemsPurchased[9] = num;
 	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			} 
 	 			else if(itemName.startsWith("other2:")){
 	 				numItemsPurchased[10] = num;
-	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other1_row);
+	 				LinearLayout layout = (LinearLayout) findViewById(R.id.rev_other2_row);
 	 				layout.setVisibility(View.VISIBLE);
-	 				
+	 				totalInputItems++;
 	 			}
 	 			
 				c.moveToNext();
@@ -266,14 +269,18 @@ public class RevenueCalculationsActivity extends Activity {
 		// compare actual to expected revenue input
 		for(int i = 0; i < numItems; i++){
 			itemRevenueText = (EditText)findViewById(itemIds[i]);
-			revenueInput[i] = parser.parseItemPrice(itemRevenueText); // actual revenue input
 
-			if(Math.abs(revenueInput[i] - expectedRevenue[i]) < precision){
-				numCorrect++;
-				itemRevenueText.setBackgroundColor(correctColor);
-			}
-			else{		
-				itemRevenueText.setBackgroundColor(incorrectColor);
+			LinearLayout layout = (LinearLayout) findViewById(layoutIds[i]);
+			if(layout.getVisibility() == View.VISIBLE){
+				revenueInput[i] = parser.parseItemPrice(itemRevenueText); // actual revenue input
+	
+				if(Math.abs(revenueInput[i] - expectedRevenue[i]) < precision){
+					numCorrect++;
+					itemRevenueText.setBackgroundColor(correctColor);
+				}
+				else{		
+					itemRevenueText.setBackgroundColor(incorrectColor);
+				}
 			}
 		}
 		// compare actual to expected total revenue
@@ -288,11 +295,11 @@ public class RevenueCalculationsActivity extends Activity {
 		}
 		
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_revenue_calculations);
-		numCorrectDisplay.setText("" + numCorrect +"/"+numInputItems);
+		numCorrectDisplay.setText("" + numCorrect +"/"+totalInputItems);
 		
 		numAttempts++;
 		
-		if(numCorrect < numInputItems){
+		if(numCorrect < totalInputItems){
 			Toast toast = Toast.makeText(getApplicationContext(),
 					"Incorrect revenue calculations are highlighted in yellow.", Toast.LENGTH_SHORT);
 			toast.show();
