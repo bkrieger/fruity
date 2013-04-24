@@ -90,7 +90,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
         	       
@@ -135,7 +135,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
     </LinearLayout>
@@ -190,7 +190,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
        	
@@ -236,7 +236,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
     </LinearLayout>
@@ -291,7 +291,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
 
@@ -338,7 +338,7 @@
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:maxLength="5"
+            android:maxLength="6"
             android:width="55dp"
             android:textSize="12sp"/>
     </LinearLayout>
