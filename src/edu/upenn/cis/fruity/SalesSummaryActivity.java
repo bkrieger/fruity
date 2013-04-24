@@ -53,6 +53,9 @@ public static final int SalesSummaryActivity_ID = 14;
 			
 			// Convert Database key to pretty-printed version
 			String preName = purchase.item_name;
+			if (preName.startsWith("other1:") || preName.startsWith("other2:")) {
+				preName = preName.substring(7);
+			}
 			String postName = preName.replaceAll("([a-z])([A-Z])", "$1 $2");
 			postName = Character.toUpperCase(postName.charAt(0)) + postName.substring(1, postName.length());
 			

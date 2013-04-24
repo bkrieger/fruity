@@ -4,21 +4,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    <TextView
+        android:layout_above="@+id/fruit_img"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:gravity="center_horizontal"
+	    android:layout_centerInParent="true"
+	    android:layout_gravity="top"
+	    android:text="Fruit Stand Tracker!"
+	    android:textSize="30sp" />
+    
+    <ImageView
+	    android:id="@+id/fruit_img"
+	    android:layout_width="300dp"
+	    android:layout_height="300dp"
+	    android:layout_centerInParent="true"
+	    android:src="@drawable/fruits"
+	    android:contentDescription="fruit"/>
+    
     <Button
         android:id="@+id/start_app_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:onClick="onStartButtonClick"
-        android:text="Click here to start the app!" />
-
-    <Button
-        android:id="@+id/test_button"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="56dp"
-        android:onClick="onTestButtonClick"
-        android:text="Click here to test things!" />
+        android:text="Start Fruit Stand!" />
 
 </RelativeLayout>

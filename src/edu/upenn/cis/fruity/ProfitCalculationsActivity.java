@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,10 @@ public class ProfitCalculationsActivity extends Activity{
 	private double precision = 0.001;
 	private int correctColor = android.R.attr.editTextBackground;
 	private int incorrectColor = Color.YELLOW;
+	
+	private int numAttempts = 0;
+	private int attemptLimit = 3;
+	private Button finishCalcButton;
 	
 	ParseInputData parser = new ParseInputData();
 	
@@ -90,6 +95,9 @@ public class ProfitCalculationsActivity extends Activity{
 
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_profit_calculations);
 		numCorrectDisplay.setText("0/"+numEquations);
+		
+		finishCalcButton = (Button)findViewById(R.id.finishBtn);
+		finishCalcButton.setEnabled(false);
 	}
 	
 	public void onBackPressed() {
@@ -131,10 +139,25 @@ public class ProfitCalculationsActivity extends Activity{
 		TextView numCorrectDisplay = (TextView)findViewById(R.id.num_correct_profit_calculations);
 		numCorrectDisplay.setText("" + numCorrect +"/"+numEquations);
 		
+		numAttempts++;
+		
 		if(numCorrect < numEquations){
 			Toast toast = Toast.makeText(getApplicationContext(),
 					"Incorrect calculations are highlighted in yellow.", Toast.LENGTH_SHORT);
 			toast.show();
+			
+			if(numAttempts >= attemptLimit){
+				toast = Toast.makeText(getApplicationContext(),
+						"Please seek assistance to obtain the correct profit calculations.", Toast.LENGTH_SHORT);
+				toast.show();
+				finishCalcButton.setEnabled(true);	
+			}
+		}
+		else{
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Congratulations! You are done with the profit calculations activity.", Toast.LENGTH_SHORT);
+			toast.show();
+			finishCalcButton.setEnabled(true);
 		}
 	}
 	

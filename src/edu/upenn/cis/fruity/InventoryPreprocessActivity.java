@@ -14,6 +14,7 @@ import android.widget.EditText;
  */
 public class InventoryPreprocessActivity extends Activity {
 	private int numApples, numPears, numOranges, numBananas, numGrapes, numKiwis;
+	private int numGranola, numFrozenFruitBags;
 	public static final int InventoryPreprocessActivity_ID = 9;
 
 	private ParseInputData parser = new ParseInputData();
@@ -41,6 +42,7 @@ public class InventoryPreprocessActivity extends Activity {
 		saveStartInventoryData();
 
 		Intent i = new Intent(this,InventoryPostprocessActivity.class);
+		i.putExtra("numGranola", numGranola);
 		startActivityForResult(i, InventoryPreprocessActivity_ID);
 	}
 	
@@ -54,6 +56,8 @@ public class InventoryPreprocessActivity extends Activity {
 		numBananas = parser.parseItemNum((EditText)findViewById(R.id.num_inv_preprocess_banana));
 		numGrapes = parser.parseItemNum((EditText)findViewById(R.id.num_inv_preprocess_grapes));
 		numKiwis = parser.parseItemNum((EditText)findViewById(R.id.num_inv_preprocess_kiwi));
+		numGranola = parser.parseItemNum((EditText)findViewById(R.id.num_inv_preprocess_granola));
+		numFrozenFruitBags = parser.parseItemNum((EditText)findViewById(R.id.num_inv_preprocess_frozenFruitBag));
 	}
 	
 	/**
@@ -68,6 +72,8 @@ public class InventoryPreprocessActivity extends Activity {
 		currentStand.addStartInventoryItem(this, "orange", numOranges);
 		currentStand.addStartInventoryItem(this, "banana", numBananas);
 		currentStand.addStartInventoryItem(this, "grapes", numGrapes);
-		currentStand.addStartInventoryItem(this, "kiwi", numKiwis);		
+		currentStand.addStartInventoryItem(this, "kiwi", numKiwis);
+		currentStand.addStartInventoryItem(this, "granola", numGranola);
+		currentStand.addStartInventoryItem(this, "frozenFruitBag", numFrozenFruitBags);	
 	}
 }

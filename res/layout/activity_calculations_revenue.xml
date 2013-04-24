@@ -11,10 +11,12 @@
 	    android:layout_marginLeft = "40dp"/>
          
      <LinearLayout
+        android:id="@+id/rev_apple_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
         
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -88,10 +90,12 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_pear_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -163,10 +167,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/rev_orange_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
 		<RelativeLayout
             android:layout_width="wrap_content"
@@ -240,10 +246,12 @@
     </LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_banana_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
 		 <RelativeLayout
             android:layout_width="wrap_content"
@@ -316,10 +324,12 @@
     </LinearLayout>
     
     <LinearLayout
+        android:id="@+id/rev_grapes_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
 		<RelativeLayout
             android:layout_width="wrap_content"
@@ -393,10 +403,12 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    android:id="@+id/rev_kiwi_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -470,10 +482,12 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_mixedBag_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -481,10 +495,19 @@
             android:layout_gravity="center"
             android:orientation="vertical" >
 	
+       	    <ImageView
+	            android:id="@+id/mixedBag_img"
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/mixedbag"
+	            android:contentDescription="@string/mixedBag"/>
+       	    	       	
 	        <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:layout_marginLeft="5dp"
 	            android:text="@string/mixedBag"
 	            android:textSize="12sp"
 	            android:textColor="@color/blue"/>
@@ -499,7 +522,7 @@
             android:maxLength="5"
             android:width="50dp"
             android:textSize="15sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="5dp"/>
        	       	
        	<TextView
             android:layout_width="wrap_content"
@@ -539,21 +562,32 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_smoothie_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical" >
+	        
+	       	<ImageView
+	            android:id="@+id/smoothie_img"
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/smoothie"
+	            android:contentDescription="@string/smoothie"/>
 	
 	        <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:layout_marginLeft="5dp"
 	            android:text="@string/smoothie"
 	            android:textSize="12sp"
 	            android:textColor="@color/blue"/>
@@ -568,7 +602,7 @@
             android:maxLength="5"
             android:width="50dp"
             android:textSize="15sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="5dp"/>
        	       	
        	<TextView
             android:layout_width="wrap_content"
@@ -608,10 +642,12 @@
     </LinearLayout>
     
 	<LinearLayout
+	    android:id="@+id/rev_granola_row"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
        	
        	<RelativeLayout
             android:layout_width="wrap_content"
@@ -619,6 +655,14 @@
             android:layout_gravity="center"
             android:orientation="vertical" >
 	
+       	    <ImageView
+	            android:id="@+id/granola_img"
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/granola"
+	            android:contentDescription="@string/granola"/>
+       	    	       	
 	        <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -637,7 +681,7 @@
             android:maxLength="5"
             android:width="50dp"
             android:textSize="15sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="15dp"/>
        	       	
        	<TextView
             android:layout_width="wrap_content"
@@ -664,6 +708,150 @@
             android:textSize="12sp"/>
        		        	
        	<EditText android:id="@+id/revenue_granola"
+            android:cursorVisible="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zeroDollars"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:maxLength="5"
+            android:width="75dp"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    
+	<LinearLayout
+	    android:id="@+id/rev_other1_row"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+       	
+       	<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+       	    	       	
+	        <TextView
+	            android:id="@+id/rev_other1_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="OTHER 1"
+	            android:textSize="12sp"
+	            android:textColor="@color/blue"/>
+        </RelativeLayout>
+
+       	<TextView android:id="@+id/price_calc_other1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zeroDollars"
+            android:singleLine="true"
+            android:maxLength="5"
+            android:width="50dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"/>
+       	       	
+       	<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/multiply"
+            android:textSize="12sp"/>
+       	     	
+     	<TextView
+            android:id="@+id/num_bought_other1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:maxLength="3"
+            android:textSize="15sp"
+            android:text="@string/zero"
+            android:width="40dp" />   	
+       	
+       	<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/equals"
+            android:textSize="12sp"/>
+       		        	
+       	<EditText android:id="@+id/revenue_other1"
+            android:cursorVisible="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zeroDollars"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:maxLength="5"
+            android:width="75dp"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    
+	<LinearLayout
+	    android:id="@+id/rev_other2_row"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+       	
+       	<RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+       	    	       	
+	        <TextView
+	            android:id="@+id/rev_other2_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="OTHER 2"
+	            android:textSize="12sp"
+	            android:textColor="@color/blue"/>
+        </RelativeLayout>
+
+       	<TextView android:id="@+id/price_calc_other2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/zeroDollars"
+            android:singleLine="true"
+            android:maxLength="5"
+            android:width="50dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"/>
+       	       	
+       	<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/multiply"
+            android:textSize="12sp"/>
+       	     	
+     	<TextView
+            android:id="@+id/num_bought_other2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:maxLength="3"
+            android:textSize="15sp"
+            android:text="@string/zero"
+            android:width="40dp" />   	
+       	
+       	<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/equals"
+            android:textSize="12sp"/>
+       		        	
+       	<EditText android:id="@+id/revenue_other2"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

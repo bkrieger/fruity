@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * User can input quantities for whole fruit inventory before fruit is processed and sold
@@ -30,12 +31,23 @@ public class SetupInputSchoolActivity extends Activity {
 		return true;
 	} 
 	
+	private void dontLetMoveOn() {
+		Toast toast = Toast.makeText(getApplicationContext(),
+				"Fill in the blank fields to move on.", Toast.LENGTH_SHORT);
+		toast.show();
+	}
+	
 	public void onStandInfoButtonPress(View v) {
-		Intent i = new Intent(this,EnterStaffActivity.class);
 		
 		EditText schoolName = (EditText) findViewById(R.id.schoolInput_schoolName);
-		
 		String newSchoolName = schoolName.getText().toString();
+		
+		if(newSchoolName.isEmpty()) {
+			dontLetMoveOn();
+			return;
+		}
+		Intent i = new Intent(this,EnterStaffActivity.class);
+
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		dh.putSchool(new School(newSchoolName));
 		

@@ -19,8 +19,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SetupStandInfoActivity extends Activity {
-
-	//public static final int InventoryPreprocessActivity_ID = 8;
 	public static final int EnterStaffActivity_ID = 8;
 	public static final int EnterDateActivity_ID = 20;
 	public static Intent intent;
