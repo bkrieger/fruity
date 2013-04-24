@@ -29,9 +29,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:gravity="center"
 	            android:text="@string/apple"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText
@@ -63,8 +63,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/pear"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:gravity="center"
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_pear"
@@ -103,9 +103,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:gravity="center"
 	            android:text="@string/orange"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_orange"
@@ -135,9 +135,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:gravity="center"
 	            android:text="@string/banana"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_banana"
@@ -177,8 +177,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/grapes"
-	            android:textSize="20sp"
-            	android:textColor="@color/blue"/>
+	            android:gravity="center"
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_grapes"
@@ -211,8 +211,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/kiwi"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:gravity="center"
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_kiwi"
@@ -252,8 +252,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/granola"
-	            android:textSize="20sp"
-            	android:textColor="@color/blue"/>
+	            android:gravity="center"
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_granola"
@@ -278,7 +278,7 @@
 	            android:layout_width="80dp"
 	            android:layout_height="78dp"
 	            android:layout_marginLeft="5dp"
-	            android:src="@drawable/frozenfruitbag"
+	            android:src="@drawable/smoothie"
 	            android:contentDescription="@string/frozenFruitBag"/>
 	
 	        <TextView
@@ -286,8 +286,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/frozenFruitBag"
-	            android:textSize="20sp"
-	            android:textColor="@color/blue"/>
+	            android:gravity="center"
+	            android:textSize="24sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_preprocess_frozenFruitBag"

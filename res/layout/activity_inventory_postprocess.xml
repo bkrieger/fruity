@@ -66,8 +66,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/apple"
-	            android:textSize="12sp"
-	            android:textColor="@color/white"/>
+	            android:gravity="center"
+	            android:textSize="14sp"/>
         </RelativeLayout>
         
         <EditText
@@ -112,8 +112,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/pear"
-	            android:textSize="12sp"
-	            android:textColor="@color/white"/>
+	            android:gravity="center"
+	            android:textSize="14sp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_postprocess_pear"
@@ -166,8 +166,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/orange"
-	            android:textSize="12sp"
-	            android:textColor="@color/white"/>
+	            android:gravity="center"
+	            android:textSize="14sp"/>
         </RelativeLayout>
      
 		<EditText
@@ -212,8 +212,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/banana"
-	            android:textSize="12sp"
-	            android:textColor="@color/white"/>
+	            android:gravity="center"
+	            android:textSize="14sp"/>
         </RelativeLayout>
         
          <EditText
@@ -267,8 +267,8 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/grapes"
-	            android:textSize="12sp"
-            	android:textColor="@color/white"/>
+	            android:gravity="center"
+	            android:textSize="14sp"/>
         </RelativeLayout>
         
 	    <EditText
@@ -313,9 +313,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
+	            android:gravity="center"
 	            android:text="@string/kiwi"
-	            android:textSize="12sp"
-	            android:textColor="@color/white"/>
+	            android:textSize="14sp"/>
         </RelativeLayout>
     
      	<EditText
@@ -410,7 +410,7 @@
 	            android:id="@+id/mixedBag_img"
 	            android:layout_width="30dp"
 	            android:layout_height="28dp"
-	            android:src="@drawable/mixedbag"
+	            android:src="@drawable/fruits"
 	            android:contentDescription="@string/mixedBag"/>
 	        
 	        <TextView
@@ -418,7 +418,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/mixedBag"
-	            android:textSize="12sp"
+	            android:textSize="14sp"
 	            android:layout_marginLeft="60dp"/>
         </RelativeLayout>
         
@@ -431,12 +431,13 @@
             android:maxLength="3"
             android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="55dp"/>
                 
         <EditText android:id="@+id/price_mixedBag"
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
@@ -470,7 +471,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/smoothie"
-	            android:textSize="12sp"
+	            android:textSize="14sp"
 	            android:layout_marginLeft="60dp"/>
         </RelativeLayout>
         
@@ -489,6 +490,7 @@
             android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:text="@string/zeroDollars"
             android:inputType="numberDecimal"
             android:singleLine="true"
@@ -522,19 +524,20 @@
 	            android:layout_height="wrap_content"
 	            android:layout_centerInParent="true"
 	            android:text="@string/granola"
-	            android:textSize="12sp"
+	            android:textSize="14sp"
 	            android:layout_marginLeft="60dp"/>
         </RelativeLayout>
         
         <EditText android:id="@+id/num_inv_postprocess_granola"
+            android:cursorVisible="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zero"
             android:inputType="number"
             android:maxLength="3"
-            android:width="45dp"
+            android:width="55dp"
             android:textSize="12sp"
-            android:layout_marginLeft="75dp"/>
+            android:layout_marginLeft="55dp"/>
 
         <EditText
             android:id="@+id/price_granola"
@@ -543,6 +546,7 @@
             android:layout_marginRight="10dp"
             android:cursorVisible="true"
             android:inputType="numberDecimal"
+            android:layout_alignParentRight="true"
             android:maxLength="7"
             android:singleLine="true"
             android:text="@string/zeroDollars"
@@ -563,7 +567,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/other"
-            android:textSize="10sp"
+            android:textSize="14sp"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
     
@@ -591,7 +595,7 @@
             android:inputType="number"
             android:maxLength="3"
             android:width="55dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_marginLeft="50dp"/>
                 
         <EditText android:id="@+id/price_other1"
@@ -630,7 +634,7 @@
             android:inputType="number"
             android:maxLength="3"
             android:width="55dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_marginLeft="50dp"/>
                 
         <EditText android:id="@+id/price_other2"
