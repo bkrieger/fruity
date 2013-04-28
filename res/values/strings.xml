@@ -8,6 +8,7 @@
     <string name="title_activity_sales_payment">Payment</string>
     <string name="title_activity_enter_staff">Enter Staff</string>
     <string name="title_activity_setup_select_school">Select School</string>
+    <string name="title_activity_setup_input_school">Enter School</string>
     <string name="title_activity_setup_stand_info">Stand Information</string>
     <string name="title_activity_inventory_preprocess">Starting Inventory</string>
     <string name="title_activity_inventory_postprocess">All Inventory Before Sales</string>

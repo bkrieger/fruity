@@ -36,7 +36,7 @@
         </activity>
         <activity
             android:name="edu.upenn.cis.fruity.SetupInputSchoolActivity"
-            android:label="@string/title_activity_sales_payment" >
+            android:label="@string/title_activity_setup_input_school" >
         </activity>
         <activity
             android:name="edu.upenn.cis.fruity.EnterExtraStaffActivity"
